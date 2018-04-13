@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
+		module.exports = factory(require("stream"), require("http"), require("url"), require("util"), require("https"), require("path"), require("fs"), require("zlib"));
 	else if(typeof define === 'function' && define.amd)
-		define([], factory);
+		define(["stream", "http", "url", "util", "https", "path", "fs", "zlib"], factory);
 	else if(typeof exports === 'object')
-		exports["TrueVaultClient"] = factory();
+		exports["TrueVaultClient"] = factory(require("stream"), require("http"), require("url"), require("util"), require("https"), require("path"), require("fs"), require("zlib"));
 	else
-		root["TrueVaultClient"] = factory();
-})(this, function() {
+		root["TrueVaultClient"] = factory(root["stream"], root["http"], root["url"], root["util"], root["https"], root["path"], root["fs"], root["zlib"]);
+})(this, function(__WEBPACK_EXTERNAL_MODULE_48__, __WEBPACK_EXTERNAL_MODULE_86__, __WEBPACK_EXTERNAL_MODULE_87__, __WEBPACK_EXTERNAL_MODULE_88__, __WEBPACK_EXTERNAL_MODULE_127__, __WEBPACK_EXTERNAL_MODULE_128__, __WEBPACK_EXTERNAL_MODULE_329__, __WEBPACK_EXTERNAL_MODULE_330__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -73,7 +73,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "./build";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 308);
+/******/ 	return __webpack_require__(__webpack_require__.s = 331);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -167,7 +167,7 @@ module.exports = function(it){
 /* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var store      = __webpack_require__(57)('wks')
+var store      = __webpack_require__(58)('wks')
   , uid        = __webpack_require__(39)
   , Symbol     = __webpack_require__(2).Symbol
   , USE_SYMBOL = typeof Symbol == 'function';
@@ -193,7 +193,7 @@ module.exports = !__webpack_require__(3)(function(){
 /***/ (function(module, exports, __webpack_require__) {
 
 var anObject       = __webpack_require__(1)
-  , IE8_DOM_DEFINE = __webpack_require__(94)
+  , IE8_DOM_DEFINE = __webpack_require__(103)
   , toPrimitive    = __webpack_require__(23)
   , dP             = Object.defineProperty;
 
@@ -342,7 +342,7 @@ var pIE            = __webpack_require__(47)
   , toIObject      = __webpack_require__(15)
   , toPrimitive    = __webpack_require__(23)
   , has            = __webpack_require__(10)
-  , IE8_DOM_DEFINE = __webpack_require__(94)
+  , IE8_DOM_DEFINE = __webpack_require__(103)
   , gOPD           = Object.getOwnPropertyDescriptor;
 
 exports.f = __webpack_require__(6) ? gOPD : function getOwnPropertyDescriptor(O, P){
@@ -361,7 +361,7 @@ exports.f = __webpack_require__(6) ? gOPD : function getOwnPropertyDescriptor(O,
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has         = __webpack_require__(10)
   , toObject    = __webpack_require__(9)
-  , IE_PROTO    = __webpack_require__(74)('IE_PROTO')
+  , IE_PROTO    = __webpack_require__(75)('IE_PROTO')
   , ObjectProto = Object.prototype;
 
 module.exports = Object.getPrototypeOf || function(O){
@@ -419,7 +419,7 @@ var ctx      = __webpack_require__(25)
   , IObject  = __webpack_require__(46)
   , toObject = __webpack_require__(9)
   , toLength = __webpack_require__(8)
-  , asc      = __webpack_require__(122);
+  , asc      = __webpack_require__(139);
 module.exports = function(TYPE, $create){
   var IS_MAP        = TYPE == 1
     , IS_FILTER     = TYPE == 2
@@ -521,10 +521,10 @@ module.exports = function(fn, that, length){
 /* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Map     = __webpack_require__(110)
+var Map     = __webpack_require__(119)
   , $export = __webpack_require__(0)
-  , shared  = __webpack_require__(57)('metadata')
-  , store   = shared.store || (shared.store = new (__webpack_require__(113)));
+  , shared  = __webpack_require__(58)('metadata')
+  , store   = shared.store || (shared.store = new (__webpack_require__(122)));
 
 var getOrCreateMetadataMap = function(target, targetKey, create){
   var targetMetadata = store.get(target);
@@ -584,8 +584,8 @@ if(__webpack_require__(6)){
     , global              = __webpack_require__(2)
     , fails               = __webpack_require__(3)
     , $export             = __webpack_require__(0)
-    , $typed              = __webpack_require__(58)
-    , $buffer             = __webpack_require__(81)
+    , $typed              = __webpack_require__(59)
+    , $buffer             = __webpack_require__(82)
     , ctx                 = __webpack_require__(25)
     , anInstance          = __webpack_require__(31)
     , propertyDesc        = __webpack_require__(29)
@@ -596,26 +596,26 @@ if(__webpack_require__(6)){
     , toIndex             = __webpack_require__(38)
     , toPrimitive         = __webpack_require__(23)
     , has                 = __webpack_require__(10)
-    , same                = __webpack_require__(107)
+    , same                = __webpack_require__(116)
     , classof             = __webpack_require__(45)
     , isObject            = __webpack_require__(4)
     , toObject            = __webpack_require__(9)
-    , isArrayIter         = __webpack_require__(66)
+    , isArrayIter         = __webpack_require__(67)
     , create              = __webpack_require__(33)
     , getPrototypeOf      = __webpack_require__(17)
     , gOPN                = __webpack_require__(34).f
-    , getIterFn           = __webpack_require__(83)
+    , getIterFn           = __webpack_require__(84)
     , uid                 = __webpack_require__(39)
     , wks                 = __webpack_require__(5)
     , createArrayMethod   = __webpack_require__(21)
-    , createArrayIncludes = __webpack_require__(48)
-    , speciesConstructor  = __webpack_require__(75)
-    , ArrayIterators      = __webpack_require__(84)
+    , createArrayIncludes = __webpack_require__(49)
+    , speciesConstructor  = __webpack_require__(76)
+    , ArrayIterators      = __webpack_require__(85)
     , Iterators           = __webpack_require__(42)
-    , $iterDetect         = __webpack_require__(54)
+    , $iterDetect         = __webpack_require__(55)
     , setSpecies          = __webpack_require__(37)
-    , arrayFill           = __webpack_require__(59)
-    , arrayCopyWithin     = __webpack_require__(87)
+    , arrayFill           = __webpack_require__(60)
+    , arrayCopyWithin     = __webpack_require__(96)
     , $DP                 = __webpack_require__(7)
     , $GOPD               = __webpack_require__(16)
     , dP                  = $DP.f
@@ -1162,22 +1162,22 @@ module.exports = false;
 
 // 19.1.2.2 / 15.2.3.5 Object.create(O [, Properties])
 var anObject    = __webpack_require__(1)
-  , dPs         = __webpack_require__(100)
-  , enumBugKeys = __webpack_require__(62)
-  , IE_PROTO    = __webpack_require__(74)('IE_PROTO')
+  , dPs         = __webpack_require__(109)
+  , enumBugKeys = __webpack_require__(63)
+  , IE_PROTO    = __webpack_require__(75)('IE_PROTO')
   , Empty       = function(){ /* empty */ }
   , PROTOTYPE   = 'prototype';
 
 // Create object with fake `null` prototype: use iframe Object with cleared prototype
 var createDict = function(){
   // Thrash, waste and sodomy: IE GC bug
-  var iframe = __webpack_require__(61)('iframe')
+  var iframe = __webpack_require__(62)('iframe')
     , i      = enumBugKeys.length
     , lt     = '<'
     , gt     = '>'
     , iframeDocument;
   iframe.style.display = 'none';
-  __webpack_require__(64).appendChild(iframe);
+  __webpack_require__(65).appendChild(iframe);
   iframe.src = 'javascript:'; // eslint-disable-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
@@ -1208,8 +1208,8 @@ module.exports = Object.create || function create(O, Properties){
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 / 15.2.3.4 Object.getOwnPropertyNames(O)
-var $keys      = __webpack_require__(102)
-  , hiddenKeys = __webpack_require__(62).concat('length', 'prototype');
+var $keys      = __webpack_require__(111)
+  , hiddenKeys = __webpack_require__(63).concat('length', 'prototype');
 
 exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O){
   return $keys(O, hiddenKeys);
@@ -1220,8 +1220,8 @@ exports.f = Object.getOwnPropertyNames || function getOwnPropertyNames(O){
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 / 15.2.3.14 Object.keys(O)
-var $keys       = __webpack_require__(102)
-  , enumBugKeys = __webpack_require__(62);
+var $keys       = __webpack_require__(111)
+  , enumBugKeys = __webpack_require__(63);
 
 module.exports = Object.keys || function keys(O){
   return $keys(O, enumBugKeys);
@@ -1295,11 +1295,11 @@ module.exports = function(key){
 /***/ (function(module, exports, __webpack_require__) {
 
 var ctx         = __webpack_require__(25)
-  , call        = __webpack_require__(96)
-  , isArrayIter = __webpack_require__(66)
+  , call        = __webpack_require__(105)
+  , isArrayIter = __webpack_require__(67)
   , anObject    = __webpack_require__(1)
   , toLength    = __webpack_require__(8)
-  , getIterFn   = __webpack_require__(83)
+  , getIterFn   = __webpack_require__(84)
   , BREAK       = {}
   , RETURN      = {};
 var exports = module.exports = function(iterable, entries, fn, that, ITERATOR){
@@ -1345,7 +1345,7 @@ module.exports = function(it, tag, stat){
 var $export = __webpack_require__(0)
   , defined = __webpack_require__(19)
   , fails   = __webpack_require__(3)
-  , spaces  = __webpack_require__(79)
+  , spaces  = __webpack_require__(80)
   , space   = '[' + spaces + ']'
   , non     = '\u200b\u0085'
   , ltrim   = RegExp('^' + space + space + '*')
@@ -1419,6 +1419,12 @@ exports.f = {}.propertyIsEnumerable;
 
 /***/ }),
 /* 48 */
+/***/ (function(module, exports) {
+
+module.exports = require("stream");
+
+/***/ }),
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // false -> Array#indexOf
@@ -1444,7 +1450,7 @@ module.exports = function(IS_INCLUDES){
 };
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1458,9 +1464,9 @@ var global            = __webpack_require__(2)
   , anInstance        = __webpack_require__(31)
   , isObject          = __webpack_require__(4)
   , fails             = __webpack_require__(3)
-  , $iterDetect       = __webpack_require__(54)
+  , $iterDetect       = __webpack_require__(55)
   , setToStringTag    = __webpack_require__(43)
-  , inheritIfRequired = __webpack_require__(65);
+  , inheritIfRequired = __webpack_require__(66);
 
 module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK){
   var Base  = global[NAME]
@@ -1535,7 +1541,7 @@ module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK){
 };
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1569,7 +1575,7 @@ module.exports = function(KEY, length, exec){
 };
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1588,7 +1594,7 @@ module.exports = function(){
 };
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, exports) {
 
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
@@ -1609,7 +1615,7 @@ module.exports = function(fn, args, that){
 };
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.2.8 IsRegExp(argument)
@@ -1622,7 +1628,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ITERATOR     = __webpack_require__(5)('iterator')
@@ -1648,7 +1654,7 @@ module.exports = function(exec, skipClosing){
 };
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Forced replacement prototype accessors methods
@@ -1660,13 +1666,13 @@ module.exports = __webpack_require__(32)|| !__webpack_require__(3)(function(){
 });
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, exports) {
 
 exports.f = Object.getOwnPropertySymbols;
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(2)
@@ -1677,7 +1683,7 @@ module.exports = function(key){
 };
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global = __webpack_require__(2)
@@ -1708,7 +1714,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1729,7 +1735,7 @@ module.exports = function fill(value /*, start = 0, end = @length */){
 };
 
 /***/ }),
-/* 60 */
+/* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1743,7 +1749,7 @@ module.exports = function(object, index, value){
 };
 
 /***/ }),
-/* 61 */
+/* 62 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(4)
@@ -1755,7 +1761,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 62 */
+/* 63 */
 /***/ (function(module, exports) {
 
 // IE 8- don't enum bug keys
@@ -1764,7 +1770,7 @@ module.exports = (
 ).split(',');
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var MATCH = __webpack_require__(5)('match');
@@ -1781,17 +1787,17 @@ module.exports = function(KEY){
 };
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(2).document && document.documentElement;
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject       = __webpack_require__(4)
-  , setPrototypeOf = __webpack_require__(73).set;
+  , setPrototypeOf = __webpack_require__(74).set;
 module.exports = function(that, target, C){
   var P, S = target.constructor;
   if(S !== C && typeof S == 'function' && (P = S.prototype) !== C.prototype && isObject(P) && setPrototypeOf){
@@ -1800,7 +1806,7 @@ module.exports = function(that, target, C){
 };
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // check on default Array iterator
@@ -1813,7 +1819,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.2.2 IsArray(argument)
@@ -1823,7 +1829,7 @@ module.exports = Array.isArray || function isArray(arg){
 };
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1842,7 +1848,7 @@ module.exports = function(Constructor, NAME, next){
 };
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1853,7 +1859,7 @@ var LIBRARY        = __webpack_require__(32)
   , hide           = __webpack_require__(12)
   , has            = __webpack_require__(10)
   , Iterators      = __webpack_require__(42)
-  , $iterCreate    = __webpack_require__(68)
+  , $iterCreate    = __webpack_require__(69)
   , setToStringTag = __webpack_require__(43)
   , getPrototypeOf = __webpack_require__(17)
   , ITERATOR       = __webpack_require__(5)('iterator')
@@ -1918,7 +1924,7 @@ module.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCED
 };
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, exports) {
 
 // 20.2.2.14 Math.expm1(x)
@@ -1933,7 +1939,7 @@ module.exports = (!$expm1
 } : $expm1;
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports) {
 
 // 20.2.2.28 Math.sign(x)
@@ -1942,11 +1948,11 @@ module.exports = Math.sign || function sign(x){
 };
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global    = __webpack_require__(2)
-  , macrotask = __webpack_require__(80).set
+  , macrotask = __webpack_require__(81).set
   , Observer  = global.MutationObserver || global.WebKitMutationObserver
   , process   = global.process
   , Promise   = global.Promise
@@ -2015,7 +2021,7 @@ module.exports = function(){
 };
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Works with __proto__ only. Old v8 can't work with null proto objects.
@@ -2045,17 +2051,17 @@ module.exports = {
 };
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var shared = __webpack_require__(57)('keys')
+var shared = __webpack_require__(58)('keys')
   , uid    = __webpack_require__(39);
 module.exports = function(key){
   return shared[key] || (shared[key] = uid(key));
 };
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 7.3.20 SpeciesConstructor(O, defaultConstructor)
@@ -2068,7 +2074,7 @@ module.exports = function(O, D){
 };
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var toInteger = __webpack_require__(30)
@@ -2090,11 +2096,11 @@ module.exports = function(TO_STRING){
 };
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // helper for String#{startsWith, endsWith, includes}
-var isRegExp = __webpack_require__(53)
+var isRegExp = __webpack_require__(54)
   , defined  = __webpack_require__(19);
 
 module.exports = function(that, searchString, NAME){
@@ -2103,7 +2109,7 @@ module.exports = function(that, searchString, NAME){
 };
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2121,20 +2127,20 @@ module.exports = function repeat(count){
 };
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports) {
 
 module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u2003' +
   '\u2004\u2005\u2006\u2007\u2008\u2009\u200A\u202F\u205F\u3000\u2028\u2029\uFEFF';
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var ctx                = __webpack_require__(25)
-  , invoke             = __webpack_require__(52)
-  , html               = __webpack_require__(64)
-  , cel                = __webpack_require__(61)
+  , invoke             = __webpack_require__(53)
+  , html               = __webpack_require__(65)
+  , cel                = __webpack_require__(62)
   , global             = __webpack_require__(2)
   , process            = global.process
   , setTask            = global.setImmediate
@@ -2208,7 +2214,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2216,7 +2222,7 @@ module.exports = {
 var global         = __webpack_require__(2)
   , DESCRIPTORS    = __webpack_require__(6)
   , LIBRARY        = __webpack_require__(32)
-  , $typed         = __webpack_require__(58)
+  , $typed         = __webpack_require__(59)
   , hide           = __webpack_require__(12)
   , redefineAll    = __webpack_require__(36)
   , fails          = __webpack_require__(3)
@@ -2225,7 +2231,7 @@ var global         = __webpack_require__(2)
   , toLength       = __webpack_require__(8)
   , gOPN           = __webpack_require__(34).f
   , dP             = __webpack_require__(7).f
-  , arrayFill      = __webpack_require__(59)
+  , arrayFill      = __webpack_require__(60)
   , setToStringTag = __webpack_require__(43)
   , ARRAY_BUFFER   = 'ArrayBuffer'
   , DATA_VIEW      = 'DataView'
@@ -2487,13 +2493,13 @@ exports[ARRAY_BUFFER] = $ArrayBuffer;
 exports[DATA_VIEW] = $DataView;
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global         = __webpack_require__(2)
   , core           = __webpack_require__(24)
   , LIBRARY        = __webpack_require__(32)
-  , wksExt         = __webpack_require__(109)
+  , wksExt         = __webpack_require__(118)
   , defineProperty = __webpack_require__(7).f;
 module.exports = function(name){
   var $Symbol = core.Symbol || (core.Symbol = LIBRARY ? {} : global.Symbol || {});
@@ -2501,7 +2507,7 @@ module.exports = function(name){
 };
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var classof   = __webpack_require__(45)
@@ -2514,13 +2520,13 @@ module.exports = __webpack_require__(24).getIteratorMethod = function(it){
 };
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var addToUnscopables = __webpack_require__(40)
-  , step             = __webpack_require__(97)
+  , step             = __webpack_require__(106)
   , Iterators        = __webpack_require__(42)
   , toIObject        = __webpack_require__(15);
 
@@ -2528,7 +2534,7 @@ var addToUnscopables = __webpack_require__(40)
 // 22.1.3.13 Array.prototype.keys()
 // 22.1.3.29 Array.prototype.values()
 // 22.1.3.30 Array.prototype[@@iterator]()
-module.exports = __webpack_require__(69)(Array, 'Array', function(iterated, kind){
+module.exports = __webpack_require__(70)(Array, 'Array', function(iterated, kind){
   this._t = toIObject(iterated); // target
   this._i = 0;                   // next index
   this._k = kind;                // kind
@@ -2554,34 +2560,340 @@ addToUnscopables('values');
 addToUnscopables('entries');
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports) {
 
-var g;
+module.exports = require("http");
 
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
+/***/ }),
+/* 87 */
+/***/ (function(module, exports) {
 
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
+module.exports = require("url");
+
+/***/ }),
+/* 88 */
+/***/ (function(module, exports) {
+
+module.exports = require("util");
+
+/***/ }),
+/* 89 */
+/***/ (function(module, exports) {
+
+// API
+module.exports = abort;
+
+/**
+ * Aborts leftover active jobs
+ *
+ * @param {object} state - current state object
+ */
+function abort(state)
+{
+  Object.keys(state.jobs).forEach(clean.bind(state));
+
+  // reset leftover jobs
+  state.jobs = {};
 }
 
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
+/**
+ * Cleans up leftover job by invoking abort function for the provided job id
+ *
+ * @this  state
+ * @param {string|number} key - job id to abort
+ */
+function clean(key)
+{
+  if (typeof this.jobs[key] == 'function')
+  {
+    this.jobs[key]();
+  }
+}
 
 
 /***/ }),
-/* 86 */
+/* 90 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var defer = __webpack_require__(132);
+
+// API
+module.exports = async;
+
+/**
+ * Runs provided callback asynchronously
+ * even if callback itself is not
+ *
+ * @param   {function} callback - callback to invoke
+ * @returns {function} - augmented callback
+ */
+function async(callback)
+{
+  var isAsync = false;
+
+  // check if async happened
+  defer(function() { isAsync = true; });
+
+  return function async_callback(err, result)
+  {
+    if (isAsync)
+    {
+      callback(err, result);
+    }
+    else
+    {
+      defer(function nextTick_callback()
+      {
+        callback(err, result);
+      });
+    }
+  };
+}
+
+
+/***/ }),
+/* 91 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var async = __webpack_require__(90)
+  , abort = __webpack_require__(89)
+  ;
+
+// API
+module.exports = iterate;
+
+/**
+ * Iterates over each job object
+ *
+ * @param {array|object} list - array or object (named list) to iterate over
+ * @param {function} iterator - iterator to run
+ * @param {object} state - current job status
+ * @param {function} callback - invoked when all elements processed
+ */
+function iterate(list, iterator, state, callback)
+{
+  // store current index
+  var key = state['keyedList'] ? state['keyedList'][state.index] : state.index;
+
+  state.jobs[key] = runJob(iterator, key, list[key], function(error, output)
+  {
+    // don't repeat yourself
+    // skip secondary callbacks
+    if (!(key in state.jobs))
+    {
+      return;
+    }
+
+    // clean up jobs
+    delete state.jobs[key];
+
+    if (error)
+    {
+      // don't process rest of the results
+      // stop still active jobs
+      // and reset the list
+      abort(state);
+    }
+    else
+    {
+      state.results[key] = output;
+    }
+
+    // return salvaged results
+    callback(error, state.results);
+  });
+}
+
+/**
+ * Runs iterator over provided job element
+ *
+ * @param   {function} iterator - iterator to invoke
+ * @param   {string|number} key - key/index of the element in the list of jobs
+ * @param   {mixed} item - job description
+ * @param   {function} callback - invoked after iterator is done with the job
+ * @returns {function|mixed} - job abort function or something else
+ */
+function runJob(iterator, key, item, callback)
+{
+  var aborter;
+
+  // allow shortcut if iterator expects only two arguments
+  if (iterator.length == 2)
+  {
+    aborter = iterator(item, async(callback));
+  }
+  // otherwise go with full three arguments
+  else
+  {
+    aborter = iterator(item, key, async(callback));
+  }
+
+  return aborter;
+}
+
+
+/***/ }),
+/* 92 */
+/***/ (function(module, exports) {
+
+// API
+module.exports = state;
+
+/**
+ * Creates initial state object
+ * for iteration over list
+ *
+ * @param   {array|object} list - list to iterate over
+ * @param   {function|null} sortMethod - function to use for keys sort,
+ *                                     or `null` to keep them as is
+ * @returns {object} - initial state object
+ */
+function state(list, sortMethod)
+{
+  var isNamedList = !Array.isArray(list)
+    , initState =
+    {
+      index    : 0,
+      keyedList: isNamedList || sortMethod ? Object.keys(list) : null,
+      jobs     : {},
+      results  : isNamedList ? {} : [],
+      size     : isNamedList ? Object.keys(list).length : list.length
+    }
+    ;
+
+  if (sortMethod)
+  {
+    // sort array keys based on it's values
+    // sort object's keys just on own merit
+    initState.keyedList.sort(isNamedList ? sortMethod : function(a, b)
+    {
+      return sortMethod(list[a], list[b]);
+    });
+  }
+
+  return initState;
+}
+
+
+/***/ }),
+/* 93 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var abort = __webpack_require__(89)
+  , async = __webpack_require__(90)
+  ;
+
+// API
+module.exports = terminator;
+
+/**
+ * Terminates jobs in the attached state context
+ *
+ * @this  AsyncKitState#
+ * @param {function} callback - final callback to invoke after termination
+ */
+function terminator(callback)
+{
+  if (!Object.keys(this.jobs).length)
+  {
+    return;
+  }
+
+  // fast forward iteration index
+  this.index = this.size;
+
+  // abort jobs
+  abort(this);
+
+  // send back results we have so far
+  async(callback)(null, this.results);
+}
+
+
+/***/ }),
+/* 94 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var iterate    = __webpack_require__(91)
+  , initState  = __webpack_require__(92)
+  , terminator = __webpack_require__(93)
+  ;
+
+// Public API
+module.exports = serialOrdered;
+// sorting helpers
+module.exports.ascending  = ascending;
+module.exports.descending = descending;
+
+/**
+ * Runs iterator over provided sorted array elements in series
+ *
+ * @param   {array|object} list - array or object (named list) to iterate over
+ * @param   {function} iterator - iterator to run
+ * @param   {function} sortMethod - custom sort function
+ * @param   {function} callback - invoked when all elements processed
+ * @returns {function} - jobs terminator
+ */
+function serialOrdered(list, iterator, sortMethod, callback)
+{
+  var state = initState(list, sortMethod);
+
+  iterate(list, iterator, state, function iteratorHandler(error, result)
+  {
+    if (error)
+    {
+      callback(error, result);
+      return;
+    }
+
+    state.index++;
+
+    // are we there yet?
+    if (state.index < (state['keyedList'] || list).length)
+    {
+      iterate(list, iterator, state, iteratorHandler);
+      return;
+    }
+
+    // done here
+    callback(null, state.results);
+  });
+
+  return terminator.bind(state, callback);
+}
+
+/*
+ * -- Sort methods
+ */
+
+/**
+ * sort helper to sort array elements in ascending order
+ *
+ * @param   {mixed} a - an item to compare
+ * @param   {mixed} b - an item to compare
+ * @returns {number} - comparison result
+ */
+function ascending(a, b)
+{
+  return a < b ? -1 : a > b ? 1 : 0;
+}
+
+/**
+ * sort helper to sort array elements in descending order
+ *
+ * @param   {mixed} a - an item to compare
+ * @param   {mixed} b - an item to compare
+ * @returns {number} - comparison result
+ */
+function descending(a, b)
+{
+  return -1 * ascending(a, b);
+}
+
+
+/***/ }),
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var cof = __webpack_require__(18);
@@ -2591,7 +2903,7 @@ module.exports = function(it, msg){
 };
 
 /***/ }),
-/* 87 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2623,7 +2935,7 @@ module.exports = [].copyWithin || function copyWithin(target/*= 0*/, start/*= 0,
 };
 
 /***/ }),
-/* 88 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var forOf = __webpack_require__(41);
@@ -2636,7 +2948,7 @@ module.exports = function(iter, ITERATOR){
 
 
 /***/ }),
-/* 89 */
+/* 98 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var aFunction = __webpack_require__(11)
@@ -2669,14 +2981,14 @@ module.exports = function(that, callbackfn, aLen, memo, isRight){
 };
 
 /***/ }),
-/* 90 */
+/* 99 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var aFunction  = __webpack_require__(11)
   , isObject   = __webpack_require__(4)
-  , invoke     = __webpack_require__(52)
+  , invoke     = __webpack_require__(53)
   , arraySlice = [].slice
   , factories  = {};
 
@@ -2699,7 +3011,7 @@ module.exports = Function.bind || function bind(that /*, args... */){
 };
 
 /***/ }),
-/* 91 */
+/* 100 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2711,8 +3023,8 @@ var dP          = __webpack_require__(7).f
   , anInstance  = __webpack_require__(31)
   , defined     = __webpack_require__(19)
   , forOf       = __webpack_require__(41)
-  , $iterDefine = __webpack_require__(69)
-  , step        = __webpack_require__(97)
+  , $iterDefine = __webpack_require__(70)
+  , step        = __webpack_require__(106)
   , setSpecies  = __webpack_require__(37)
   , DESCRIPTORS = __webpack_require__(6)
   , fastKey     = __webpack_require__(28).fastKey
@@ -2847,12 +3159,12 @@ module.exports = {
 };
 
 /***/ }),
-/* 92 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var classof = __webpack_require__(45)
-  , from    = __webpack_require__(88);
+  , from    = __webpack_require__(97);
 module.exports = function(NAME){
   return function toJSON(){
     if(classof(this) != NAME)throw TypeError(NAME + "#toJSON isn't generic");
@@ -2861,7 +3173,7 @@ module.exports = function(NAME){
 };
 
 /***/ }),
-/* 93 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2950,15 +3262,15 @@ module.exports = {
 };
 
 /***/ }),
-/* 94 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = !__webpack_require__(6) && !__webpack_require__(3)(function(){
-  return Object.defineProperty(__webpack_require__(61)('div'), 'a', {get: function(){ return 7; }}).a != 7;
+  return Object.defineProperty(__webpack_require__(62)('div'), 'a', {get: function(){ return 7; }}).a != 7;
 });
 
 /***/ }),
-/* 95 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.3 Number.isInteger(number)
@@ -2969,7 +3281,7 @@ module.exports = function isInteger(it){
 };
 
 /***/ }),
-/* 96 */
+/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // call something on iterator step with safe closing on error
@@ -2986,7 +3298,7 @@ module.exports = function(iterator, fn, value, entries){
 };
 
 /***/ }),
-/* 97 */
+/* 106 */
 /***/ (function(module, exports) {
 
 module.exports = function(done, value){
@@ -2994,7 +3306,7 @@ module.exports = function(done, value){
 };
 
 /***/ }),
-/* 98 */
+/* 107 */
 /***/ (function(module, exports) {
 
 // 20.2.2.20 Math.log1p(x)
@@ -3003,14 +3315,14 @@ module.exports = Math.log1p || function log1p(x){
 };
 
 /***/ }),
-/* 99 */
+/* 108 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // 19.1.2.1 Object.assign(target, source, ...)
 var getKeys  = __webpack_require__(35)
-  , gOPS     = __webpack_require__(56)
+  , gOPS     = __webpack_require__(57)
   , pIE      = __webpack_require__(47)
   , toObject = __webpack_require__(9)
   , IObject  = __webpack_require__(46)
@@ -3042,7 +3354,7 @@ module.exports = !$assign || __webpack_require__(3)(function(){
 } : $assign;
 
 /***/ }),
-/* 100 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP       = __webpack_require__(7)
@@ -3060,7 +3372,7 @@ module.exports = __webpack_require__(6) ? Object.defineProperties : function def
 };
 
 /***/ }),
-/* 101 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
@@ -3085,13 +3397,13 @@ module.exports.f = function getOwnPropertyNames(it){
 
 
 /***/ }),
-/* 102 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var has          = __webpack_require__(10)
   , toIObject    = __webpack_require__(15)
-  , arrayIndexOf = __webpack_require__(48)(false)
-  , IE_PROTO     = __webpack_require__(74)('IE_PROTO');
+  , arrayIndexOf = __webpack_require__(49)(false)
+  , IE_PROTO     = __webpack_require__(75)('IE_PROTO');
 
 module.exports = function(object, names){
   var O      = toIObject(object)
@@ -3107,7 +3419,7 @@ module.exports = function(object, names){
 };
 
 /***/ }),
-/* 103 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getKeys   = __webpack_require__(35)
@@ -3128,12 +3440,12 @@ module.exports = function(isEntries){
 };
 
 /***/ }),
-/* 104 */
+/* 113 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // all object keys, includes non-enumerable and symbols
 var gOPN     = __webpack_require__(34)
-  , gOPS     = __webpack_require__(56)
+  , gOPS     = __webpack_require__(57)
   , anObject = __webpack_require__(1)
   , Reflect  = __webpack_require__(2).Reflect;
 module.exports = Reflect && Reflect.ownKeys || function ownKeys(it){
@@ -3143,25 +3455,25 @@ module.exports = Reflect && Reflect.ownKeys || function ownKeys(it){
 };
 
 /***/ }),
-/* 105 */
+/* 114 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $parseFloat = __webpack_require__(2).parseFloat
   , $trim       = __webpack_require__(44).trim;
 
-module.exports = 1 / $parseFloat(__webpack_require__(79) + '-0') !== -Infinity ? function parseFloat(str){
+module.exports = 1 / $parseFloat(__webpack_require__(80) + '-0') !== -Infinity ? function parseFloat(str){
   var string = $trim(String(str), 3)
     , result = $parseFloat(string);
   return result === 0 && string.charAt(0) == '-' ? -0 : result;
 } : $parseFloat;
 
 /***/ }),
-/* 106 */
+/* 115 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $parseInt = __webpack_require__(2).parseInt
   , $trim     = __webpack_require__(44).trim
-  , ws        = __webpack_require__(79)
+  , ws        = __webpack_require__(80)
   , hex       = /^[\-+]?0[xX]/;
 
 module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? function parseInt(str, radix){
@@ -3170,7 +3482,7 @@ module.exports = $parseInt(ws + '08') !== 8 || $parseInt(ws + '0x16') !== 22 ? f
 } : $parseInt;
 
 /***/ }),
-/* 107 */
+/* 116 */
 /***/ (function(module, exports) {
 
 // 7.2.9 SameValue(x, y)
@@ -3179,12 +3491,12 @@ module.exports = Object.is || function is(x, y){
 };
 
 /***/ }),
-/* 108 */
+/* 117 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-string-pad-start-end
 var toLength = __webpack_require__(8)
-  , repeat   = __webpack_require__(78)
+  , repeat   = __webpack_require__(79)
   , defined  = __webpack_require__(19);
 
 module.exports = function(that, maxLength, fillString, left){
@@ -3201,21 +3513,21 @@ module.exports = function(that, maxLength, fillString, left){
 
 
 /***/ }),
-/* 109 */
+/* 118 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports.f = __webpack_require__(5);
 
 /***/ }),
-/* 110 */
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var strong = __webpack_require__(91);
+var strong = __webpack_require__(100);
 
 // 23.1 Map Objects
-module.exports = __webpack_require__(49)('Map', function(get){
+module.exports = __webpack_require__(50)('Map', function(get){
   return function Map(){ return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.1.3.6 Map.prototype.get(key)
@@ -3230,25 +3542,25 @@ module.exports = __webpack_require__(49)('Map', function(get){
 }, strong, true);
 
 /***/ }),
-/* 111 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 21.2.5.3 get RegExp.prototype.flags()
 if(__webpack_require__(6) && /./g.flags != 'g')__webpack_require__(7).f(RegExp.prototype, 'flags', {
   configurable: true,
-  get: __webpack_require__(51)
+  get: __webpack_require__(52)
 });
 
 /***/ }),
-/* 112 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var strong = __webpack_require__(91);
+var strong = __webpack_require__(100);
 
 // 23.2 Set Objects
-module.exports = __webpack_require__(49)('Set', function(get){
+module.exports = __webpack_require__(50)('Set', function(get){
   return function Set(){ return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.2.3.1 Set.prototype.add(value)
@@ -3258,7 +3570,7 @@ module.exports = __webpack_require__(49)('Set', function(get){
 }, strong);
 
 /***/ }),
-/* 113 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3266,8 +3578,8 @@ module.exports = __webpack_require__(49)('Set', function(get){
 var each         = __webpack_require__(21)(0)
   , redefine     = __webpack_require__(13)
   , meta         = __webpack_require__(28)
-  , assign       = __webpack_require__(99)
-  , weak         = __webpack_require__(93)
+  , assign       = __webpack_require__(108)
+  , weak         = __webpack_require__(102)
   , isObject     = __webpack_require__(4)
   , getWeak      = meta.getWeak
   , isExtensible = Object.isExtensible
@@ -3297,7 +3609,7 @@ var methods = {
 };
 
 // 23.3 WeakMap Objects
-var $WeakMap = module.exports = __webpack_require__(49)('WeakMap', wrapper, methods, weak, true, true);
+var $WeakMap = module.exports = __webpack_require__(50)('WeakMap', wrapper, methods, weak, true, true);
 
 // IE11 WeakMap frozen keys fix
 if(new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7){
@@ -3320,7 +3632,7 @@ if(new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7){
 }
 
 /***/ }),
-/* 114 */
+/* 123 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -3515,7 +3827,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 /***/ }),
-/* 115 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -3770,10 +4082,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 
 /***/ }),
-/* 116 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(module, global) {var __WEBPACK_AMD_DEFINE_RESULT__;/*! https://mths.be/punycode v1.4.0 by @mathias */
+/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_RESULT__;/*! https://mths.be/punycode v1.4.0 by @mathias */
 ;(function(root) {
 
 	/** Detect free variables */
@@ -4306,10 +4618,50 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 
 }(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(305)(module), __webpack_require__(85)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(126)(module)))
 
 /***/ }),
-/* 117 */
+/* 126 */
+/***/ (function(module, exports) {
+
+module.exports = function(module) {
+	if(!module.webpackPolyfill) {
+		module.deprecate = function() {};
+		module.paths = [];
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+/* 127 */
+/***/ (function(module, exports) {
+
+module.exports = require("https");
+
+/***/ }),
+/* 128 */
+/***/ (function(module, exports) {
+
+module.exports = require("path");
+
+/***/ }),
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -4319,19 +4671,32 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _package = __webpack_require__(307);
+var _package = __webpack_require__(328);
+
+var _nodeFetch = __webpack_require__(326);
+
+var _nodeFetch2 = _interopRequireDefault(_nodeFetch);
+
+var _urijs = __webpack_require__(327);
+
+var _urijs2 = _interopRequireDefault(_urijs);
+
+var _base = __webpack_require__(136);
+
+var _base2 = _interopRequireDefault(_base);
+
+var _formData = __webpack_require__(319);
+
+var _formData2 = _interopRequireDefault(_formData);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var URI = __webpack_require__(304);
-__webpack_require__(302);
-__webpack_require__(303);
-
-var _require = __webpack_require__(301),
-    atob = _require.atob,
-    btoa = _require.btoa;
+var tvFetch = typeof fetch !== "undefined" ? fetch : _nodeFetch2.default;
+var tvFormData = typeof FormData !== "undefined" ? FormData : _formData2.default;
 
 /**
  * A client for the [TrueVault HTTP API](https://docs.truevault.com/).
@@ -4376,7 +4741,6 @@ var _require = __webpack_require__(301),
  * @param {object} authn Authentication info, or null if no authentication info is to be used.
  * @param {string} host optional parameter specifying TV API host; defaults to https://api.truevault.com
  */
-
 
 var TrueVaultClient = function () {
     function TrueVaultClient(authn, host) {
@@ -4428,9 +4792,9 @@ var TrueVaultClient = function () {
                                     options.headers.Authorization = this.authHeader;
                                 }
 
-                                uri = URI(this.host + '/' + path).addQuery("_tv_sdk", _package.version).toString();
+                                uri = (0, _urijs2.default)(this.host + '/' + path).addQuery("_tv_sdk", _package.version).toString();
                                 _context.next = 4;
-                                return fetch(uri, options);
+                                return tvFetch(uri, options);
 
                             case 4:
                                 response = _context.sent;
@@ -4649,7 +5013,7 @@ var TrueVaultClient = function () {
                                 user = response.user;
 
                                 if (user.attributes) {
-                                    user.attributes = JSON.parse(atob(user.attributes));
+                                    user.attributes = JSON.parse(_base2.default.decode(user.attributes));
                                 }
                                 return _context4.abrupt('return', user);
 
@@ -4683,9 +5047,9 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context5.prev = _context5.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
-                                formData.append("attributes", btoa(JSON.stringify(attributes)));
+                                formData.append("attributes", _base2.default.encode(JSON.stringify(attributes)));
 
                                 _context5.next = 4;
                                 return this.performLegacyRequest('v1/auth/me?full=true', {
@@ -4698,7 +5062,7 @@ var TrueVaultClient = function () {
                                 user = response.user;
 
                                 if (user.attributes) {
-                                    user.attributes = JSON.parse(atob(user.attributes));
+                                    user.attributes = JSON.parse(_base2.default.decode(user.attributes));
                                 }
                                 return _context5.abrupt('return', user);
 
@@ -4779,7 +5143,7 @@ var TrueVaultClient = function () {
                                 response = _context7.sent;
                                 return _context7.abrupt('return', response.users.map(function (user) {
                                     if (user.attributes) {
-                                        user.attributes = JSON.parse(atob(user.attributes));
+                                        user.attributes = JSON.parse(_base2.default.decode(user.attributes));
                                     }
                                     return user;
                                 }));
@@ -4890,12 +5254,12 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context10.prev = _context10.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 formData.append("username", username);
                                 formData.append("password", password);
                                 if (attributes) {
-                                    formData.append("attributes", btoa(JSON.stringify(attributes)));
+                                    formData.append("attributes", _base2.default.encode(JSON.stringify(attributes)));
                                 }
                                 if (groupIds) {
                                     formData.append("group_ids", groupIds.join(","));
@@ -4944,9 +5308,9 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context11.prev = _context11.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
-                                formData.append("attributes", btoa(JSON.stringify(attributes)));
+                                formData.append("attributes", _base2.default.encode(JSON.stringify(attributes)));
 
                                 _context11.next = 4;
                                 return this.performLegacyRequest('v1/users/' + userId, {
@@ -4989,7 +5353,7 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context12.prev = _context12.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 formData.append("status", status);
 
@@ -5034,7 +5398,7 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context13.prev = _context13.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 formData.append("username", newUsername);
 
@@ -5079,7 +5443,7 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context14.prev = _context14.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 formData.append("password", newPassword);
 
@@ -5353,10 +5717,10 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context21.prev = _context21.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 formData.append("name", name);
-                                formData.append("policy", btoa(JSON.stringify(policy)));
+                                formData.append("policy", _base2.default.encode(JSON.stringify(policy)));
                                 if (!!userIds) {
                                     formData.append("user_ids", userIds.join(','));
                                 }
@@ -5402,14 +5766,14 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context22.prev = _context22.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 if (!!name) {
                                     formData.append("name", name);
                                 }
 
                                 if (!!policy) {
-                                    formData.append("policy", btoa(JSON.stringify(policy)));
+                                    formData.append("policy", _base2.default.encode(JSON.stringify(policy)));
                                 }
 
                                 _context22.next = 5;
@@ -5636,7 +6000,7 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context28.prev = _context28.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 formData.append('operation', 'APPEND');
                                 formData.append('user_ids', userIds.join(','));
@@ -5682,7 +6046,7 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context29.prev = _context29.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 formData.append('operation', 'REMOVE');
                                 formData.append('user_ids', userIds.join(','));
@@ -5727,9 +6091,9 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context30.prev = _context30.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
-                                formData.append("search_option", btoa(JSON.stringify(searchOption)));
+                                formData.append("search_option", _base2.default.encode(JSON.stringify(searchOption)));
 
                                 _context30.next = 4;
                                 return this.performLegacyRequest('v1/users/search', {
@@ -5741,7 +6105,7 @@ var TrueVaultClient = function () {
                                 response = _context30.sent;
                                 documents = response.data.documents.map(function (doc) {
                                     if (doc.attributes) {
-                                        doc.attributes = JSON.parse(atob(doc.attributes));
+                                        doc.attributes = JSON.parse(_base2.default.decode(doc.attributes));
                                     }
                                     return doc;
                                 });
@@ -5824,7 +6188,7 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context32.prev = _context32.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 formData.append("name", name);
 
@@ -5906,7 +6270,7 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context34.prev = _context34.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 formData.append('name', name);
 
@@ -5992,9 +6356,9 @@ var TrueVaultClient = function () {
                         switch (_context36.prev = _context36.next) {
                             case 0:
                                 schemaDefinition = { name: name, fields: fields };
-                                formData = new FormData();
+                                formData = new tvFormData();
 
-                                formData.append("schema", btoa(JSON.stringify(schemaDefinition)));
+                                formData.append("schema", _base2.default.encode(JSON.stringify(schemaDefinition)));
 
                                 _context36.next = 5;
                                 return this.performLegacyRequest('v1/vaults/' + vaultId + '/schemas', {
@@ -6040,9 +6404,9 @@ var TrueVaultClient = function () {
                         switch (_context37.prev = _context37.next) {
                             case 0:
                                 schemaDefinition = { name: name, fields: fields };
-                                formData = new FormData();
+                                formData = new tvFormData();
 
-                                formData.append("schema", btoa(JSON.stringify(schemaDefinition)));
+                                formData.append("schema", _base2.default.encode(JSON.stringify(schemaDefinition)));
 
                                 _context37.next = 5;
                                 return this.performLegacyRequest('v1/vaults/' + vaultId + '/schemas/' + schemaId, {
@@ -6197,9 +6561,9 @@ var TrueVaultClient = function () {
                         switch (_context41.prev = _context41.next) {
                             case 0:
                                 schemaDefinition = { name: name, fields: fields };
-                                formData = new FormData();
+                                formData = new tvFormData();
 
-                                formData.append("schema", btoa(JSON.stringify(schemaDefinition)));
+                                formData.append("schema", _base2.default.encode(JSON.stringify(schemaDefinition)));
 
                                 _context41.next = 5;
                                 return this.performLegacyRequest('v1/accounts/' + accountId + '/user_schema', {
@@ -6283,9 +6647,9 @@ var TrueVaultClient = function () {
                         switch (_context43.prev = _context43.next) {
                             case 0:
                                 schemaDefinition = { name: name, fields: fields };
-                                formData = new FormData();
+                                formData = new tvFormData();
 
-                                formData.append("schema", btoa(JSON.stringify(schemaDefinition)));
+                                formData.append("schema", _base2.default.encode(JSON.stringify(schemaDefinition)));
 
                                 _context43.next = 5;
                                 return this.performLegacyRequest('v1/accounts/' + accountId + '/user_schema', {
@@ -6330,7 +6694,7 @@ var TrueVaultClient = function () {
                                 _context44.next = 2;
                                 return this.performLegacyRequest('v1/accounts/' + accountId + '/user_schema', {
                                     method: 'DELETE',
-                                    body: new FormData()
+                                    body: new tvFormData()
                                 });
 
                             case 2:
@@ -6443,7 +6807,7 @@ var TrueVaultClient = function () {
                                 if (!!full) {
                                     response.data.items = response.data.items.map(function (item) {
                                         if (item.document) {
-                                            item.document = JSON.parse(atob(item.document));
+                                            item.document = JSON.parse(_base2.default.decode(item.document));
                                         }
                                         return item;
                                     });
@@ -6504,7 +6868,7 @@ var TrueVaultClient = function () {
                                 if (!!full) {
                                     response.data.items = response.data.items.map(function (item) {
                                         if (item.document) {
-                                            item.document = JSON.parse(atob(item.document));
+                                            item.document = JSON.parse(_base2.default.decode(item.document));
                                         }
                                         return item;
                                     });
@@ -6601,9 +6965,9 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context49.prev = _context49.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
-                                formData.append("search_option", btoa(JSON.stringify(searchOption)));
+                                formData.append("search_option", _base2.default.encode(JSON.stringify(searchOption)));
 
                                 _context49.next = 4;
                                 return this.performLegacyRequest('v1/vaults/' + vaultId + '/search', {
@@ -6615,7 +6979,7 @@ var TrueVaultClient = function () {
                                 response = _context49.sent;
                                 documents = response.data.documents.map(function (doc) {
                                     if (doc.document) {
-                                        doc.document = JSON.parse(atob(doc.document));
+                                        doc.document = JSON.parse(_base2.default.decode(doc.document));
                                     }
                                     return doc;
                                 });
@@ -6711,7 +7075,7 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context51.prev = _context51.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 formData.append('owner_id', ownerId);
 
@@ -6800,7 +7164,7 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context53.prev = _context53.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 formData.append('file', file);
 
@@ -6851,7 +7215,7 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context54.prev = _context54.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 formData.append('file', file);
 
@@ -6889,7 +7253,7 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context55.prev = _context55.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 formData.append('file', file);
 
@@ -6969,7 +7333,7 @@ var TrueVaultClient = function () {
                                     Authorization: this.authHeader
                                 };
                                 _context57.next = 3;
-                                return fetch(this.host + '/v1/vaults/' + vaultId + '/blobs/' + blobId, {
+                                return tvFetch(this.host + '/v1/vaults/' + vaultId + '/blobs/' + blobId, {
                                     headers: headers
                                 });
 
@@ -7076,7 +7440,7 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context59.prev = _context59.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 formData.append('file', file);
 
@@ -7126,7 +7490,7 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context60.prev = _context60.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 formData.append('owner_id', ownerId);
 
@@ -7501,7 +7865,7 @@ var TrueVaultClient = function () {
                     while (1) {
                         switch (_context68.prev = _context68.next) {
                             case 0:
-                                formData = new FormData();
+                                formData = new tvFormData();
 
                                 formData.append("account_id", accountId);
                                 formData.append("username", username);
@@ -7538,7 +7902,7 @@ var TrueVaultClient = function () {
     }, {
         key: '_makeHeaderForUsername',
         value: function _makeHeaderForUsername(username) {
-            return 'Basic ' + btoa(username + ':');
+            return 'Basic ' + _base2.default.encode(username + ':');
         }
     }]);
 
@@ -7548,17 +7912,17 @@ var TrueVaultClient = function () {
 module.exports = TrueVaultClient;
 
 /***/ }),
-/* 118 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(global) {
 
-__webpack_require__(300);
 
-__webpack_require__(119);
+__webpack_require__(317);
 
-__webpack_require__(120);
+__webpack_require__(135);
+
+__webpack_require__(137);
 
 if (global._babelPolyfill) {
   throw new Error("only one instance of babel-polyfill is allowed");
@@ -7580,13 +7944,128 @@ define(String.prototype, "padRight", "".padEnd);
 "pop,reverse,shift,keys,values,entries,indexOf,every,some,forEach,map,filter,find,findIndex,includes,join,slice,concat,push,splice,unshift,sort,lastIndexOf,reduce,reduceRight,copyWithin,fill".split(",").forEach(function (key) {
   [][key] && define(Array, key, Function.call.bind([][key]));
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(85)))
 
 /***/ }),
-/* 119 */
+/* 131 */
 /***/ (function(module, exports, __webpack_require__) {
 
-/* WEBPACK VAR INJECTION */(function(global) {/**
+module.exports =
+{
+  parallel      : __webpack_require__(133),
+  serial        : __webpack_require__(134),
+  serialOrdered : __webpack_require__(94)
+};
+
+
+/***/ }),
+/* 132 */
+/***/ (function(module, exports) {
+
+module.exports = defer;
+
+/**
+ * Runs provided function on next iteration of the event loop
+ *
+ * @param {function} fn - function to run
+ */
+function defer(fn)
+{
+  var nextTick = typeof setImmediate == 'function'
+    ? setImmediate
+    : (
+      typeof process == 'object' && typeof process.nextTick == 'function'
+      ? process.nextTick
+      : null
+    );
+
+  if (nextTick)
+  {
+    nextTick(fn);
+  }
+  else
+  {
+    setTimeout(fn, 0);
+  }
+}
+
+
+/***/ }),
+/* 133 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var iterate    = __webpack_require__(91)
+  , initState  = __webpack_require__(92)
+  , terminator = __webpack_require__(93)
+  ;
+
+// Public API
+module.exports = parallel;
+
+/**
+ * Runs iterator over provided array elements in parallel
+ *
+ * @param   {array|object} list - array or object (named list) to iterate over
+ * @param   {function} iterator - iterator to run
+ * @param   {function} callback - invoked when all elements processed
+ * @returns {function} - jobs terminator
+ */
+function parallel(list, iterator, callback)
+{
+  var state = initState(list);
+
+  while (state.index < (state['keyedList'] || list).length)
+  {
+    iterate(list, iterator, state, function(error, result)
+    {
+      if (error)
+      {
+        callback(error, result);
+        return;
+      }
+
+      // looks like it's the last one
+      if (Object.keys(state.jobs).length === 0)
+      {
+        callback(null, state.results);
+        return;
+      }
+    });
+
+    state.index++;
+  }
+
+  return terminator.bind(state, callback);
+}
+
+
+/***/ }),
+/* 134 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var serialOrdered = __webpack_require__(94);
+
+// Public API
+module.exports = serial;
+
+/**
+ * Runs iterator over provided array elements in series
+ *
+ * @param   {array|object} list - array or object (named list) to iterate over
+ * @param   {function} iterator - iterator to run
+ * @param   {function} callback - invoked when all elements processed
+ * @returns {function} - jobs terminator
+ */
+function serial(list, iterator, callback)
+{
+  return serialOrdered(list, iterator, null, callback);
+}
+
+
+/***/ }),
+/* 135 */
+/***/ (function(module, exports) {
+
+/**
  * Copyright (c) 2014, Facebook, Inc.
  * All rights reserved.
  *
@@ -8323,21 +8802,191 @@ define(String.prototype, "padRight", "".padEnd);
   typeof self === "object" ? self : this
 );
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(85)))
 
 /***/ }),
-/* 120 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(129);
+/* WEBPACK VAR INJECTION */(function(module) {var __WEBPACK_AMD_DEFINE_RESULT__;/*! http://mths.be/base64 v0.1.0 by @mathias | MIT license */
+;(function(root) {
+
+	// Detect free variables `exports`.
+	var freeExports = typeof exports == 'object' && exports;
+
+	// Detect free variable `module`.
+	var freeModule = typeof module == 'object' && module &&
+		module.exports == freeExports && module;
+
+	// Detect free variable `global`, from Node.js or Browserified code, and use
+	// it as `root`.
+	var freeGlobal = typeof global == 'object' && global;
+	if (freeGlobal.global === freeGlobal || freeGlobal.window === freeGlobal) {
+		root = freeGlobal;
+	}
+
+	/*--------------------------------------------------------------------------*/
+
+	var InvalidCharacterError = function(message) {
+		this.message = message;
+	};
+	InvalidCharacterError.prototype = new Error;
+	InvalidCharacterError.prototype.name = 'InvalidCharacterError';
+
+	var error = function(message) {
+		// Note: the error messages used throughout this file match those used by
+		// the native `atob`/`btoa` implementation in Chromium.
+		throw new InvalidCharacterError(message);
+	};
+
+	var TABLE = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+	// http://whatwg.org/html/common-microsyntaxes.html#space-character
+	var REGEX_SPACE_CHARACTERS = /[\t\n\f\r ]/g;
+
+	// `decode` is designed to be fully compatible with `atob` as described in the
+	// HTML Standard. http://whatwg.org/html/webappapis.html#dom-windowbase64-atob
+	// The optimized base64-decoding algorithm used is based on @atk’s excellent
+	// implementation. https://gist.github.com/atk/1020396
+	var decode = function(input) {
+		input = String(input)
+			.replace(REGEX_SPACE_CHARACTERS, '');
+		var length = input.length;
+		if (length % 4 == 0) {
+			input = input.replace(/==?$/, '');
+			length = input.length;
+		}
+		if (
+			length % 4 == 1 ||
+			// http://whatwg.org/C#alphanumeric-ascii-characters
+			/[^+a-zA-Z0-9/]/.test(input)
+		) {
+			error(
+				'Invalid character: the string to be decoded is not correctly encoded.'
+			);
+		}
+		var bitCounter = 0;
+		var bitStorage;
+		var buffer;
+		var output = '';
+		var position = -1;
+		while (++position < length) {
+			buffer = TABLE.indexOf(input.charAt(position));
+			bitStorage = bitCounter % 4 ? bitStorage * 64 + buffer : buffer;
+			// Unless this is the first of a group of 4 characters…
+			if (bitCounter++ % 4) {
+				// …convert the first 8 bits to a single ASCII character.
+				output += String.fromCharCode(
+					0xFF & bitStorage >> (-2 * bitCounter & 6)
+				);
+			}
+		}
+		return output;
+	};
+
+	// `encode` is designed to be fully compatible with `btoa` as described in the
+	// HTML Standard: http://whatwg.org/html/webappapis.html#dom-windowbase64-btoa
+	var encode = function(input) {
+		input = String(input);
+		if (/[^\0-\xFF]/.test(input)) {
+			// Note: no need to special-case astral symbols here, as surrogates are
+			// matched, and the input is supposed to only contain ASCII anyway.
+			error(
+				'The string to be encoded contains characters outside of the ' +
+				'Latin1 range.'
+			);
+		}
+		var padding = input.length % 3;
+		var output = '';
+		var position = -1;
+		var a;
+		var b;
+		var c;
+		var d;
+		var buffer;
+		// Make sure any padding is handled outside of the loop.
+		var length = input.length - padding;
+
+		while (++position < length) {
+			// Read three bytes, i.e. 24 bits.
+			a = input.charCodeAt(position) << 16;
+			b = input.charCodeAt(++position) << 8;
+			c = input.charCodeAt(++position);
+			buffer = a + b + c;
+			// Turn the 24 bits into four chunks of 6 bits each, and append the
+			// matching character for each of them to the output.
+			output += (
+				TABLE.charAt(buffer >> 18 & 0x3F) +
+				TABLE.charAt(buffer >> 12 & 0x3F) +
+				TABLE.charAt(buffer >> 6 & 0x3F) +
+				TABLE.charAt(buffer & 0x3F)
+			);
+		}
+
+		if (padding == 2) {
+			a = input.charCodeAt(position) << 8;
+			b = input.charCodeAt(++position);
+			buffer = a + b;
+			output += (
+				TABLE.charAt(buffer >> 10) +
+				TABLE.charAt((buffer >> 4) & 0x3F) +
+				TABLE.charAt((buffer << 2) & 0x3F) +
+				'='
+			);
+		} else if (padding == 1) {
+			buffer = input.charCodeAt(position);
+			output += (
+				TABLE.charAt(buffer >> 2) +
+				TABLE.charAt((buffer << 4) & 0x3F) +
+				'=='
+			);
+		}
+
+		return output;
+	};
+
+	var base64 = {
+		'encode': encode,
+		'decode': decode,
+		'version': '0.1.0'
+	};
+
+	// Some AMD build optimizers, like r.js, check for specific condition patterns
+	// like the following:
+	if (
+		true
+	) {
+		!(__WEBPACK_AMD_DEFINE_RESULT__ = function() {
+			return base64;
+		}.call(exports, __webpack_require__, exports, module),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	}	else if (freeExports && !freeExports.nodeType) {
+		if (freeModule) { // in Node.js or RingoJS v0.8.0+
+			freeModule.exports = base64;
+		} else { // in Narwhal or RingoJS v0.7.0-
+			for (var key in base64) {
+				base64.hasOwnProperty(key) && (freeExports[key] = base64[key]);
+			}
+		}
+	} else { // in Rhino or a web browser
+		root.base64 = base64;
+	}
+
+}(this));
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(126)(module)))
+
+/***/ }),
+/* 137 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(146);
 module.exports = __webpack_require__(24).RegExp.escape;
 
 /***/ }),
-/* 121 */
+/* 138 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var isObject = __webpack_require__(4)
-  , isArray  = __webpack_require__(67)
+  , isArray  = __webpack_require__(68)
   , SPECIES  = __webpack_require__(5)('species');
 
 module.exports = function(original){
@@ -8354,18 +9003,18 @@ module.exports = function(original){
 };
 
 /***/ }),
-/* 122 */
+/* 139 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 9.4.2.3 ArraySpeciesCreate(originalArray, length)
-var speciesConstructor = __webpack_require__(121);
+var speciesConstructor = __webpack_require__(138);
 
 module.exports = function(original, length){
   return new (speciesConstructor(original))(length);
 };
 
 /***/ }),
-/* 123 */
+/* 140 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8380,12 +9029,12 @@ module.exports = function(hint){
 };
 
 /***/ }),
-/* 124 */
+/* 141 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // all enumerable object keys, includes symbols
 var getKeys = __webpack_require__(35)
-  , gOPS    = __webpack_require__(56)
+  , gOPS    = __webpack_require__(57)
   , pIE     = __webpack_require__(47);
 module.exports = function(it){
   var result     = getKeys(it)
@@ -8400,7 +9049,7 @@ module.exports = function(it){
 };
 
 /***/ }),
-/* 125 */
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var getKeys   = __webpack_require__(35)
@@ -8415,13 +9064,13 @@ module.exports = function(object, el){
 };
 
 /***/ }),
-/* 126 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var path      = __webpack_require__(127)
-  , invoke    = __webpack_require__(52)
+var path      = __webpack_require__(144)
+  , invoke    = __webpack_require__(53)
   , aFunction = __webpack_require__(11);
 module.exports = function(/* ...pargs */){
   var fn     = aFunction(this)
@@ -8444,13 +9093,13 @@ module.exports = function(/* ...pargs */){
 };
 
 /***/ }),
-/* 127 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(2);
 
 /***/ }),
-/* 128 */
+/* 145 */
 /***/ (function(module, exports) {
 
 module.exports = function(regExp, replace){
@@ -8463,29 +9112,29 @@ module.exports = function(regExp, replace){
 };
 
 /***/ }),
-/* 129 */
+/* 146 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/benjamingr/RexExp.escape
 var $export = __webpack_require__(0)
-  , $re     = __webpack_require__(128)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
+  , $re     = __webpack_require__(145)(/[\\^$*+?.()|[\]{}]/g, '\\$&');
 
 $export($export.S, 'RegExp', {escape: function escape(it){ return $re(it); }});
 
 
 /***/ }),
-/* 130 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.3.3 Array.prototype.copyWithin(target, start, end = this.length)
 var $export = __webpack_require__(0);
 
-$export($export.P, 'Array', {copyWithin: __webpack_require__(87)});
+$export($export.P, 'Array', {copyWithin: __webpack_require__(96)});
 
 __webpack_require__(40)('copyWithin');
 
 /***/ }),
-/* 131 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8501,18 +9150,18 @@ $export($export.P + $export.F * !__webpack_require__(20)([].every, true), 'Array
 });
 
 /***/ }),
-/* 132 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.3.6 Array.prototype.fill(value, start = 0, end = this.length)
 var $export = __webpack_require__(0);
 
-$export($export.P, 'Array', {fill: __webpack_require__(59)});
+$export($export.P, 'Array', {fill: __webpack_require__(60)});
 
 __webpack_require__(40)('fill');
 
 /***/ }),
-/* 133 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8528,7 +9177,7 @@ $export($export.P + $export.F * !__webpack_require__(20)([].filter, true), 'Arra
 });
 
 /***/ }),
-/* 134 */
+/* 151 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8548,7 +9197,7 @@ $export($export.P + $export.F * forced, 'Array', {
 __webpack_require__(40)(KEY);
 
 /***/ }),
-/* 135 */
+/* 152 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8568,7 +9217,7 @@ $export($export.P + $export.F * forced, 'Array', {
 __webpack_require__(40)(KEY);
 
 /***/ }),
-/* 136 */
+/* 153 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8585,7 +9234,7 @@ $export($export.P + $export.F * !STRICT, 'Array', {
 });
 
 /***/ }),
-/* 137 */
+/* 154 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8593,13 +9242,13 @@ $export($export.P + $export.F * !STRICT, 'Array', {
 var ctx            = __webpack_require__(25)
   , $export        = __webpack_require__(0)
   , toObject       = __webpack_require__(9)
-  , call           = __webpack_require__(96)
-  , isArrayIter    = __webpack_require__(66)
+  , call           = __webpack_require__(105)
+  , isArrayIter    = __webpack_require__(67)
   , toLength       = __webpack_require__(8)
-  , createProperty = __webpack_require__(60)
-  , getIterFn      = __webpack_require__(83);
+  , createProperty = __webpack_require__(61)
+  , getIterFn      = __webpack_require__(84);
 
-$export($export.S + $export.F * !__webpack_require__(54)(function(iter){ Array.from(iter); }), 'Array', {
+$export($export.S + $export.F * !__webpack_require__(55)(function(iter){ Array.from(iter); }), 'Array', {
   // 22.1.2.1 Array.from(arrayLike, mapfn = undefined, thisArg = undefined)
   from: function from(arrayLike/*, mapfn = undefined, thisArg = undefined*/){
     var O       = toObject(arrayLike)
@@ -8629,13 +9278,13 @@ $export($export.S + $export.F * !__webpack_require__(54)(function(iter){ Array.f
 
 
 /***/ }),
-/* 138 */
+/* 155 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var $export       = __webpack_require__(0)
-  , $indexOf      = __webpack_require__(48)(false)
+  , $indexOf      = __webpack_require__(49)(false)
   , $native       = [].indexOf
   , NEGATIVE_ZERO = !!$native && 1 / [1].indexOf(1, -0) < 0;
 
@@ -8650,16 +9299,16 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(20)($nati
 });
 
 /***/ }),
-/* 139 */
+/* 156 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 22.1.2.2 / 15.4.3.2 Array.isArray(arg)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Array', {isArray: __webpack_require__(67)});
+$export($export.S, 'Array', {isArray: __webpack_require__(68)});
 
 /***/ }),
-/* 140 */
+/* 157 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8677,7 +9326,7 @@ $export($export.P + $export.F * (__webpack_require__(46) != Object || !__webpack
 });
 
 /***/ }),
-/* 141 */
+/* 158 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8705,7 +9354,7 @@ $export($export.P + $export.F * (NEGATIVE_ZERO || !__webpack_require__(20)($nati
 });
 
 /***/ }),
-/* 142 */
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8721,13 +9370,13 @@ $export($export.P + $export.F * !__webpack_require__(20)([].map, true), 'Array',
 });
 
 /***/ }),
-/* 143 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var $export        = __webpack_require__(0)
-  , createProperty = __webpack_require__(60);
+  , createProperty = __webpack_require__(61);
 
 // WebKit Array.of isn't generic
 $export($export.S + $export.F * __webpack_require__(3)(function(){
@@ -8746,13 +9395,13 @@ $export($export.S + $export.F * __webpack_require__(3)(function(){
 });
 
 /***/ }),
-/* 144 */
+/* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var $export = __webpack_require__(0)
-  , $reduce = __webpack_require__(89);
+  , $reduce = __webpack_require__(98);
 
 $export($export.P + $export.F * !__webpack_require__(20)([].reduceRight, true), 'Array', {
   // 22.1.3.19 / 15.4.4.22 Array.prototype.reduceRight(callbackfn [, initialValue])
@@ -8762,13 +9411,13 @@ $export($export.P + $export.F * !__webpack_require__(20)([].reduceRight, true), 
 });
 
 /***/ }),
-/* 145 */
+/* 162 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var $export = __webpack_require__(0)
-  , $reduce = __webpack_require__(89);
+  , $reduce = __webpack_require__(98);
 
 $export($export.P + $export.F * !__webpack_require__(20)([].reduce, true), 'Array', {
   // 22.1.3.18 / 15.4.4.21 Array.prototype.reduce(callbackfn [, initialValue])
@@ -8778,13 +9427,13 @@ $export($export.P + $export.F * !__webpack_require__(20)([].reduce, true), 'Arra
 });
 
 /***/ }),
-/* 146 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var $export    = __webpack_require__(0)
-  , html       = __webpack_require__(64)
+  , html       = __webpack_require__(65)
   , cof        = __webpack_require__(18)
   , toIndex    = __webpack_require__(38)
   , toLength   = __webpack_require__(8)
@@ -8812,7 +9461,7 @@ $export($export.P + $export.F * __webpack_require__(3)(function(){
 });
 
 /***/ }),
-/* 147 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8828,7 +9477,7 @@ $export($export.P + $export.F * !__webpack_require__(20)([].some, true), 'Array'
 });
 
 /***/ }),
-/* 148 */
+/* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8857,13 +9506,13 @@ $export($export.P + $export.F * (fails(function(){
 });
 
 /***/ }),
-/* 149 */
+/* 166 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(37)('Array');
 
 /***/ }),
-/* 150 */
+/* 167 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.3.3.1 / 15.9.4.4 Date.now()
@@ -8872,7 +9521,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Date', {now: function(){ return new Date().getTime(); }});
 
 /***/ }),
-/* 151 */
+/* 168 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8906,7 +9555,7 @@ $export($export.P + $export.F * (fails(function(){
 });
 
 /***/ }),
-/* 152 */
+/* 169 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8926,16 +9575,16 @@ $export($export.P + $export.F * __webpack_require__(3)(function(){
 });
 
 /***/ }),
-/* 153 */
+/* 170 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var TO_PRIMITIVE = __webpack_require__(5)('toPrimitive')
   , proto        = Date.prototype;
 
-if(!(TO_PRIMITIVE in proto))__webpack_require__(12)(proto, TO_PRIMITIVE, __webpack_require__(123));
+if(!(TO_PRIMITIVE in proto))__webpack_require__(12)(proto, TO_PRIMITIVE, __webpack_require__(140));
 
 /***/ }),
-/* 154 */
+/* 171 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var DateProto    = Date.prototype
@@ -8951,16 +9600,16 @@ if(new Date(NaN) + '' != INVALID_DATE){
 }
 
 /***/ }),
-/* 155 */
+/* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.2.3.2 / 15.3.4.5 Function.prototype.bind(thisArg, args...)
 var $export = __webpack_require__(0);
 
-$export($export.P, 'Function', {bind: __webpack_require__(90)});
+$export($export.P, 'Function', {bind: __webpack_require__(99)});
 
 /***/ }),
-/* 156 */
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8979,7 +9628,7 @@ if(!(HAS_INSTANCE in FunctionProto))__webpack_require__(7).f(FunctionProto, HAS_
 }});
 
 /***/ }),
-/* 157 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var dP         = __webpack_require__(7).f
@@ -9009,12 +9658,12 @@ NAME in FProto || __webpack_require__(6) && dP(FProto, NAME, {
 });
 
 /***/ }),
-/* 158 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.3 Math.acosh(x)
 var $export = __webpack_require__(0)
-  , log1p   = __webpack_require__(98)
+  , log1p   = __webpack_require__(107)
   , sqrt    = Math.sqrt
   , $acosh  = Math.acosh;
 
@@ -9032,7 +9681,7 @@ $export($export.S + $export.F * !($acosh
 });
 
 /***/ }),
-/* 159 */
+/* 176 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.5 Math.asinh(x)
@@ -9047,7 +9696,7 @@ function asinh(x){
 $export($export.S + $export.F * !($asinh && 1 / $asinh(0) > 0), 'Math', {asinh: asinh});
 
 /***/ }),
-/* 160 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.7 Math.atanh(x)
@@ -9062,12 +9711,12 @@ $export($export.S + $export.F * !($atanh && 1 / $atanh(-0) < 0), 'Math', {
 });
 
 /***/ }),
-/* 161 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.9 Math.cbrt(x)
 var $export = __webpack_require__(0)
-  , sign    = __webpack_require__(71);
+  , sign    = __webpack_require__(72);
 
 $export($export.S, 'Math', {
   cbrt: function cbrt(x){
@@ -9076,7 +9725,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 162 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.11 Math.clz32(x)
@@ -9089,7 +9738,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 163 */
+/* 180 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.12 Math.cosh(x)
@@ -9103,22 +9752,22 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 164 */
+/* 181 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.14 Math.expm1(x)
 var $export = __webpack_require__(0)
-  , $expm1  = __webpack_require__(70);
+  , $expm1  = __webpack_require__(71);
 
 $export($export.S + $export.F * ($expm1 != Math.expm1), 'Math', {expm1: $expm1});
 
 /***/ }),
-/* 165 */
+/* 182 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.16 Math.fround(x)
 var $export   = __webpack_require__(0)
-  , sign      = __webpack_require__(71)
+  , sign      = __webpack_require__(72)
   , pow       = Math.pow
   , EPSILON   = pow(2, -52)
   , EPSILON32 = pow(2, -23)
@@ -9144,7 +9793,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 166 */
+/* 183 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.17 Math.hypot([value1[, value2[, … ]]])
@@ -9174,7 +9823,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 167 */
+/* 184 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.18 Math.imul(x, y)
@@ -9196,7 +9845,7 @@ $export($export.S + $export.F * __webpack_require__(3)(function(){
 });
 
 /***/ }),
-/* 168 */
+/* 185 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.21 Math.log10(x)
@@ -9209,16 +9858,16 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 169 */
+/* 186 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.20 Math.log1p(x)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Math', {log1p: __webpack_require__(98)});
+$export($export.S, 'Math', {log1p: __webpack_require__(107)});
 
 /***/ }),
-/* 170 */
+/* 187 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.22 Math.log2(x)
@@ -9231,21 +9880,21 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 171 */
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.28 Math.sign(x)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Math', {sign: __webpack_require__(71)});
+$export($export.S, 'Math', {sign: __webpack_require__(72)});
 
 /***/ }),
-/* 172 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.30 Math.sinh(x)
 var $export = __webpack_require__(0)
-  , expm1   = __webpack_require__(70)
+  , expm1   = __webpack_require__(71)
   , exp     = Math.exp;
 
 // V8 near Chromium 38 has a problem with very small numbers
@@ -9260,12 +9909,12 @@ $export($export.S + $export.F * __webpack_require__(3)(function(){
 });
 
 /***/ }),
-/* 173 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.33 Math.tanh(x)
 var $export = __webpack_require__(0)
-  , expm1   = __webpack_require__(70)
+  , expm1   = __webpack_require__(71)
   , exp     = Math.exp;
 
 $export($export.S, 'Math', {
@@ -9277,7 +9926,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 174 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.2.2.34 Math.trunc(x)
@@ -9290,7 +9939,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 175 */
+/* 192 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9298,7 +9947,7 @@ $export($export.S, 'Math', {
 var global            = __webpack_require__(2)
   , has               = __webpack_require__(10)
   , cof               = __webpack_require__(18)
-  , inheritIfRequired = __webpack_require__(65)
+  , inheritIfRequired = __webpack_require__(66)
   , toPrimitive       = __webpack_require__(23)
   , fails             = __webpack_require__(3)
   , gOPN              = __webpack_require__(34).f
@@ -9365,7 +10014,7 @@ if(!$Number(' 0o1') || !$Number('0b1') || $Number('+0x1')){
 }
 
 /***/ }),
-/* 176 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.1 Number.EPSILON
@@ -9374,7 +10023,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', {EPSILON: Math.pow(2, -52)});
 
 /***/ }),
-/* 177 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.2 Number.isFinite(number)
@@ -9388,16 +10037,16 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-/* 178 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.3 Number.isInteger(number)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Number', {isInteger: __webpack_require__(95)});
+$export($export.S, 'Number', {isInteger: __webpack_require__(104)});
 
 /***/ }),
-/* 179 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.4 Number.isNaN(number)
@@ -9410,12 +10059,12 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-/* 180 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.5 Number.isSafeInteger(number)
 var $export   = __webpack_require__(0)
-  , isInteger = __webpack_require__(95)
+  , isInteger = __webpack_require__(104)
   , abs       = Math.abs;
 
 $export($export.S, 'Number', {
@@ -9425,7 +10074,7 @@ $export($export.S, 'Number', {
 });
 
 /***/ }),
-/* 181 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.6 Number.MAX_SAFE_INTEGER
@@ -9434,7 +10083,7 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', {MAX_SAFE_INTEGER: 0x1fffffffffffff});
 
 /***/ }),
-/* 182 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 20.1.2.10 Number.MIN_SAFE_INTEGER
@@ -9443,33 +10092,33 @@ var $export = __webpack_require__(0);
 $export($export.S, 'Number', {MIN_SAFE_INTEGER: -0x1fffffffffffff});
 
 /***/ }),
-/* 183 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export     = __webpack_require__(0)
-  , $parseFloat = __webpack_require__(105);
+  , $parseFloat = __webpack_require__(114);
 // 20.1.2.12 Number.parseFloat(string)
 $export($export.S + $export.F * (Number.parseFloat != $parseFloat), 'Number', {parseFloat: $parseFloat});
 
 /***/ }),
-/* 184 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export   = __webpack_require__(0)
-  , $parseInt = __webpack_require__(106);
+  , $parseInt = __webpack_require__(115);
 // 20.1.2.13 Number.parseInt(string, radix)
 $export($export.S + $export.F * (Number.parseInt != $parseInt), 'Number', {parseInt: $parseInt});
 
 /***/ }),
-/* 185 */
+/* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var $export      = __webpack_require__(0)
   , toInteger    = __webpack_require__(30)
-  , aNumberValue = __webpack_require__(86)
-  , repeat       = __webpack_require__(78)
+  , aNumberValue = __webpack_require__(95)
+  , repeat       = __webpack_require__(79)
   , $toFixed     = 1..toFixed
   , floor        = Math.floor
   , data         = [0, 0, 0, 0, 0, 0]
@@ -9580,14 +10229,14 @@ $export($export.P + $export.F * (!!$toFixed && (
 });
 
 /***/ }),
-/* 186 */
+/* 203 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var $export      = __webpack_require__(0)
   , $fails       = __webpack_require__(3)
-  , aNumberValue = __webpack_require__(86)
+  , aNumberValue = __webpack_require__(95)
   , $toPrecision = 1..toPrecision;
 
 $export($export.P + $export.F * ($fails(function(){
@@ -9604,16 +10253,16 @@ $export($export.P + $export.F * ($fails(function(){
 });
 
 /***/ }),
-/* 187 */
+/* 204 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.1 Object.assign(target, source)
 var $export = __webpack_require__(0);
 
-$export($export.S + $export.F, 'Object', {assign: __webpack_require__(99)});
+$export($export.S + $export.F, 'Object', {assign: __webpack_require__(108)});
 
 /***/ }),
-/* 188 */
+/* 205 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0)
@@ -9621,15 +10270,15 @@ var $export = __webpack_require__(0)
 $export($export.S, 'Object', {create: __webpack_require__(33)});
 
 /***/ }),
-/* 189 */
+/* 206 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
 // 19.1.2.3 / 15.2.3.7 Object.defineProperties(O, Properties)
-$export($export.S + $export.F * !__webpack_require__(6), 'Object', {defineProperties: __webpack_require__(100)});
+$export($export.S + $export.F * !__webpack_require__(6), 'Object', {defineProperties: __webpack_require__(109)});
 
 /***/ }),
-/* 190 */
+/* 207 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
@@ -9637,7 +10286,7 @@ var $export = __webpack_require__(0);
 $export($export.S + $export.F * !__webpack_require__(6), 'Object', {defineProperty: __webpack_require__(7).f});
 
 /***/ }),
-/* 191 */
+/* 208 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.5 Object.freeze(O)
@@ -9651,7 +10300,7 @@ __webpack_require__(22)('freeze', function($freeze){
 });
 
 /***/ }),
-/* 192 */
+/* 209 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
@@ -9665,16 +10314,16 @@ __webpack_require__(22)('getOwnPropertyDescriptor', function(){
 });
 
 /***/ }),
-/* 193 */
+/* 210 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.7 Object.getOwnPropertyNames(O)
 __webpack_require__(22)('getOwnPropertyNames', function(){
-  return __webpack_require__(101).f;
+  return __webpack_require__(110).f;
 });
 
 /***/ }),
-/* 194 */
+/* 211 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.9 Object.getPrototypeOf(O)
@@ -9688,7 +10337,7 @@ __webpack_require__(22)('getPrototypeOf', function(){
 });
 
 /***/ }),
-/* 195 */
+/* 212 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.11 Object.isExtensible(O)
@@ -9701,7 +10350,7 @@ __webpack_require__(22)('isExtensible', function($isExtensible){
 });
 
 /***/ }),
-/* 196 */
+/* 213 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.12 Object.isFrozen(O)
@@ -9714,7 +10363,7 @@ __webpack_require__(22)('isFrozen', function($isFrozen){
 });
 
 /***/ }),
-/* 197 */
+/* 214 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.13 Object.isSealed(O)
@@ -9727,15 +10376,15 @@ __webpack_require__(22)('isSealed', function($isSealed){
 });
 
 /***/ }),
-/* 198 */
+/* 215 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.10 Object.is(value1, value2)
 var $export = __webpack_require__(0);
-$export($export.S, 'Object', {is: __webpack_require__(107)});
+$export($export.S, 'Object', {is: __webpack_require__(116)});
 
 /***/ }),
-/* 199 */
+/* 216 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.14 Object.keys(O)
@@ -9749,7 +10398,7 @@ __webpack_require__(22)('keys', function(){
 });
 
 /***/ }),
-/* 200 */
+/* 217 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.15 Object.preventExtensions(O)
@@ -9763,7 +10412,7 @@ __webpack_require__(22)('preventExtensions', function($preventExtensions){
 });
 
 /***/ }),
-/* 201 */
+/* 218 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.2.17 Object.seal(O)
@@ -9777,15 +10426,15 @@ __webpack_require__(22)('seal', function($seal){
 });
 
 /***/ }),
-/* 202 */
+/* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $export = __webpack_require__(0);
-$export($export.S, 'Object', {setPrototypeOf: __webpack_require__(73).set});
+$export($export.S, 'Object', {setPrototypeOf: __webpack_require__(74).set});
 
 /***/ }),
-/* 203 */
+/* 220 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9801,25 +10450,25 @@ if(test + '' != '[object z]'){
 }
 
 /***/ }),
-/* 204 */
+/* 221 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export     = __webpack_require__(0)
-  , $parseFloat = __webpack_require__(105);
+  , $parseFloat = __webpack_require__(114);
 // 18.2.4 parseFloat(string)
 $export($export.G + $export.F * (parseFloat != $parseFloat), {parseFloat: $parseFloat});
 
 /***/ }),
-/* 205 */
+/* 222 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export   = __webpack_require__(0)
-  , $parseInt = __webpack_require__(106);
+  , $parseInt = __webpack_require__(115);
 // 18.2.5 parseInt(string, radix)
 $export($export.G + $export.F * (parseInt != $parseInt), {parseInt: $parseInt});
 
 /***/ }),
-/* 206 */
+/* 223 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -9833,9 +10482,9 @@ var LIBRARY            = __webpack_require__(32)
   , aFunction          = __webpack_require__(11)
   , anInstance         = __webpack_require__(31)
   , forOf              = __webpack_require__(41)
-  , speciesConstructor = __webpack_require__(75)
-  , task               = __webpack_require__(80).set
-  , microtask          = __webpack_require__(72)()
+  , speciesConstructor = __webpack_require__(76)
+  , task               = __webpack_require__(81).set
+  , microtask          = __webpack_require__(73)()
   , PROMISE            = 'Promise'
   , TypeError          = global.TypeError
   , process            = global.process
@@ -10078,7 +10727,7 @@ $export($export.S + $export.F * (LIBRARY || !USE_NATIVE), PROMISE, {
     return capability.promise;
   }
 });
-$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(54)(function(iter){
+$export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(55)(function(iter){
   $Promise.all(iter)['catch'](empty);
 })), PROMISE, {
   // 25.4.4.1 Promise.all(iterable)
@@ -10124,7 +10773,7 @@ $export($export.S + $export.F * !(USE_NATIVE && __webpack_require__(54)(function
 });
 
 /***/ }),
-/* 207 */
+/* 224 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.1 Reflect.apply(target, thisArgument, argumentsList)
@@ -10145,7 +10794,7 @@ $export($export.S + $export.F * !__webpack_require__(3)(function(){
 });
 
 /***/ }),
-/* 208 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
@@ -10155,7 +10804,7 @@ var $export    = __webpack_require__(0)
   , anObject   = __webpack_require__(1)
   , isObject   = __webpack_require__(4)
   , fails      = __webpack_require__(3)
-  , bind       = __webpack_require__(90)
+  , bind       = __webpack_require__(99)
   , rConstruct = (__webpack_require__(2).Reflect || {}).construct;
 
 // MS Edge supports only 2 arguments and argumentsList argument is optional
@@ -10197,7 +10846,7 @@ $export($export.S + $export.F * (NEW_TARGET_BUG || ARGS_BUG), 'Reflect', {
 });
 
 /***/ }),
-/* 209 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.3 Reflect.defineProperty(target, propertyKey, attributes)
@@ -10224,7 +10873,7 @@ $export($export.S + $export.F * __webpack_require__(3)(function(){
 });
 
 /***/ }),
-/* 210 */
+/* 227 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.4 Reflect.deleteProperty(target, propertyKey)
@@ -10240,7 +10889,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 211 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10255,7 +10904,7 @@ var Enumerate = function(iterated){
     , key;
   for(key in iterated)keys.push(key);
 };
-__webpack_require__(68)(Enumerate, 'Object', function(){
+__webpack_require__(69)(Enumerate, 'Object', function(){
   var that = this
     , keys = that._k
     , key;
@@ -10272,7 +10921,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 212 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.7 Reflect.getOwnPropertyDescriptor(target, propertyKey)
@@ -10287,7 +10936,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 213 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.8 Reflect.getPrototypeOf(target)
@@ -10302,7 +10951,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 214 */
+/* 231 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.6 Reflect.get(target, propertyKey [, receiver])
@@ -10328,7 +10977,7 @@ function get(target, propertyKey/*, receiver*/){
 $export($export.S, 'Reflect', {get: get});
 
 /***/ }),
-/* 215 */
+/* 232 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.9 Reflect.has(target, propertyKey)
@@ -10341,7 +10990,7 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 216 */
+/* 233 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.10 Reflect.isExtensible(target)
@@ -10357,16 +11006,16 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 217 */
+/* 234 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.11 Reflect.ownKeys(target)
 var $export = __webpack_require__(0);
 
-$export($export.S, 'Reflect', {ownKeys: __webpack_require__(104)});
+$export($export.S, 'Reflect', {ownKeys: __webpack_require__(113)});
 
 /***/ }),
-/* 218 */
+/* 235 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.12 Reflect.preventExtensions(target)
@@ -10387,12 +11036,12 @@ $export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 219 */
+/* 236 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.14 Reflect.setPrototypeOf(target, proto)
 var $export  = __webpack_require__(0)
-  , setProto = __webpack_require__(73);
+  , setProto = __webpack_require__(74);
 
 if(setProto)$export($export.S, 'Reflect', {
   setPrototypeOf: function setPrototypeOf(target, proto){
@@ -10407,7 +11056,7 @@ if(setProto)$export($export.S, 'Reflect', {
 });
 
 /***/ }),
-/* 220 */
+/* 237 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
@@ -10443,15 +11092,15 @@ function set(target, propertyKey, V/*, receiver*/){
 $export($export.S, 'Reflect', {set: set});
 
 /***/ }),
-/* 221 */
+/* 238 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var global            = __webpack_require__(2)
-  , inheritIfRequired = __webpack_require__(65)
+  , inheritIfRequired = __webpack_require__(66)
   , dP                = __webpack_require__(7).f
   , gOPN              = __webpack_require__(34).f
-  , isRegExp          = __webpack_require__(53)
-  , $flags            = __webpack_require__(51)
+  , isRegExp          = __webpack_require__(54)
+  , $flags            = __webpack_require__(52)
   , $RegExp           = global.RegExp
   , Base              = $RegExp
   , proto             = $RegExp.prototype
@@ -10491,11 +11140,11 @@ if(__webpack_require__(6) && (!CORRECT_NEW || __webpack_require__(3)(function(){
 __webpack_require__(37)('RegExp');
 
 /***/ }),
-/* 222 */
+/* 239 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // @@match logic
-__webpack_require__(50)('match', 1, function(defined, MATCH, $match){
+__webpack_require__(51)('match', 1, function(defined, MATCH, $match){
   // 21.1.3.11 String.prototype.match(regexp)
   return [function match(regexp){
     'use strict';
@@ -10506,11 +11155,11 @@ __webpack_require__(50)('match', 1, function(defined, MATCH, $match){
 });
 
 /***/ }),
-/* 223 */
+/* 240 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // @@replace logic
-__webpack_require__(50)('replace', 2, function(defined, REPLACE, $replace){
+__webpack_require__(51)('replace', 2, function(defined, REPLACE, $replace){
   // 21.1.3.14 String.prototype.replace(searchValue, replaceValue)
   return [function replace(searchValue, replaceValue){
     'use strict';
@@ -10523,11 +11172,11 @@ __webpack_require__(50)('replace', 2, function(defined, REPLACE, $replace){
 });
 
 /***/ }),
-/* 224 */
+/* 241 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // @@search logic
-__webpack_require__(50)('search', 1, function(defined, SEARCH, $search){
+__webpack_require__(51)('search', 1, function(defined, SEARCH, $search){
   // 21.1.3.15 String.prototype.search(regexp)
   return [function search(regexp){
     'use strict';
@@ -10538,13 +11187,13 @@ __webpack_require__(50)('search', 1, function(defined, SEARCH, $search){
 });
 
 /***/ }),
-/* 225 */
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // @@split logic
-__webpack_require__(50)('split', 2, function(defined, SPLIT, $split){
+__webpack_require__(51)('split', 2, function(defined, SPLIT, $split){
   'use strict';
-  var isRegExp   = __webpack_require__(53)
+  var isRegExp   = __webpack_require__(54)
     , _split     = $split
     , $push      = [].push
     , $SPLIT     = 'split'
@@ -10613,14 +11262,14 @@ __webpack_require__(50)('split', 2, function(defined, SPLIT, $split){
 });
 
 /***/ }),
-/* 226 */
+/* 243 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-__webpack_require__(111);
+__webpack_require__(120);
 var anObject    = __webpack_require__(1)
-  , $flags      = __webpack_require__(51)
+  , $flags      = __webpack_require__(52)
   , DESCRIPTORS = __webpack_require__(6)
   , TO_STRING   = 'toString'
   , $toString   = /./[TO_STRING];
@@ -10644,7 +11293,7 @@ if(__webpack_require__(3)(function(){ return $toString.call({source: 'a', flags:
 }
 
 /***/ }),
-/* 227 */
+/* 244 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10657,7 +11306,7 @@ __webpack_require__(14)('anchor', function(createHTML){
 });
 
 /***/ }),
-/* 228 */
+/* 245 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10670,7 +11319,7 @@ __webpack_require__(14)('big', function(createHTML){
 });
 
 /***/ }),
-/* 229 */
+/* 246 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10683,7 +11332,7 @@ __webpack_require__(14)('blink', function(createHTML){
 });
 
 /***/ }),
-/* 230 */
+/* 247 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10696,13 +11345,13 @@ __webpack_require__(14)('bold', function(createHTML){
 });
 
 /***/ }),
-/* 231 */
+/* 248 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var $export = __webpack_require__(0)
-  , $at     = __webpack_require__(76)(false);
+  , $at     = __webpack_require__(77)(false);
 $export($export.P, 'String', {
   // 21.1.3.3 String.prototype.codePointAt(pos)
   codePointAt: function codePointAt(pos){
@@ -10711,7 +11360,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 232 */
+/* 249 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10719,11 +11368,11 @@ $export($export.P, 'String', {
 
 var $export   = __webpack_require__(0)
   , toLength  = __webpack_require__(8)
-  , context   = __webpack_require__(77)
+  , context   = __webpack_require__(78)
   , ENDS_WITH = 'endsWith'
   , $endsWith = ''[ENDS_WITH];
 
-$export($export.P + $export.F * __webpack_require__(63)(ENDS_WITH), 'String', {
+$export($export.P + $export.F * __webpack_require__(64)(ENDS_WITH), 'String', {
   endsWith: function endsWith(searchString /*, endPosition = @length */){
     var that = context(this, searchString, ENDS_WITH)
       , endPosition = arguments.length > 1 ? arguments[1] : undefined
@@ -10737,7 +11386,7 @@ $export($export.P + $export.F * __webpack_require__(63)(ENDS_WITH), 'String', {
 });
 
 /***/ }),
-/* 233 */
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10750,7 +11399,7 @@ __webpack_require__(14)('fixed', function(createHTML){
 });
 
 /***/ }),
-/* 234 */
+/* 251 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10763,7 +11412,7 @@ __webpack_require__(14)('fontcolor', function(createHTML){
 });
 
 /***/ }),
-/* 235 */
+/* 252 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10776,7 +11425,7 @@ __webpack_require__(14)('fontsize', function(createHTML){
 });
 
 /***/ }),
-/* 236 */
+/* 253 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export        = __webpack_require__(0)
@@ -10804,17 +11453,17 @@ $export($export.S + $export.F * (!!$fromCodePoint && $fromCodePoint.length != 1)
 });
 
 /***/ }),
-/* 237 */
+/* 254 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 // 21.1.3.7 String.prototype.includes(searchString, position = 0)
 
 var $export  = __webpack_require__(0)
-  , context  = __webpack_require__(77)
+  , context  = __webpack_require__(78)
   , INCLUDES = 'includes';
 
-$export($export.P + $export.F * __webpack_require__(63)(INCLUDES), 'String', {
+$export($export.P + $export.F * __webpack_require__(64)(INCLUDES), 'String', {
   includes: function includes(searchString /*, position = 0 */){
     return !!~context(this, searchString, INCLUDES)
       .indexOf(searchString, arguments.length > 1 ? arguments[1] : undefined);
@@ -10822,7 +11471,7 @@ $export($export.P + $export.F * __webpack_require__(63)(INCLUDES), 'String', {
 });
 
 /***/ }),
-/* 238 */
+/* 255 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10835,15 +11484,15 @@ __webpack_require__(14)('italics', function(createHTML){
 });
 
 /***/ }),
-/* 239 */
+/* 256 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var $at  = __webpack_require__(76)(true);
+var $at  = __webpack_require__(77)(true);
 
 // 21.1.3.27 String.prototype[@@iterator]()
-__webpack_require__(69)(String, 'String', function(iterated){
+__webpack_require__(70)(String, 'String', function(iterated){
   this._t = String(iterated); // target
   this._i = 0;                // next index
 // 21.1.5.2.1 %StringIteratorPrototype%.next()
@@ -10858,7 +11507,7 @@ __webpack_require__(69)(String, 'String', function(iterated){
 });
 
 /***/ }),
-/* 240 */
+/* 257 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10871,7 +11520,7 @@ __webpack_require__(14)('link', function(createHTML){
 });
 
 /***/ }),
-/* 241 */
+/* 258 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export   = __webpack_require__(0)
@@ -10894,18 +11543,18 @@ $export($export.S, 'String', {
 });
 
 /***/ }),
-/* 242 */
+/* 259 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
 
 $export($export.P, 'String', {
   // 21.1.3.13 String.prototype.repeat(count)
-  repeat: __webpack_require__(78)
+  repeat: __webpack_require__(79)
 });
 
 /***/ }),
-/* 243 */
+/* 260 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10918,7 +11567,7 @@ __webpack_require__(14)('small', function(createHTML){
 });
 
 /***/ }),
-/* 244 */
+/* 261 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10926,11 +11575,11 @@ __webpack_require__(14)('small', function(createHTML){
 
 var $export     = __webpack_require__(0)
   , toLength    = __webpack_require__(8)
-  , context     = __webpack_require__(77)
+  , context     = __webpack_require__(78)
   , STARTS_WITH = 'startsWith'
   , $startsWith = ''[STARTS_WITH];
 
-$export($export.P + $export.F * __webpack_require__(63)(STARTS_WITH), 'String', {
+$export($export.P + $export.F * __webpack_require__(64)(STARTS_WITH), 'String', {
   startsWith: function startsWith(searchString /*, position = 0 */){
     var that   = context(this, searchString, STARTS_WITH)
       , index  = toLength(Math.min(arguments.length > 1 ? arguments[1] : undefined, that.length))
@@ -10942,7 +11591,7 @@ $export($export.P + $export.F * __webpack_require__(63)(STARTS_WITH), 'String', 
 });
 
 /***/ }),
-/* 245 */
+/* 262 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10955,7 +11604,7 @@ __webpack_require__(14)('strike', function(createHTML){
 });
 
 /***/ }),
-/* 246 */
+/* 263 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10968,7 +11617,7 @@ __webpack_require__(14)('sub', function(createHTML){
 });
 
 /***/ }),
-/* 247 */
+/* 264 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10981,7 +11630,7 @@ __webpack_require__(14)('sup', function(createHTML){
 });
 
 /***/ }),
-/* 248 */
+/* 265 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -10994,7 +11643,7 @@ __webpack_require__(44)('trim', function($trim){
 });
 
 /***/ }),
-/* 249 */
+/* 266 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11007,21 +11656,21 @@ var global         = __webpack_require__(2)
   , redefine       = __webpack_require__(13)
   , META           = __webpack_require__(28).KEY
   , $fails         = __webpack_require__(3)
-  , shared         = __webpack_require__(57)
+  , shared         = __webpack_require__(58)
   , setToStringTag = __webpack_require__(43)
   , uid            = __webpack_require__(39)
   , wks            = __webpack_require__(5)
-  , wksExt         = __webpack_require__(109)
-  , wksDefine      = __webpack_require__(82)
-  , keyOf          = __webpack_require__(125)
-  , enumKeys       = __webpack_require__(124)
-  , isArray        = __webpack_require__(67)
+  , wksExt         = __webpack_require__(118)
+  , wksDefine      = __webpack_require__(83)
+  , keyOf          = __webpack_require__(142)
+  , enumKeys       = __webpack_require__(141)
+  , isArray        = __webpack_require__(68)
   , anObject       = __webpack_require__(1)
   , toIObject      = __webpack_require__(15)
   , toPrimitive    = __webpack_require__(23)
   , createDesc     = __webpack_require__(29)
   , _create        = __webpack_require__(33)
-  , gOPNExt        = __webpack_require__(101)
+  , gOPNExt        = __webpack_require__(110)
   , $GOPD          = __webpack_require__(16)
   , $DP            = __webpack_require__(7)
   , $keys          = __webpack_require__(35)
@@ -11149,7 +11798,7 @@ if(!USE_NATIVE){
   $DP.f   = $defineProperty;
   __webpack_require__(34).f = gOPNExt.f = $getOwnPropertyNames;
   __webpack_require__(47).f  = $propertyIsEnumerable;
-  __webpack_require__(56).f = $getOwnPropertySymbols;
+  __webpack_require__(57).f = $getOwnPropertySymbols;
 
   if(DESCRIPTORS && !__webpack_require__(32)){
     redefine(ObjectProto, 'propertyIsEnumerable', $propertyIsEnumerable, true);
@@ -11235,20 +11884,20 @@ setToStringTag(Math, 'Math', true);
 setToStringTag(global.JSON, 'JSON', true);
 
 /***/ }),
-/* 250 */
+/* 267 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 var $export      = __webpack_require__(0)
-  , $typed       = __webpack_require__(58)
-  , buffer       = __webpack_require__(81)
+  , $typed       = __webpack_require__(59)
+  , buffer       = __webpack_require__(82)
   , anObject     = __webpack_require__(1)
   , toIndex      = __webpack_require__(38)
   , toLength     = __webpack_require__(8)
   , isObject     = __webpack_require__(4)
   , ArrayBuffer  = __webpack_require__(2).ArrayBuffer
-  , speciesConstructor = __webpack_require__(75)
+  , speciesConstructor = __webpack_require__(76)
   , $ArrayBuffer = buffer.ArrayBuffer
   , $DataView    = buffer.DataView
   , $isView      = $typed.ABV && ArrayBuffer.isView
@@ -11287,16 +11936,16 @@ $export($export.P + $export.U + $export.F * __webpack_require__(3)(function(){
 __webpack_require__(37)(ARRAY_BUFFER);
 
 /***/ }),
-/* 251 */
+/* 268 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0);
-$export($export.G + $export.W + $export.F * !__webpack_require__(58).ABV, {
-  DataView: __webpack_require__(81).DataView
+$export($export.G + $export.W + $export.F * !__webpack_require__(59).ABV, {
+  DataView: __webpack_require__(82).DataView
 });
 
 /***/ }),
-/* 252 */
+/* 269 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(27)('Float32', 4, function(init){
@@ -11306,7 +11955,7 @@ __webpack_require__(27)('Float32', 4, function(init){
 });
 
 /***/ }),
-/* 253 */
+/* 270 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(27)('Float64', 8, function(init){
@@ -11316,7 +11965,7 @@ __webpack_require__(27)('Float64', 8, function(init){
 });
 
 /***/ }),
-/* 254 */
+/* 271 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(27)('Int16', 2, function(init){
@@ -11326,7 +11975,7 @@ __webpack_require__(27)('Int16', 2, function(init){
 });
 
 /***/ }),
-/* 255 */
+/* 272 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(27)('Int32', 4, function(init){
@@ -11336,7 +11985,7 @@ __webpack_require__(27)('Int32', 4, function(init){
 });
 
 /***/ }),
-/* 256 */
+/* 273 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(27)('Int8', 1, function(init){
@@ -11346,7 +11995,7 @@ __webpack_require__(27)('Int8', 1, function(init){
 });
 
 /***/ }),
-/* 257 */
+/* 274 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(27)('Uint16', 2, function(init){
@@ -11356,7 +12005,7 @@ __webpack_require__(27)('Uint16', 2, function(init){
 });
 
 /***/ }),
-/* 258 */
+/* 275 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(27)('Uint32', 4, function(init){
@@ -11366,7 +12015,7 @@ __webpack_require__(27)('Uint32', 4, function(init){
 });
 
 /***/ }),
-/* 259 */
+/* 276 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(27)('Uint8', 1, function(init){
@@ -11376,7 +12025,7 @@ __webpack_require__(27)('Uint8', 1, function(init){
 });
 
 /***/ }),
-/* 260 */
+/* 277 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(27)('Uint8', 1, function(init){
@@ -11386,15 +12035,15 @@ __webpack_require__(27)('Uint8', 1, function(init){
 }, true);
 
 /***/ }),
-/* 261 */
+/* 278 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-var weak = __webpack_require__(93);
+var weak = __webpack_require__(102);
 
 // 23.4 WeakSet Objects
-__webpack_require__(49)('WeakSet', function(get){
+__webpack_require__(50)('WeakSet', function(get){
   return function WeakSet(){ return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
   // 23.4.3.1 WeakSet.prototype.add(value)
@@ -11404,14 +12053,14 @@ __webpack_require__(49)('WeakSet', function(get){
 }, weak, false, true);
 
 /***/ }),
-/* 262 */
+/* 279 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // https://github.com/tc39/Array.prototype.includes
 var $export   = __webpack_require__(0)
-  , $includes = __webpack_require__(48)(true);
+  , $includes = __webpack_require__(49)(true);
 
 $export($export.P, 'Array', {
   includes: function includes(el /*, fromIndex = 0 */){
@@ -11422,12 +12071,12 @@ $export($export.P, 'Array', {
 __webpack_require__(40)('includes');
 
 /***/ }),
-/* 263 */
+/* 280 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-09/sept-25.md#510-globalasap-for-enqueuing-a-microtask
 var $export   = __webpack_require__(0)
-  , microtask = __webpack_require__(72)()
+  , microtask = __webpack_require__(73)()
   , process   = __webpack_require__(2).process
   , isNode    = __webpack_require__(18)(process) == 'process';
 
@@ -11439,7 +12088,7 @@ $export($export.G, {
 });
 
 /***/ }),
-/* 264 */
+/* 281 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/ljharb/proposal-is-error
@@ -11453,16 +12102,16 @@ $export($export.S, 'Error', {
 });
 
 /***/ }),
-/* 265 */
+/* 282 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export  = __webpack_require__(0);
 
-$export($export.P + $export.R, 'Map', {toJSON: __webpack_require__(92)('Map')});
+$export($export.P + $export.R, 'Map', {toJSON: __webpack_require__(101)('Map')});
 
 /***/ }),
-/* 266 */
+/* 283 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -11478,7 +12127,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 267 */
+/* 284 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -11499,7 +12148,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 268 */
+/* 285 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -11515,7 +12164,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 269 */
+/* 286 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://gist.github.com/BrendanEich/4294d5c212a6d2254703
@@ -11536,7 +12185,7 @@ $export($export.S, 'Math', {
 });
 
 /***/ }),
-/* 270 */
+/* 287 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11547,14 +12196,14 @@ var $export         = __webpack_require__(0)
   , $defineProperty = __webpack_require__(7);
 
 // B.2.2.2 Object.prototype.__defineGetter__(P, getter)
-__webpack_require__(6) && $export($export.P + __webpack_require__(55), 'Object', {
+__webpack_require__(6) && $export($export.P + __webpack_require__(56), 'Object', {
   __defineGetter__: function __defineGetter__(P, getter){
     $defineProperty.f(toObject(this), P, {get: aFunction(getter), enumerable: true, configurable: true});
   }
 });
 
 /***/ }),
-/* 271 */
+/* 288 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11565,19 +12214,19 @@ var $export         = __webpack_require__(0)
   , $defineProperty = __webpack_require__(7);
 
 // B.2.2.3 Object.prototype.__defineSetter__(P, setter)
-__webpack_require__(6) && $export($export.P + __webpack_require__(55), 'Object', {
+__webpack_require__(6) && $export($export.P + __webpack_require__(56), 'Object', {
   __defineSetter__: function __defineSetter__(P, setter){
     $defineProperty.f(toObject(this), P, {set: aFunction(setter), enumerable: true, configurable: true});
   }
 });
 
 /***/ }),
-/* 272 */
+/* 289 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
 var $export  = __webpack_require__(0)
-  , $entries = __webpack_require__(103)(true);
+  , $entries = __webpack_require__(112)(true);
 
 $export($export.S, 'Object', {
   entries: function entries(it){
@@ -11586,15 +12235,15 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-/* 273 */
+/* 290 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-getownpropertydescriptors
 var $export        = __webpack_require__(0)
-  , ownKeys        = __webpack_require__(104)
+  , ownKeys        = __webpack_require__(113)
   , toIObject      = __webpack_require__(15)
   , gOPD           = __webpack_require__(16)
-  , createProperty = __webpack_require__(60);
+  , createProperty = __webpack_require__(61);
 
 $export($export.S, 'Object', {
   getOwnPropertyDescriptors: function getOwnPropertyDescriptors(object){
@@ -11610,7 +12259,7 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-/* 274 */
+/* 291 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11622,7 +12271,7 @@ var $export                  = __webpack_require__(0)
   , getOwnPropertyDescriptor = __webpack_require__(16).f;
 
 // B.2.2.4 Object.prototype.__lookupGetter__(P)
-__webpack_require__(6) && $export($export.P + __webpack_require__(55), 'Object', {
+__webpack_require__(6) && $export($export.P + __webpack_require__(56), 'Object', {
   __lookupGetter__: function __lookupGetter__(P){
     var O = toObject(this)
       , K = toPrimitive(P, true)
@@ -11634,7 +12283,7 @@ __webpack_require__(6) && $export($export.P + __webpack_require__(55), 'Object',
 });
 
 /***/ }),
-/* 275 */
+/* 292 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11646,7 +12295,7 @@ var $export                  = __webpack_require__(0)
   , getOwnPropertyDescriptor = __webpack_require__(16).f;
 
 // B.2.2.5 Object.prototype.__lookupSetter__(P)
-__webpack_require__(6) && $export($export.P + __webpack_require__(55), 'Object', {
+__webpack_require__(6) && $export($export.P + __webpack_require__(56), 'Object', {
   __lookupSetter__: function __lookupSetter__(P){
     var O = toObject(this)
       , K = toPrimitive(P, true)
@@ -11658,12 +12307,12 @@ __webpack_require__(6) && $export($export.P + __webpack_require__(55), 'Object',
 });
 
 /***/ }),
-/* 276 */
+/* 293 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/tc39/proposal-object-values-entries
 var $export = __webpack_require__(0)
-  , $values = __webpack_require__(103)(false);
+  , $values = __webpack_require__(112)(false);
 
 $export($export.S, 'Object', {
   values: function values(it){
@@ -11672,7 +12321,7 @@ $export($export.S, 'Object', {
 });
 
 /***/ }),
-/* 277 */
+/* 294 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11681,7 +12330,7 @@ $export($export.S, 'Object', {
 var $export     = __webpack_require__(0)
   , global      = __webpack_require__(2)
   , core        = __webpack_require__(24)
-  , microtask   = __webpack_require__(72)()
+  , microtask   = __webpack_require__(73)()
   , OBSERVABLE  = __webpack_require__(5)('observable')
   , aFunction   = __webpack_require__(11)
   , anObject    = __webpack_require__(1)
@@ -11877,7 +12526,7 @@ $export($export.G, {Observable: $Observable});
 __webpack_require__(37)('Observable');
 
 /***/ }),
-/* 278 */
+/* 295 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata                  = __webpack_require__(26)
@@ -11890,7 +12539,7 @@ metadata.exp({defineMetadata: function defineMetadata(metadataKey, metadataValue
 }});
 
 /***/ }),
-/* 279 */
+/* 296 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(26)
@@ -11910,11 +12559,11 @@ metadata.exp({deleteMetadata: function deleteMetadata(metadataKey, target /*, ta
 }});
 
 /***/ }),
-/* 280 */
+/* 297 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var Set                     = __webpack_require__(112)
-  , from                    = __webpack_require__(88)
+var Set                     = __webpack_require__(121)
+  , from                    = __webpack_require__(97)
   , metadata                = __webpack_require__(26)
   , anObject                = __webpack_require__(1)
   , getPrototypeOf          = __webpack_require__(17)
@@ -11934,7 +12583,7 @@ metadata.exp({getMetadataKeys: function getMetadataKeys(target /*, targetKey */)
 }});
 
 /***/ }),
-/* 281 */
+/* 298 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(26)
@@ -11956,7 +12605,7 @@ metadata.exp({getMetadata: function getMetadata(metadataKey, target /*, targetKe
 }});
 
 /***/ }),
-/* 282 */
+/* 299 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata                = __webpack_require__(26)
@@ -11969,7 +12618,7 @@ metadata.exp({getOwnMetadataKeys: function getOwnMetadataKeys(target /*, targetK
 }});
 
 /***/ }),
-/* 283 */
+/* 300 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(26)
@@ -11983,7 +12632,7 @@ metadata.exp({getOwnMetadata: function getOwnMetadata(metadataKey, target /*, ta
 }});
 
 /***/ }),
-/* 284 */
+/* 301 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(26)
@@ -12004,7 +12653,7 @@ metadata.exp({hasMetadata: function hasMetadata(metadataKey, target /*, targetKe
 }});
 
 /***/ }),
-/* 285 */
+/* 302 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata               = __webpack_require__(26)
@@ -12018,7 +12667,7 @@ metadata.exp({hasOwnMetadata: function hasOwnMetadata(metadataKey, target /*, ta
 }});
 
 /***/ }),
-/* 286 */
+/* 303 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var metadata                  = __webpack_require__(26)
@@ -12038,23 +12687,23 @@ metadata.exp({metadata: function metadata(metadataKey, metadataValue){
 }});
 
 /***/ }),
-/* 287 */
+/* 304 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/DavidBruant/Map-Set.prototype.toJSON
 var $export  = __webpack_require__(0);
 
-$export($export.P + $export.R, 'Set', {toJSON: __webpack_require__(92)('Set')});
+$export($export.P + $export.R, 'Set', {toJSON: __webpack_require__(101)('Set')});
 
 /***/ }),
-/* 288 */
+/* 305 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // https://github.com/mathiasbynens/String.prototype.at
 var $export = __webpack_require__(0)
-  , $at     = __webpack_require__(76)(true);
+  , $at     = __webpack_require__(77)(true);
 
 $export($export.P, 'String', {
   at: function at(pos){
@@ -12063,7 +12712,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 289 */
+/* 306 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12072,8 +12721,8 @@ $export($export.P, 'String', {
 var $export     = __webpack_require__(0)
   , defined     = __webpack_require__(19)
   , toLength    = __webpack_require__(8)
-  , isRegExp    = __webpack_require__(53)
-  , getFlags    = __webpack_require__(51)
+  , isRegExp    = __webpack_require__(54)
+  , getFlags    = __webpack_require__(52)
   , RegExpProto = RegExp.prototype;
 
 var $RegExpStringIterator = function(regexp, string){
@@ -12081,7 +12730,7 @@ var $RegExpStringIterator = function(regexp, string){
   this._s = string;
 };
 
-__webpack_require__(68)($RegExpStringIterator, 'RegExp String', function next(){
+__webpack_require__(69)($RegExpStringIterator, 'RegExp String', function next(){
   var match = this._r.exec(this._s);
   return {value: match, done: match === null};
 });
@@ -12099,14 +12748,14 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 290 */
+/* 307 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // https://github.com/tc39/proposal-string-pad-start-end
 var $export = __webpack_require__(0)
-  , $pad    = __webpack_require__(108);
+  , $pad    = __webpack_require__(117);
 
 $export($export.P, 'String', {
   padEnd: function padEnd(maxLength /*, fillString = ' ' */){
@@ -12115,14 +12764,14 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 291 */
+/* 308 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 // https://github.com/tc39/proposal-string-pad-start-end
 var $export = __webpack_require__(0)
-  , $pad    = __webpack_require__(108);
+  , $pad    = __webpack_require__(117);
 
 $export($export.P, 'String', {
   padStart: function padStart(maxLength /*, fillString = ' ' */){
@@ -12131,7 +12780,7 @@ $export($export.P, 'String', {
 });
 
 /***/ }),
-/* 292 */
+/* 309 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12144,7 +12793,7 @@ __webpack_require__(44)('trimLeft', function($trim){
 }, 'trimStart');
 
 /***/ }),
-/* 293 */
+/* 310 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12157,19 +12806,19 @@ __webpack_require__(44)('trimRight', function($trim){
 }, 'trimEnd');
 
 /***/ }),
-/* 294 */
+/* 311 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(82)('asyncIterator');
+__webpack_require__(83)('asyncIterator');
 
 /***/ }),
-/* 295 */
+/* 312 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(82)('observable');
+__webpack_require__(83)('observable');
 
 /***/ }),
-/* 296 */
+/* 313 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // https://github.com/ljharb/proposal-global
@@ -12178,10 +12827,10 @@ var $export = __webpack_require__(0);
 $export($export.S, 'System', {global: __webpack_require__(2)});
 
 /***/ }),
-/* 297 */
+/* 314 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var $iterators    = __webpack_require__(84)
+var $iterators    = __webpack_require__(85)
   , redefine      = __webpack_require__(13)
   , global        = __webpack_require__(2)
   , hide          = __webpack_require__(12)
@@ -12205,25 +12854,25 @@ for(var collections = ['NodeList', 'DOMTokenList', 'MediaList', 'StyleSheetList'
 }
 
 /***/ }),
-/* 298 */
+/* 315 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var $export = __webpack_require__(0)
-  , $task   = __webpack_require__(80);
+  , $task   = __webpack_require__(81);
 $export($export.G + $export.B, {
   setImmediate:   $task.set,
   clearImmediate: $task.clear
 });
 
 /***/ }),
-/* 299 */
+/* 316 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // ie9- setTimeout & setInterval additional parameters fix
 var global     = __webpack_require__(2)
   , $export    = __webpack_require__(0)
-  , invoke     = __webpack_require__(52)
-  , partial    = __webpack_require__(126)
+  , invoke     = __webpack_require__(53)
+  , partial    = __webpack_require__(143)
   , navigator  = global.navigator
   , MSIE       = !!navigator && /MSIE .\./.test(navigator.userAgent); // <- dirty ie9- check
 var wrap = function(set){
@@ -12241,35 +12890,45 @@ $export($export.G + $export.B + $export.F * MSIE, {
 });
 
 /***/ }),
-/* 300 */
+/* 317 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(249);
-__webpack_require__(188);
-__webpack_require__(190);
-__webpack_require__(189);
+__webpack_require__(266);
+__webpack_require__(205);
+__webpack_require__(207);
+__webpack_require__(206);
+__webpack_require__(209);
+__webpack_require__(211);
+__webpack_require__(216);
+__webpack_require__(210);
+__webpack_require__(208);
+__webpack_require__(218);
+__webpack_require__(217);
+__webpack_require__(213);
+__webpack_require__(214);
+__webpack_require__(212);
+__webpack_require__(204);
+__webpack_require__(215);
+__webpack_require__(219);
+__webpack_require__(220);
+__webpack_require__(172);
+__webpack_require__(174);
+__webpack_require__(173);
+__webpack_require__(222);
+__webpack_require__(221);
 __webpack_require__(192);
-__webpack_require__(194);
-__webpack_require__(199);
-__webpack_require__(193);
-__webpack_require__(191);
-__webpack_require__(201);
-__webpack_require__(200);
-__webpack_require__(196);
-__webpack_require__(197);
-__webpack_require__(195);
-__webpack_require__(187);
-__webpack_require__(198);
 __webpack_require__(202);
 __webpack_require__(203);
-__webpack_require__(155);
-__webpack_require__(157);
-__webpack_require__(156);
-__webpack_require__(205);
-__webpack_require__(204);
+__webpack_require__(193);
+__webpack_require__(194);
+__webpack_require__(195);
+__webpack_require__(196);
+__webpack_require__(197);
+__webpack_require__(198);
+__webpack_require__(199);
+__webpack_require__(200);
+__webpack_require__(201);
 __webpack_require__(175);
-__webpack_require__(185);
-__webpack_require__(186);
 __webpack_require__(176);
 __webpack_require__(177);
 __webpack_require__(178);
@@ -12279,180 +12938,11404 @@ __webpack_require__(181);
 __webpack_require__(182);
 __webpack_require__(183);
 __webpack_require__(184);
-__webpack_require__(158);
-__webpack_require__(159);
-__webpack_require__(160);
-__webpack_require__(161);
-__webpack_require__(162);
-__webpack_require__(163);
-__webpack_require__(164);
-__webpack_require__(165);
-__webpack_require__(166);
-__webpack_require__(167);
-__webpack_require__(168);
-__webpack_require__(169);
-__webpack_require__(170);
-__webpack_require__(171);
-__webpack_require__(172);
-__webpack_require__(173);
-__webpack_require__(174);
-__webpack_require__(236);
-__webpack_require__(241);
+__webpack_require__(185);
+__webpack_require__(186);
+__webpack_require__(187);
+__webpack_require__(188);
+__webpack_require__(189);
+__webpack_require__(190);
+__webpack_require__(191);
+__webpack_require__(253);
+__webpack_require__(258);
+__webpack_require__(265);
+__webpack_require__(256);
 __webpack_require__(248);
-__webpack_require__(239);
-__webpack_require__(231);
-__webpack_require__(232);
-__webpack_require__(237);
-__webpack_require__(242);
+__webpack_require__(249);
+__webpack_require__(254);
+__webpack_require__(259);
+__webpack_require__(261);
 __webpack_require__(244);
-__webpack_require__(227);
-__webpack_require__(228);
-__webpack_require__(229);
-__webpack_require__(230);
-__webpack_require__(233);
-__webpack_require__(234);
-__webpack_require__(235);
-__webpack_require__(238);
-__webpack_require__(240);
-__webpack_require__(243);
 __webpack_require__(245);
 __webpack_require__(246);
 __webpack_require__(247);
-__webpack_require__(150);
-__webpack_require__(152);
-__webpack_require__(151);
-__webpack_require__(154);
-__webpack_require__(153);
-__webpack_require__(139);
-__webpack_require__(137);
-__webpack_require__(143);
-__webpack_require__(140);
-__webpack_require__(146);
-__webpack_require__(148);
-__webpack_require__(136);
-__webpack_require__(142);
-__webpack_require__(133);
-__webpack_require__(147);
-__webpack_require__(131);
-__webpack_require__(145);
-__webpack_require__(144);
-__webpack_require__(138);
-__webpack_require__(141);
-__webpack_require__(130);
-__webpack_require__(132);
-__webpack_require__(135);
-__webpack_require__(134);
-__webpack_require__(149);
-__webpack_require__(84);
-__webpack_require__(221);
-__webpack_require__(226);
-__webpack_require__(111);
-__webpack_require__(222);
-__webpack_require__(223);
-__webpack_require__(224);
-__webpack_require__(225);
-__webpack_require__(206);
-__webpack_require__(110);
-__webpack_require__(112);
-__webpack_require__(113);
-__webpack_require__(261);
 __webpack_require__(250);
 __webpack_require__(251);
-__webpack_require__(256);
-__webpack_require__(259);
-__webpack_require__(260);
-__webpack_require__(254);
-__webpack_require__(257);
-__webpack_require__(255);
-__webpack_require__(258);
 __webpack_require__(252);
-__webpack_require__(253);
-__webpack_require__(207);
-__webpack_require__(208);
-__webpack_require__(209);
-__webpack_require__(210);
-__webpack_require__(211);
-__webpack_require__(214);
-__webpack_require__(212);
-__webpack_require__(213);
-__webpack_require__(215);
-__webpack_require__(216);
-__webpack_require__(217);
-__webpack_require__(218);
-__webpack_require__(220);
-__webpack_require__(219);
+__webpack_require__(255);
+__webpack_require__(257);
+__webpack_require__(260);
 __webpack_require__(262);
-__webpack_require__(288);
-__webpack_require__(291);
-__webpack_require__(290);
-__webpack_require__(292);
-__webpack_require__(293);
-__webpack_require__(289);
-__webpack_require__(294);
-__webpack_require__(295);
+__webpack_require__(263);
+__webpack_require__(264);
+__webpack_require__(167);
+__webpack_require__(169);
+__webpack_require__(168);
+__webpack_require__(171);
+__webpack_require__(170);
+__webpack_require__(156);
+__webpack_require__(154);
+__webpack_require__(160);
+__webpack_require__(157);
+__webpack_require__(163);
+__webpack_require__(165);
+__webpack_require__(153);
+__webpack_require__(159);
+__webpack_require__(150);
+__webpack_require__(164);
+__webpack_require__(148);
+__webpack_require__(162);
+__webpack_require__(161);
+__webpack_require__(155);
+__webpack_require__(158);
+__webpack_require__(147);
+__webpack_require__(149);
+__webpack_require__(152);
+__webpack_require__(151);
+__webpack_require__(166);
+__webpack_require__(85);
+__webpack_require__(238);
+__webpack_require__(243);
+__webpack_require__(120);
+__webpack_require__(239);
+__webpack_require__(240);
+__webpack_require__(241);
+__webpack_require__(242);
+__webpack_require__(223);
+__webpack_require__(119);
+__webpack_require__(121);
+__webpack_require__(122);
+__webpack_require__(278);
+__webpack_require__(267);
+__webpack_require__(268);
 __webpack_require__(273);
 __webpack_require__(276);
-__webpack_require__(272);
-__webpack_require__(270);
+__webpack_require__(277);
 __webpack_require__(271);
 __webpack_require__(274);
+__webpack_require__(272);
 __webpack_require__(275);
-__webpack_require__(265);
-__webpack_require__(287);
-__webpack_require__(296);
-__webpack_require__(264);
-__webpack_require__(266);
-__webpack_require__(268);
-__webpack_require__(267);
 __webpack_require__(269);
-__webpack_require__(278);
+__webpack_require__(270);
+__webpack_require__(224);
+__webpack_require__(225);
+__webpack_require__(226);
+__webpack_require__(227);
+__webpack_require__(228);
+__webpack_require__(231);
+__webpack_require__(229);
+__webpack_require__(230);
+__webpack_require__(232);
+__webpack_require__(233);
+__webpack_require__(234);
+__webpack_require__(235);
+__webpack_require__(237);
+__webpack_require__(236);
 __webpack_require__(279);
-__webpack_require__(281);
-__webpack_require__(280);
-__webpack_require__(283);
+__webpack_require__(305);
+__webpack_require__(308);
+__webpack_require__(307);
+__webpack_require__(309);
+__webpack_require__(310);
+__webpack_require__(306);
+__webpack_require__(311);
+__webpack_require__(312);
+__webpack_require__(290);
+__webpack_require__(293);
+__webpack_require__(289);
+__webpack_require__(287);
+__webpack_require__(288);
+__webpack_require__(291);
+__webpack_require__(292);
 __webpack_require__(282);
-__webpack_require__(284);
+__webpack_require__(304);
+__webpack_require__(313);
+__webpack_require__(281);
+__webpack_require__(283);
 __webpack_require__(285);
+__webpack_require__(284);
 __webpack_require__(286);
-__webpack_require__(263);
-__webpack_require__(277);
-__webpack_require__(299);
+__webpack_require__(295);
+__webpack_require__(296);
 __webpack_require__(298);
 __webpack_require__(297);
+__webpack_require__(300);
+__webpack_require__(299);
+__webpack_require__(301);
+__webpack_require__(302);
+__webpack_require__(303);
+__webpack_require__(280);
+__webpack_require__(294);
+__webpack_require__(316);
+__webpack_require__(315);
+__webpack_require__(314);
 module.exports = __webpack_require__(24);
 
 /***/ }),
-/* 301 */
+/* 318 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var Stream = __webpack_require__(48).Stream;
+var util = __webpack_require__(88);
+
+module.exports = DelayedStream;
+function DelayedStream() {
+  this.source = null;
+  this.dataSize = 0;
+  this.maxDataSize = 1024 * 1024;
+  this.pauseStream = true;
+
+  this._maxDataSizeExceeded = false;
+  this._released = false;
+  this._bufferedEvents = [];
+}
+util.inherits(DelayedStream, Stream);
+
+DelayedStream.create = function(source, options) {
+  var delayedStream = new this();
+
+  options = options || {};
+  for (var option in options) {
+    delayedStream[option] = options[option];
+  }
+
+  delayedStream.source = source;
+
+  var realEmit = source.emit;
+  source.emit = function() {
+    delayedStream._handleEmit(arguments);
+    return realEmit.apply(source, arguments);
+  };
+
+  source.on('error', function() {});
+  if (delayedStream.pauseStream) {
+    source.pause();
+  }
+
+  return delayedStream;
+};
+
+Object.defineProperty(DelayedStream.prototype, 'readable', {
+  configurable: true,
+  enumerable: true,
+  get: function() {
+    return this.source.readable;
+  }
+});
+
+DelayedStream.prototype.setEncoding = function() {
+  return this.source.setEncoding.apply(this.source, arguments);
+};
+
+DelayedStream.prototype.resume = function() {
+  if (!this._released) {
+    this.release();
+  }
+
+  this.source.resume();
+};
+
+DelayedStream.prototype.pause = function() {
+  this.source.pause();
+};
+
+DelayedStream.prototype.release = function() {
+  this._released = true;
+
+  this._bufferedEvents.forEach(function(args) {
+    this.emit.apply(this, args);
+  }.bind(this));
+  this._bufferedEvents = [];
+};
+
+DelayedStream.prototype.pipe = function() {
+  var r = Stream.prototype.pipe.apply(this, arguments);
+  this.resume();
+  return r;
+};
+
+DelayedStream.prototype._handleEmit = function(args) {
+  if (this._released) {
+    this.emit.apply(this, args);
+    return;
+  }
+
+  if (args[0] === 'data') {
+    this.dataSize += args[1].length;
+    this._checkIfMaxDataSizeExceeded();
+  }
+
+  this._bufferedEvents.push(args);
+};
+
+DelayedStream.prototype._checkIfMaxDataSizeExceeded = function() {
+  if (this._maxDataSizeExceeded) {
+    return;
+  }
+
+  if (this.dataSize <= this.maxDataSize) {
+    return;
+  }
+
+  this._maxDataSizeExceeded = true;
+  var message =
+    'DelayedStream#maxDataSize of ' + this.maxDataSize + ' bytes exceeded.'
+  this.emit('error', new Error(message));
+};
+
+
+/***/ }),
+/* 319 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var CombinedStream = __webpack_require__(321);
+var util = __webpack_require__(88);
+var path = __webpack_require__(128);
+var http = __webpack_require__(86);
+var https = __webpack_require__(127);
+var parseUrl = __webpack_require__(87).parse;
+var fs = __webpack_require__(329);
+var mime = __webpack_require__(325);
+var asynckit = __webpack_require__(131);
+var populate = __webpack_require__(320);
+
+// Public API
+module.exports = FormData;
+
+// make it a Stream
+util.inherits(FormData, CombinedStream);
+
+/**
+ * Create readable "multipart/form-data" streams.
+ * Can be used to submit forms
+ * and file uploads to other web applications.
+ *
+ * @constructor
+ * @param {Object} options - Properties to be added/overriden for FormData and CombinedStream
+ */
+function FormData(options) {
+  if (!(this instanceof FormData)) {
+    return new FormData();
+  }
+
+  this._overheadLength = 0;
+  this._valueLength = 0;
+  this._valuesToMeasure = [];
+
+  CombinedStream.call(this);
+
+  options = options || {};
+  for (var option in options) {
+    this[option] = options[option];
+  }
+}
+
+FormData.LINE_BREAK = '\r\n';
+FormData.DEFAULT_CONTENT_TYPE = 'application/octet-stream';
+
+FormData.prototype.append = function(field, value, options) {
+
+  options = options || {};
+
+  // allow filename as single option
+  if (typeof options == 'string') {
+    options = {filename: options};
+  }
+
+  var append = CombinedStream.prototype.append.bind(this);
+
+  // all that streamy business can't handle numbers
+  if (typeof value == 'number') {
+    value = '' + value;
+  }
+
+  // https://github.com/felixge/node-form-data/issues/38
+  if (util.isArray(value)) {
+    // Please convert your array into string
+    // the way web server expects it
+    this._error(new Error('Arrays are not supported.'));
+    return;
+  }
+
+  var header = this._multiPartHeader(field, value, options);
+  var footer = this._multiPartFooter();
+
+  append(header);
+  append(value);
+  append(footer);
+
+  // pass along options.knownLength
+  this._trackLength(header, value, options);
+};
+
+FormData.prototype._trackLength = function(header, value, options) {
+  var valueLength = 0;
+
+  // used w/ getLengthSync(), when length is known.
+  // e.g. for streaming directly from a remote server,
+  // w/ a known file a size, and not wanting to wait for
+  // incoming file to finish to get its size.
+  if (options.knownLength != null) {
+    valueLength += +options.knownLength;
+  } else if (Buffer.isBuffer(value)) {
+    valueLength = value.length;
+  } else if (typeof value === 'string') {
+    valueLength = Buffer.byteLength(value);
+  }
+
+  this._valueLength += valueLength;
+
+  // @check why add CRLF? does this account for custom/multiple CRLFs?
+  this._overheadLength +=
+    Buffer.byteLength(header) +
+    FormData.LINE_BREAK.length;
+
+  // empty or either doesn't have path or not an http response
+  if (!value || ( !value.path && !(value.readable && value.hasOwnProperty('httpVersion')) )) {
+    return;
+  }
+
+  // no need to bother with the length
+  if (!options.knownLength) {
+    this._valuesToMeasure.push(value);
+  }
+};
+
+FormData.prototype._lengthRetriever = function(value, callback) {
+
+  if (value.hasOwnProperty('fd')) {
+
+    // take read range into a account
+    // `end` = Infinity –> read file till the end
+    //
+    // TODO: Looks like there is bug in Node fs.createReadStream
+    // it doesn't respect `end` options without `start` options
+    // Fix it when node fixes it.
+    // https://github.com/joyent/node/issues/7819
+    if (value.end != undefined && value.end != Infinity && value.start != undefined) {
+
+      // when end specified
+      // no need to calculate range
+      // inclusive, starts with 0
+      callback(null, value.end + 1 - (value.start ? value.start : 0));
+
+    // not that fast snoopy
+    } else {
+      // still need to fetch file size from fs
+      fs.stat(value.path, function(err, stat) {
+
+        var fileSize;
+
+        if (err) {
+          callback(err);
+          return;
+        }
+
+        // update final size based on the range options
+        fileSize = stat.size - (value.start ? value.start : 0);
+        callback(null, fileSize);
+      });
+    }
+
+  // or http response
+  } else if (value.hasOwnProperty('httpVersion')) {
+    callback(null, +value.headers['content-length']);
+
+  // or request stream http://github.com/mikeal/request
+  } else if (value.hasOwnProperty('httpModule')) {
+    // wait till response come back
+    value.on('response', function(response) {
+      value.pause();
+      callback(null, +response.headers['content-length']);
+    });
+    value.resume();
+
+  // something else
+  } else {
+    callback('Unknown stream');
+  }
+};
+
+FormData.prototype._multiPartHeader = function(field, value, options) {
+  // custom header specified (as string)?
+  // it becomes responsible for boundary
+  // (e.g. to handle extra CRLFs on .NET servers)
+  if (typeof options.header == 'string') {
+    return options.header;
+  }
+
+  var contentDisposition = this._getContentDisposition(value, options);
+  var contentType = this._getContentType(value, options);
+
+  var contents = '';
+  var headers  = {
+    // add custom disposition as third element or keep it two elements if not
+    'Content-Disposition': ['form-data', 'name="' + field + '"'].concat(contentDisposition || []),
+    // if no content type. allow it to be empty array
+    'Content-Type': [].concat(contentType || [])
+  };
+
+  // allow custom headers.
+  if (typeof options.header == 'object') {
+    populate(headers, options.header);
+  }
+
+  var header;
+  for (var prop in headers) {
+    if (!headers.hasOwnProperty(prop)) continue;
+    header = headers[prop];
+
+    // skip nullish headers.
+    if (header == null) {
+      continue;
+    }
+
+    // convert all headers to arrays.
+    if (!Array.isArray(header)) {
+      header = [header];
+    }
+
+    // add non-empty headers.
+    if (header.length) {
+      contents += prop + ': ' + header.join('; ') + FormData.LINE_BREAK;
+    }
+  }
+
+  return '--' + this.getBoundary() + FormData.LINE_BREAK + contents + FormData.LINE_BREAK;
+};
+
+FormData.prototype._getContentDisposition = function(value, options) {
+
+  var filename
+    , contentDisposition
+    ;
+
+  if (typeof options.filepath === 'string') {
+    // custom filepath for relative paths
+    filename = path.normalize(options.filepath).replace(/\\/g, '/');
+  } else if (options.filename || value.name || value.path) {
+    // custom filename take precedence
+    // formidable and the browser add a name property
+    // fs- and request- streams have path property
+    filename = path.basename(options.filename || value.name || value.path);
+  } else if (value.readable && value.hasOwnProperty('httpVersion')) {
+    // or try http response
+    filename = path.basename(value.client._httpMessage.path);
+  }
+
+  if (filename) {
+    contentDisposition = 'filename="' + filename + '"';
+  }
+
+  return contentDisposition;
+};
+
+FormData.prototype._getContentType = function(value, options) {
+
+  // use custom content-type above all
+  var contentType = options.contentType;
+
+  // or try `name` from formidable, browser
+  if (!contentType && value.name) {
+    contentType = mime.lookup(value.name);
+  }
+
+  // or try `path` from fs-, request- streams
+  if (!contentType && value.path) {
+    contentType = mime.lookup(value.path);
+  }
+
+  // or if it's http-reponse
+  if (!contentType && value.readable && value.hasOwnProperty('httpVersion')) {
+    contentType = value.headers['content-type'];
+  }
+
+  // or guess it from the filepath or filename
+  if (!contentType && (options.filepath || options.filename)) {
+    contentType = mime.lookup(options.filepath || options.filename);
+  }
+
+  // fallback to the default content type if `value` is not simple value
+  if (!contentType && typeof value == 'object') {
+    contentType = FormData.DEFAULT_CONTENT_TYPE;
+  }
+
+  return contentType;
+};
+
+FormData.prototype._multiPartFooter = function() {
+  return function(next) {
+    var footer = FormData.LINE_BREAK;
+
+    var lastPart = (this._streams.length === 0);
+    if (lastPart) {
+      footer += this._lastBoundary();
+    }
+
+    next(footer);
+  }.bind(this);
+};
+
+FormData.prototype._lastBoundary = function() {
+  return '--' + this.getBoundary() + '--' + FormData.LINE_BREAK;
+};
+
+FormData.prototype.getHeaders = function(userHeaders) {
+  var header;
+  var formHeaders = {
+    'content-type': 'multipart/form-data; boundary=' + this.getBoundary()
+  };
+
+  for (header in userHeaders) {
+    if (userHeaders.hasOwnProperty(header)) {
+      formHeaders[header.toLowerCase()] = userHeaders[header];
+    }
+  }
+
+  return formHeaders;
+};
+
+FormData.prototype.getBoundary = function() {
+  if (!this._boundary) {
+    this._generateBoundary();
+  }
+
+  return this._boundary;
+};
+
+FormData.prototype._generateBoundary = function() {
+  // This generates a 50 character boundary similar to those used by Firefox.
+  // They are optimized for boyer-moore parsing.
+  var boundary = '--------------------------';
+  for (var i = 0; i < 24; i++) {
+    boundary += Math.floor(Math.random() * 10).toString(16);
+  }
+
+  this._boundary = boundary;
+};
+
+// Note: getLengthSync DOESN'T calculate streams length
+// As workaround one can calculate file size manually
+// and add it as knownLength option
+FormData.prototype.getLengthSync = function() {
+  var knownLength = this._overheadLength + this._valueLength;
+
+  // Don't get confused, there are 3 "internal" streams for each keyval pair
+  // so it basically checks if there is any value added to the form
+  if (this._streams.length) {
+    knownLength += this._lastBoundary().length;
+  }
+
+  // https://github.com/form-data/form-data/issues/40
+  if (!this.hasKnownLength()) {
+    // Some async length retrievers are present
+    // therefore synchronous length calculation is false.
+    // Please use getLength(callback) to get proper length
+    this._error(new Error('Cannot calculate proper length in synchronous way.'));
+  }
+
+  return knownLength;
+};
+
+// Public API to check if length of added values is known
+// https://github.com/form-data/form-data/issues/196
+// https://github.com/form-data/form-data/issues/262
+FormData.prototype.hasKnownLength = function() {
+  var hasKnownLength = true;
+
+  if (this._valuesToMeasure.length) {
+    hasKnownLength = false;
+  }
+
+  return hasKnownLength;
+};
+
+FormData.prototype.getLength = function(cb) {
+  var knownLength = this._overheadLength + this._valueLength;
+
+  if (this._streams.length) {
+    knownLength += this._lastBoundary().length;
+  }
+
+  if (!this._valuesToMeasure.length) {
+    process.nextTick(cb.bind(this, null, knownLength));
+    return;
+  }
+
+  asynckit.parallel(this._valuesToMeasure, this._lengthRetriever, function(err, values) {
+    if (err) {
+      cb(err);
+      return;
+    }
+
+    values.forEach(function(length) {
+      knownLength += length;
+    });
+
+    cb(null, knownLength);
+  });
+};
+
+FormData.prototype.submit = function(params, cb) {
+  var request
+    , options
+    , defaults = {method: 'post'}
+    ;
+
+  // parse provided url if it's string
+  // or treat it as options object
+  if (typeof params == 'string') {
+
+    params = parseUrl(params);
+    options = populate({
+      port: params.port,
+      path: params.pathname,
+      host: params.hostname,
+      protocol: params.protocol
+    }, defaults);
+
+  // use custom params
+  } else {
+
+    options = populate(params, defaults);
+    // if no port provided use default one
+    if (!options.port) {
+      options.port = options.protocol == 'https:' ? 443 : 80;
+    }
+  }
+
+  // put that good code in getHeaders to some use
+  options.headers = this.getHeaders(params.headers);
+
+  // https if specified, fallback to http in any other case
+  if (options.protocol == 'https:') {
+    request = https.request(options);
+  } else {
+    request = http.request(options);
+  }
+
+  // get content length and fire away
+  this.getLength(function(err, length) {
+    if (err) {
+      this._error(err);
+      return;
+    }
+
+    // add content length
+    request.setHeader('Content-Length', length);
+
+    this.pipe(request);
+    if (cb) {
+      request.on('error', cb);
+      request.on('response', cb.bind(this, null));
+    }
+  }.bind(this));
+
+  return request;
+};
+
+FormData.prototype._error = function(err) {
+  if (!this.error) {
+    this.error = err;
+    this.pause();
+    this.emit('error', err);
+  }
+};
+
+FormData.prototype.toString = function () {
+  return '[object FormData]';
+};
+
+
+/***/ }),
+/* 320 */
+/***/ (function(module, exports) {
+
+// populates missing values
+module.exports = function(dst, src) {
+
+  Object.keys(src).forEach(function(prop)
+  {
+    dst[prop] = dst[prop] || src[prop];
+  });
+
+  return dst;
+};
+
+
+/***/ }),
+/* 321 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var util = __webpack_require__(88);
+var Stream = __webpack_require__(48).Stream;
+var DelayedStream = __webpack_require__(318);
+var defer = __webpack_require__(322);
+
+module.exports = CombinedStream;
+function CombinedStream() {
+  this.writable = false;
+  this.readable = true;
+  this.dataSize = 0;
+  this.maxDataSize = 2 * 1024 * 1024;
+  this.pauseStreams = true;
+
+  this._released = false;
+  this._streams = [];
+  this._currentStream = null;
+}
+util.inherits(CombinedStream, Stream);
+
+CombinedStream.create = function(options) {
+  var combinedStream = new this();
+
+  options = options || {};
+  for (var option in options) {
+    combinedStream[option] = options[option];
+  }
+
+  return combinedStream;
+};
+
+CombinedStream.isStreamLike = function(stream) {
+  return (typeof stream !== 'function')
+    && (typeof stream !== 'string')
+    && (typeof stream !== 'boolean')
+    && (typeof stream !== 'number')
+    && (!Buffer.isBuffer(stream));
+};
+
+CombinedStream.prototype.append = function(stream) {
+  var isStreamLike = CombinedStream.isStreamLike(stream);
+
+  if (isStreamLike) {
+    if (!(stream instanceof DelayedStream)) {
+      var newStream = DelayedStream.create(stream, {
+        maxDataSize: Infinity,
+        pauseStream: this.pauseStreams,
+      });
+      stream.on('data', this._checkDataSize.bind(this));
+      stream = newStream;
+    }
+
+    this._handleErrors(stream);
+
+    if (this.pauseStreams) {
+      stream.pause();
+    }
+  }
+
+  this._streams.push(stream);
+  return this;
+};
+
+CombinedStream.prototype.pipe = function(dest, options) {
+  Stream.prototype.pipe.call(this, dest, options);
+  this.resume();
+  return dest;
+};
+
+CombinedStream.prototype._getNext = function() {
+  this._currentStream = null;
+  var stream = this._streams.shift();
+
+
+  if (typeof stream == 'undefined') {
+    this.end();
+    return;
+  }
+
+  if (typeof stream !== 'function') {
+    this._pipeNext(stream);
+    return;
+  }
+
+  var getStream = stream;
+  getStream(function(stream) {
+    var isStreamLike = CombinedStream.isStreamLike(stream);
+    if (isStreamLike) {
+      stream.on('data', this._checkDataSize.bind(this));
+      this._handleErrors(stream);
+    }
+
+    defer(this._pipeNext.bind(this, stream));
+  }.bind(this));
+};
+
+CombinedStream.prototype._pipeNext = function(stream) {
+  this._currentStream = stream;
+
+  var isStreamLike = CombinedStream.isStreamLike(stream);
+  if (isStreamLike) {
+    stream.on('end', this._getNext.bind(this));
+    stream.pipe(this, {end: false});
+    return;
+  }
+
+  var value = stream;
+  this.write(value);
+  this._getNext();
+};
+
+CombinedStream.prototype._handleErrors = function(stream) {
+  var self = this;
+  stream.on('error', function(err) {
+    self._emitError(err);
+  });
+};
+
+CombinedStream.prototype.write = function(data) {
+  this.emit('data', data);
+};
+
+CombinedStream.prototype.pause = function() {
+  if (!this.pauseStreams) {
+    return;
+  }
+
+  if(this.pauseStreams && this._currentStream && typeof(this._currentStream.pause) == 'function') this._currentStream.pause();
+  this.emit('pause');
+};
+
+CombinedStream.prototype.resume = function() {
+  if (!this._released) {
+    this._released = true;
+    this.writable = true;
+    this._getNext();
+  }
+
+  if(this.pauseStreams && this._currentStream && typeof(this._currentStream.resume) == 'function') this._currentStream.resume();
+  this.emit('resume');
+};
+
+CombinedStream.prototype.end = function() {
+  this._reset();
+  this.emit('end');
+};
+
+CombinedStream.prototype.destroy = function() {
+  this._reset();
+  this.emit('close');
+};
+
+CombinedStream.prototype._reset = function() {
+  this.writable = false;
+  this._streams = [];
+  this._currentStream = null;
+};
+
+CombinedStream.prototype._checkDataSize = function() {
+  this._updateDataSize();
+  if (this.dataSize <= this.maxDataSize) {
+    return;
+  }
+
+  var message =
+    'DelayedStream#maxDataSize of ' + this.maxDataSize + ' bytes exceeded.';
+  this._emitError(new Error(message));
+};
+
+CombinedStream.prototype._updateDataSize = function() {
+  this.dataSize = 0;
+
+  var self = this;
+  this._streams.forEach(function(stream) {
+    if (!stream.dataSize) {
+      return;
+    }
+
+    self.dataSize += stream.dataSize;
+  });
+
+  if (this._currentStream && this._currentStream.dataSize) {
+    this.dataSize += this._currentStream.dataSize;
+  }
+};
+
+CombinedStream.prototype._emitError = function(err) {
+  this._reset();
+  this.emit('error', err);
+};
+
+
+/***/ }),
+/* 322 */
+/***/ (function(module, exports) {
+
+module.exports = defer;
+
+/**
+ * Runs provided function on next iteration of the event loop
+ *
+ * @param {function} fn - function to run
+ */
+function defer(fn)
+{
+  var nextTick = typeof setImmediate == 'function'
+    ? setImmediate
+    : (
+      typeof process == 'object' && typeof process.nextTick == 'function'
+      ? process.nextTick
+      : null
+    );
+
+  if (nextTick)
+  {
+    nextTick(fn);
+  }
+  else
+  {
+    setTimeout(fn, 0);
+  }
+}
+
+
+/***/ }),
+/* 323 */
+/***/ (function(module, exports) {
+
+module.exports = {
+	"application/1d-interleaved-parityfec": {
+		"source": "iana"
+	},
+	"application/3gpdash-qoe-report+xml": {
+		"source": "iana"
+	},
+	"application/3gpp-ims+xml": {
+		"source": "iana"
+	},
+	"application/a2l": {
+		"source": "iana"
+	},
+	"application/activemessage": {
+		"source": "iana"
+	},
+	"application/alto-costmap+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/alto-costmapfilter+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/alto-directory+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/alto-endpointcost+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/alto-endpointcostparams+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/alto-endpointprop+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/alto-endpointpropparams+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/alto-error+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/alto-networkmap+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/alto-networkmapfilter+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/aml": {
+		"source": "iana"
+	},
+	"application/andrew-inset": {
+		"source": "iana",
+		"extensions": [
+			"ez"
+		]
+	},
+	"application/applefile": {
+		"source": "iana"
+	},
+	"application/applixware": {
+		"source": "apache",
+		"extensions": [
+			"aw"
+		]
+	},
+	"application/atf": {
+		"source": "iana"
+	},
+	"application/atfx": {
+		"source": "iana"
+	},
+	"application/atom+xml": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"atom"
+		]
+	},
+	"application/atomcat+xml": {
+		"source": "iana",
+		"extensions": [
+			"atomcat"
+		]
+	},
+	"application/atomdeleted+xml": {
+		"source": "iana"
+	},
+	"application/atomicmail": {
+		"source": "iana"
+	},
+	"application/atomsvc+xml": {
+		"source": "iana",
+		"extensions": [
+			"atomsvc"
+		]
+	},
+	"application/atxml": {
+		"source": "iana"
+	},
+	"application/auth-policy+xml": {
+		"source": "iana"
+	},
+	"application/bacnet-xdd+zip": {
+		"source": "iana"
+	},
+	"application/batch-smtp": {
+		"source": "iana"
+	},
+	"application/bdoc": {
+		"compressible": false,
+		"extensions": [
+			"bdoc"
+		]
+	},
+	"application/beep+xml": {
+		"source": "iana"
+	},
+	"application/calendar+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/calendar+xml": {
+		"source": "iana"
+	},
+	"application/call-completion": {
+		"source": "iana"
+	},
+	"application/cals-1840": {
+		"source": "iana"
+	},
+	"application/cbor": {
+		"source": "iana"
+	},
+	"application/ccmp+xml": {
+		"source": "iana"
+	},
+	"application/ccxml+xml": {
+		"source": "iana",
+		"extensions": [
+			"ccxml"
+		]
+	},
+	"application/cdfx+xml": {
+		"source": "iana"
+	},
+	"application/cdmi-capability": {
+		"source": "iana",
+		"extensions": [
+			"cdmia"
+		]
+	},
+	"application/cdmi-container": {
+		"source": "iana",
+		"extensions": [
+			"cdmic"
+		]
+	},
+	"application/cdmi-domain": {
+		"source": "iana",
+		"extensions": [
+			"cdmid"
+		]
+	},
+	"application/cdmi-object": {
+		"source": "iana",
+		"extensions": [
+			"cdmio"
+		]
+	},
+	"application/cdmi-queue": {
+		"source": "iana",
+		"extensions": [
+			"cdmiq"
+		]
+	},
+	"application/cdni": {
+		"source": "iana"
+	},
+	"application/cea": {
+		"source": "iana"
+	},
+	"application/cea-2018+xml": {
+		"source": "iana"
+	},
+	"application/cellml+xml": {
+		"source": "iana"
+	},
+	"application/cfw": {
+		"source": "iana"
+	},
+	"application/clue_info+xml": {
+		"source": "iana"
+	},
+	"application/cms": {
+		"source": "iana"
+	},
+	"application/cnrp+xml": {
+		"source": "iana"
+	},
+	"application/coap-group+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/coap-payload": {
+		"source": "iana"
+	},
+	"application/commonground": {
+		"source": "iana"
+	},
+	"application/conference-info+xml": {
+		"source": "iana"
+	},
+	"application/cose": {
+		"source": "iana"
+	},
+	"application/cose-key": {
+		"source": "iana"
+	},
+	"application/cose-key-set": {
+		"source": "iana"
+	},
+	"application/cpl+xml": {
+		"source": "iana"
+	},
+	"application/csrattrs": {
+		"source": "iana"
+	},
+	"application/csta+xml": {
+		"source": "iana"
+	},
+	"application/cstadata+xml": {
+		"source": "iana"
+	},
+	"application/csvm+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/cu-seeme": {
+		"source": "apache",
+		"extensions": [
+			"cu"
+		]
+	},
+	"application/cybercash": {
+		"source": "iana"
+	},
+	"application/dart": {
+		"compressible": true
+	},
+	"application/dash+xml": {
+		"source": "iana",
+		"extensions": [
+			"mpd"
+		]
+	},
+	"application/dashdelta": {
+		"source": "iana"
+	},
+	"application/davmount+xml": {
+		"source": "iana",
+		"extensions": [
+			"davmount"
+		]
+	},
+	"application/dca-rft": {
+		"source": "iana"
+	},
+	"application/dcd": {
+		"source": "iana"
+	},
+	"application/dec-dx": {
+		"source": "iana"
+	},
+	"application/dialog-info+xml": {
+		"source": "iana"
+	},
+	"application/dicom": {
+		"source": "iana"
+	},
+	"application/dicom+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/dicom+xml": {
+		"source": "iana"
+	},
+	"application/dii": {
+		"source": "iana"
+	},
+	"application/dit": {
+		"source": "iana"
+	},
+	"application/dns": {
+		"source": "iana"
+	},
+	"application/docbook+xml": {
+		"source": "apache",
+		"extensions": [
+			"dbk"
+		]
+	},
+	"application/dskpp+xml": {
+		"source": "iana"
+	},
+	"application/dssc+der": {
+		"source": "iana",
+		"extensions": [
+			"dssc"
+		]
+	},
+	"application/dssc+xml": {
+		"source": "iana",
+		"extensions": [
+			"xdssc"
+		]
+	},
+	"application/dvcs": {
+		"source": "iana"
+	},
+	"application/ecmascript": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"ecma"
+		]
+	},
+	"application/edi-consent": {
+		"source": "iana"
+	},
+	"application/edi-x12": {
+		"source": "iana",
+		"compressible": false
+	},
+	"application/edifact": {
+		"source": "iana",
+		"compressible": false
+	},
+	"application/efi": {
+		"source": "iana"
+	},
+	"application/emergencycalldata.comment+xml": {
+		"source": "iana"
+	},
+	"application/emergencycalldata.control+xml": {
+		"source": "iana"
+	},
+	"application/emergencycalldata.deviceinfo+xml": {
+		"source": "iana"
+	},
+	"application/emergencycalldata.ecall.msd": {
+		"source": "iana"
+	},
+	"application/emergencycalldata.providerinfo+xml": {
+		"source": "iana"
+	},
+	"application/emergencycalldata.serviceinfo+xml": {
+		"source": "iana"
+	},
+	"application/emergencycalldata.subscriberinfo+xml": {
+		"source": "iana"
+	},
+	"application/emergencycalldata.veds+xml": {
+		"source": "iana"
+	},
+	"application/emma+xml": {
+		"source": "iana",
+		"extensions": [
+			"emma"
+		]
+	},
+	"application/emotionml+xml": {
+		"source": "iana"
+	},
+	"application/encaprtp": {
+		"source": "iana"
+	},
+	"application/epp+xml": {
+		"source": "iana"
+	},
+	"application/epub+zip": {
+		"source": "iana",
+		"extensions": [
+			"epub"
+		]
+	},
+	"application/eshop": {
+		"source": "iana"
+	},
+	"application/exi": {
+		"source": "iana",
+		"extensions": [
+			"exi"
+		]
+	},
+	"application/fastinfoset": {
+		"source": "iana"
+	},
+	"application/fastsoap": {
+		"source": "iana"
+	},
+	"application/fdt+xml": {
+		"source": "iana"
+	},
+	"application/fits": {
+		"source": "iana"
+	},
+	"application/font-sfnt": {
+		"source": "iana"
+	},
+	"application/font-tdpfr": {
+		"source": "iana",
+		"extensions": [
+			"pfr"
+		]
+	},
+	"application/font-woff": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"woff"
+		]
+	},
+	"application/font-woff2": {
+		"compressible": false,
+		"extensions": [
+			"woff2"
+		]
+	},
+	"application/framework-attributes+xml": {
+		"source": "iana"
+	},
+	"application/geo+json": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"geojson"
+		]
+	},
+	"application/geo+json-seq": {
+		"source": "iana"
+	},
+	"application/gml+xml": {
+		"source": "iana",
+		"extensions": [
+			"gml"
+		]
+	},
+	"application/gpx+xml": {
+		"source": "apache",
+		"extensions": [
+			"gpx"
+		]
+	},
+	"application/gxf": {
+		"source": "apache",
+		"extensions": [
+			"gxf"
+		]
+	},
+	"application/gzip": {
+		"source": "iana",
+		"compressible": false
+	},
+	"application/h224": {
+		"source": "iana"
+	},
+	"application/held+xml": {
+		"source": "iana"
+	},
+	"application/http": {
+		"source": "iana"
+	},
+	"application/hyperstudio": {
+		"source": "iana",
+		"extensions": [
+			"stk"
+		]
+	},
+	"application/ibe-key-request+xml": {
+		"source": "iana"
+	},
+	"application/ibe-pkg-reply+xml": {
+		"source": "iana"
+	},
+	"application/ibe-pp-data": {
+		"source": "iana"
+	},
+	"application/iges": {
+		"source": "iana"
+	},
+	"application/im-iscomposing+xml": {
+		"source": "iana"
+	},
+	"application/index": {
+		"source": "iana"
+	},
+	"application/index.cmd": {
+		"source": "iana"
+	},
+	"application/index.obj": {
+		"source": "iana"
+	},
+	"application/index.response": {
+		"source": "iana"
+	},
+	"application/index.vnd": {
+		"source": "iana"
+	},
+	"application/inkml+xml": {
+		"source": "iana",
+		"extensions": [
+			"ink",
+			"inkml"
+		]
+	},
+	"application/iotp": {
+		"source": "iana"
+	},
+	"application/ipfix": {
+		"source": "iana",
+		"extensions": [
+			"ipfix"
+		]
+	},
+	"application/ipp": {
+		"source": "iana"
+	},
+	"application/isup": {
+		"source": "iana"
+	},
+	"application/its+xml": {
+		"source": "iana"
+	},
+	"application/java-archive": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"jar",
+			"war",
+			"ear"
+		]
+	},
+	"application/java-serialized-object": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"ser"
+		]
+	},
+	"application/java-vm": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"class"
+		]
+	},
+	"application/javascript": {
+		"source": "iana",
+		"charset": "UTF-8",
+		"compressible": true,
+		"extensions": [
+			"js"
+		]
+	},
+	"application/jose": {
+		"source": "iana"
+	},
+	"application/jose+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/jrd+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/json": {
+		"source": "iana",
+		"charset": "UTF-8",
+		"compressible": true,
+		"extensions": [
+			"json",
+			"map"
+		]
+	},
+	"application/json-patch+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/json-seq": {
+		"source": "iana"
+	},
+	"application/json5": {
+		"extensions": [
+			"json5"
+		]
+	},
+	"application/jsonml+json": {
+		"source": "apache",
+		"compressible": true,
+		"extensions": [
+			"jsonml"
+		]
+	},
+	"application/jwk+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/jwk-set+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/jwt": {
+		"source": "iana"
+	},
+	"application/kpml-request+xml": {
+		"source": "iana"
+	},
+	"application/kpml-response+xml": {
+		"source": "iana"
+	},
+	"application/ld+json": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"jsonld"
+		]
+	},
+	"application/lgr+xml": {
+		"source": "iana"
+	},
+	"application/link-format": {
+		"source": "iana"
+	},
+	"application/load-control+xml": {
+		"source": "iana"
+	},
+	"application/lost+xml": {
+		"source": "iana",
+		"extensions": [
+			"lostxml"
+		]
+	},
+	"application/lostsync+xml": {
+		"source": "iana"
+	},
+	"application/lxf": {
+		"source": "iana"
+	},
+	"application/mac-binhex40": {
+		"source": "iana",
+		"extensions": [
+			"hqx"
+		]
+	},
+	"application/mac-compactpro": {
+		"source": "apache",
+		"extensions": [
+			"cpt"
+		]
+	},
+	"application/macwriteii": {
+		"source": "iana"
+	},
+	"application/mads+xml": {
+		"source": "iana",
+		"extensions": [
+			"mads"
+		]
+	},
+	"application/manifest+json": {
+		"charset": "UTF-8",
+		"compressible": true,
+		"extensions": [
+			"webmanifest"
+		]
+	},
+	"application/marc": {
+		"source": "iana",
+		"extensions": [
+			"mrc"
+		]
+	},
+	"application/marcxml+xml": {
+		"source": "iana",
+		"extensions": [
+			"mrcx"
+		]
+	},
+	"application/mathematica": {
+		"source": "iana",
+		"extensions": [
+			"ma",
+			"nb",
+			"mb"
+		]
+	},
+	"application/mathml+xml": {
+		"source": "iana",
+		"extensions": [
+			"mathml"
+		]
+	},
+	"application/mathml-content+xml": {
+		"source": "iana"
+	},
+	"application/mathml-presentation+xml": {
+		"source": "iana"
+	},
+	"application/mbms-associated-procedure-description+xml": {
+		"source": "iana"
+	},
+	"application/mbms-deregister+xml": {
+		"source": "iana"
+	},
+	"application/mbms-envelope+xml": {
+		"source": "iana"
+	},
+	"application/mbms-msk+xml": {
+		"source": "iana"
+	},
+	"application/mbms-msk-response+xml": {
+		"source": "iana"
+	},
+	"application/mbms-protection-description+xml": {
+		"source": "iana"
+	},
+	"application/mbms-reception-report+xml": {
+		"source": "iana"
+	},
+	"application/mbms-register+xml": {
+		"source": "iana"
+	},
+	"application/mbms-register-response+xml": {
+		"source": "iana"
+	},
+	"application/mbms-schedule+xml": {
+		"source": "iana"
+	},
+	"application/mbms-user-service-description+xml": {
+		"source": "iana"
+	},
+	"application/mbox": {
+		"source": "iana",
+		"extensions": [
+			"mbox"
+		]
+	},
+	"application/media-policy-dataset+xml": {
+		"source": "iana"
+	},
+	"application/media_control+xml": {
+		"source": "iana"
+	},
+	"application/mediaservercontrol+xml": {
+		"source": "iana",
+		"extensions": [
+			"mscml"
+		]
+	},
+	"application/merge-patch+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/metalink+xml": {
+		"source": "apache",
+		"extensions": [
+			"metalink"
+		]
+	},
+	"application/metalink4+xml": {
+		"source": "iana",
+		"extensions": [
+			"meta4"
+		]
+	},
+	"application/mets+xml": {
+		"source": "iana",
+		"extensions": [
+			"mets"
+		]
+	},
+	"application/mf4": {
+		"source": "iana"
+	},
+	"application/mikey": {
+		"source": "iana"
+	},
+	"application/mods+xml": {
+		"source": "iana",
+		"extensions": [
+			"mods"
+		]
+	},
+	"application/moss-keys": {
+		"source": "iana"
+	},
+	"application/moss-signature": {
+		"source": "iana"
+	},
+	"application/mosskey-data": {
+		"source": "iana"
+	},
+	"application/mosskey-request": {
+		"source": "iana"
+	},
+	"application/mp21": {
+		"source": "iana",
+		"extensions": [
+			"m21",
+			"mp21"
+		]
+	},
+	"application/mp4": {
+		"source": "iana",
+		"extensions": [
+			"mp4s",
+			"m4p"
+		]
+	},
+	"application/mpeg4-generic": {
+		"source": "iana"
+	},
+	"application/mpeg4-iod": {
+		"source": "iana"
+	},
+	"application/mpeg4-iod-xmt": {
+		"source": "iana"
+	},
+	"application/mrb-consumer+xml": {
+		"source": "iana"
+	},
+	"application/mrb-publish+xml": {
+		"source": "iana"
+	},
+	"application/msc-ivr+xml": {
+		"source": "iana"
+	},
+	"application/msc-mixer+xml": {
+		"source": "iana"
+	},
+	"application/msword": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"doc",
+			"dot"
+		]
+	},
+	"application/mud+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/mxf": {
+		"source": "iana",
+		"extensions": [
+			"mxf"
+		]
+	},
+	"application/n-quads": {
+		"source": "iana"
+	},
+	"application/n-triples": {
+		"source": "iana"
+	},
+	"application/nasdata": {
+		"source": "iana"
+	},
+	"application/news-checkgroups": {
+		"source": "iana"
+	},
+	"application/news-groupinfo": {
+		"source": "iana"
+	},
+	"application/news-transmission": {
+		"source": "iana"
+	},
+	"application/nlsml+xml": {
+		"source": "iana"
+	},
+	"application/nss": {
+		"source": "iana"
+	},
+	"application/ocsp-request": {
+		"source": "iana"
+	},
+	"application/ocsp-response": {
+		"source": "iana"
+	},
+	"application/octet-stream": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"bin",
+			"dms",
+			"lrf",
+			"mar",
+			"so",
+			"dist",
+			"distz",
+			"pkg",
+			"bpk",
+			"dump",
+			"elc",
+			"deploy",
+			"exe",
+			"dll",
+			"deb",
+			"dmg",
+			"iso",
+			"img",
+			"msi",
+			"msp",
+			"msm",
+			"buffer"
+		]
+	},
+	"application/oda": {
+		"source": "iana",
+		"extensions": [
+			"oda"
+		]
+	},
+	"application/odx": {
+		"source": "iana"
+	},
+	"application/oebps-package+xml": {
+		"source": "iana",
+		"extensions": [
+			"opf"
+		]
+	},
+	"application/ogg": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"ogx"
+		]
+	},
+	"application/omdoc+xml": {
+		"source": "apache",
+		"extensions": [
+			"omdoc"
+		]
+	},
+	"application/onenote": {
+		"source": "apache",
+		"extensions": [
+			"onetoc",
+			"onetoc2",
+			"onetmp",
+			"onepkg"
+		]
+	},
+	"application/oxps": {
+		"source": "iana",
+		"extensions": [
+			"oxps"
+		]
+	},
+	"application/p2p-overlay+xml": {
+		"source": "iana"
+	},
+	"application/parityfec": {
+		"source": "iana"
+	},
+	"application/patch-ops-error+xml": {
+		"source": "iana",
+		"extensions": [
+			"xer"
+		]
+	},
+	"application/pdf": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"pdf"
+		]
+	},
+	"application/pdx": {
+		"source": "iana"
+	},
+	"application/pgp-encrypted": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"pgp"
+		]
+	},
+	"application/pgp-keys": {
+		"source": "iana"
+	},
+	"application/pgp-signature": {
+		"source": "iana",
+		"extensions": [
+			"asc",
+			"sig"
+		]
+	},
+	"application/pics-rules": {
+		"source": "apache",
+		"extensions": [
+			"prf"
+		]
+	},
+	"application/pidf+xml": {
+		"source": "iana"
+	},
+	"application/pidf-diff+xml": {
+		"source": "iana"
+	},
+	"application/pkcs10": {
+		"source": "iana",
+		"extensions": [
+			"p10"
+		]
+	},
+	"application/pkcs12": {
+		"source": "iana"
+	},
+	"application/pkcs7-mime": {
+		"source": "iana",
+		"extensions": [
+			"p7m",
+			"p7c"
+		]
+	},
+	"application/pkcs7-signature": {
+		"source": "iana",
+		"extensions": [
+			"p7s"
+		]
+	},
+	"application/pkcs8": {
+		"source": "iana",
+		"extensions": [
+			"p8"
+		]
+	},
+	"application/pkix-attr-cert": {
+		"source": "iana",
+		"extensions": [
+			"ac"
+		]
+	},
+	"application/pkix-cert": {
+		"source": "iana",
+		"extensions": [
+			"cer"
+		]
+	},
+	"application/pkix-crl": {
+		"source": "iana",
+		"extensions": [
+			"crl"
+		]
+	},
+	"application/pkix-pkipath": {
+		"source": "iana",
+		"extensions": [
+			"pkipath"
+		]
+	},
+	"application/pkixcmp": {
+		"source": "iana",
+		"extensions": [
+			"pki"
+		]
+	},
+	"application/pls+xml": {
+		"source": "iana",
+		"extensions": [
+			"pls"
+		]
+	},
+	"application/poc-settings+xml": {
+		"source": "iana"
+	},
+	"application/postscript": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"ai",
+			"eps",
+			"ps"
+		]
+	},
+	"application/ppsp-tracker+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/problem+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/problem+xml": {
+		"source": "iana"
+	},
+	"application/provenance+xml": {
+		"source": "iana"
+	},
+	"application/prs.alvestrand.titrax-sheet": {
+		"source": "iana"
+	},
+	"application/prs.cww": {
+		"source": "iana",
+		"extensions": [
+			"cww"
+		]
+	},
+	"application/prs.hpub+zip": {
+		"source": "iana"
+	},
+	"application/prs.nprend": {
+		"source": "iana"
+	},
+	"application/prs.plucker": {
+		"source": "iana"
+	},
+	"application/prs.rdf-xml-crypt": {
+		"source": "iana"
+	},
+	"application/prs.xsf+xml": {
+		"source": "iana"
+	},
+	"application/pskc+xml": {
+		"source": "iana",
+		"extensions": [
+			"pskcxml"
+		]
+	},
+	"application/qsig": {
+		"source": "iana"
+	},
+	"application/raptorfec": {
+		"source": "iana"
+	},
+	"application/rdap+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/rdf+xml": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"rdf"
+		]
+	},
+	"application/reginfo+xml": {
+		"source": "iana",
+		"extensions": [
+			"rif"
+		]
+	},
+	"application/relax-ng-compact-syntax": {
+		"source": "iana",
+		"extensions": [
+			"rnc"
+		]
+	},
+	"application/remote-printing": {
+		"source": "iana"
+	},
+	"application/reputon+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/resource-lists+xml": {
+		"source": "iana",
+		"extensions": [
+			"rl"
+		]
+	},
+	"application/resource-lists-diff+xml": {
+		"source": "iana",
+		"extensions": [
+			"rld"
+		]
+	},
+	"application/rfc+xml": {
+		"source": "iana"
+	},
+	"application/riscos": {
+		"source": "iana"
+	},
+	"application/rlmi+xml": {
+		"source": "iana"
+	},
+	"application/rls-services+xml": {
+		"source": "iana",
+		"extensions": [
+			"rs"
+		]
+	},
+	"application/rpki-ghostbusters": {
+		"source": "iana",
+		"extensions": [
+			"gbr"
+		]
+	},
+	"application/rpki-manifest": {
+		"source": "iana",
+		"extensions": [
+			"mft"
+		]
+	},
+	"application/rpki-roa": {
+		"source": "iana",
+		"extensions": [
+			"roa"
+		]
+	},
+	"application/rpki-updown": {
+		"source": "iana"
+	},
+	"application/rsd+xml": {
+		"source": "apache",
+		"extensions": [
+			"rsd"
+		]
+	},
+	"application/rss+xml": {
+		"source": "apache",
+		"compressible": true,
+		"extensions": [
+			"rss"
+		]
+	},
+	"application/rtf": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"rtf"
+		]
+	},
+	"application/rtploopback": {
+		"source": "iana"
+	},
+	"application/rtx": {
+		"source": "iana"
+	},
+	"application/samlassertion+xml": {
+		"source": "iana"
+	},
+	"application/samlmetadata+xml": {
+		"source": "iana"
+	},
+	"application/sbml+xml": {
+		"source": "iana",
+		"extensions": [
+			"sbml"
+		]
+	},
+	"application/scaip+xml": {
+		"source": "iana"
+	},
+	"application/scim+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/scvp-cv-request": {
+		"source": "iana",
+		"extensions": [
+			"scq"
+		]
+	},
+	"application/scvp-cv-response": {
+		"source": "iana",
+		"extensions": [
+			"scs"
+		]
+	},
+	"application/scvp-vp-request": {
+		"source": "iana",
+		"extensions": [
+			"spq"
+		]
+	},
+	"application/scvp-vp-response": {
+		"source": "iana",
+		"extensions": [
+			"spp"
+		]
+	},
+	"application/sdp": {
+		"source": "iana",
+		"extensions": [
+			"sdp"
+		]
+	},
+	"application/sep+xml": {
+		"source": "iana"
+	},
+	"application/sep-exi": {
+		"source": "iana"
+	},
+	"application/session-info": {
+		"source": "iana"
+	},
+	"application/set-payment": {
+		"source": "iana"
+	},
+	"application/set-payment-initiation": {
+		"source": "iana",
+		"extensions": [
+			"setpay"
+		]
+	},
+	"application/set-registration": {
+		"source": "iana"
+	},
+	"application/set-registration-initiation": {
+		"source": "iana",
+		"extensions": [
+			"setreg"
+		]
+	},
+	"application/sgml": {
+		"source": "iana"
+	},
+	"application/sgml-open-catalog": {
+		"source": "iana"
+	},
+	"application/shf+xml": {
+		"source": "iana",
+		"extensions": [
+			"shf"
+		]
+	},
+	"application/sieve": {
+		"source": "iana"
+	},
+	"application/simple-filter+xml": {
+		"source": "iana"
+	},
+	"application/simple-message-summary": {
+		"source": "iana"
+	},
+	"application/simplesymbolcontainer": {
+		"source": "iana"
+	},
+	"application/slate": {
+		"source": "iana"
+	},
+	"application/smil": {
+		"source": "iana"
+	},
+	"application/smil+xml": {
+		"source": "iana",
+		"extensions": [
+			"smi",
+			"smil"
+		]
+	},
+	"application/smpte336m": {
+		"source": "iana"
+	},
+	"application/soap+fastinfoset": {
+		"source": "iana"
+	},
+	"application/soap+xml": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/sparql-query": {
+		"source": "iana",
+		"extensions": [
+			"rq"
+		]
+	},
+	"application/sparql-results+xml": {
+		"source": "iana",
+		"extensions": [
+			"srx"
+		]
+	},
+	"application/spirits-event+xml": {
+		"source": "iana"
+	},
+	"application/sql": {
+		"source": "iana"
+	},
+	"application/srgs": {
+		"source": "iana",
+		"extensions": [
+			"gram"
+		]
+	},
+	"application/srgs+xml": {
+		"source": "iana",
+		"extensions": [
+			"grxml"
+		]
+	},
+	"application/sru+xml": {
+		"source": "iana",
+		"extensions": [
+			"sru"
+		]
+	},
+	"application/ssdl+xml": {
+		"source": "apache",
+		"extensions": [
+			"ssdl"
+		]
+	},
+	"application/ssml+xml": {
+		"source": "iana",
+		"extensions": [
+			"ssml"
+		]
+	},
+	"application/tamp-apex-update": {
+		"source": "iana"
+	},
+	"application/tamp-apex-update-confirm": {
+		"source": "iana"
+	},
+	"application/tamp-community-update": {
+		"source": "iana"
+	},
+	"application/tamp-community-update-confirm": {
+		"source": "iana"
+	},
+	"application/tamp-error": {
+		"source": "iana"
+	},
+	"application/tamp-sequence-adjust": {
+		"source": "iana"
+	},
+	"application/tamp-sequence-adjust-confirm": {
+		"source": "iana"
+	},
+	"application/tamp-status-query": {
+		"source": "iana"
+	},
+	"application/tamp-status-response": {
+		"source": "iana"
+	},
+	"application/tamp-update": {
+		"source": "iana"
+	},
+	"application/tamp-update-confirm": {
+		"source": "iana"
+	},
+	"application/tar": {
+		"compressible": true
+	},
+	"application/tei+xml": {
+		"source": "iana",
+		"extensions": [
+			"tei",
+			"teicorpus"
+		]
+	},
+	"application/thraud+xml": {
+		"source": "iana",
+		"extensions": [
+			"tfi"
+		]
+	},
+	"application/timestamp-query": {
+		"source": "iana"
+	},
+	"application/timestamp-reply": {
+		"source": "iana"
+	},
+	"application/timestamped-data": {
+		"source": "iana",
+		"extensions": [
+			"tsd"
+		]
+	},
+	"application/trig": {
+		"source": "iana"
+	},
+	"application/ttml+xml": {
+		"source": "iana"
+	},
+	"application/tve-trigger": {
+		"source": "iana"
+	},
+	"application/ulpfec": {
+		"source": "iana"
+	},
+	"application/urc-grpsheet+xml": {
+		"source": "iana"
+	},
+	"application/urc-ressheet+xml": {
+		"source": "iana"
+	},
+	"application/urc-targetdesc+xml": {
+		"source": "iana"
+	},
+	"application/urc-uisocketdesc+xml": {
+		"source": "iana"
+	},
+	"application/vcard+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vcard+xml": {
+		"source": "iana"
+	},
+	"application/vemmi": {
+		"source": "iana"
+	},
+	"application/vividence.scriptfile": {
+		"source": "apache"
+	},
+	"application/vnd.3gpp-prose+xml": {
+		"source": "iana"
+	},
+	"application/vnd.3gpp-prose-pc3ch+xml": {
+		"source": "iana"
+	},
+	"application/vnd.3gpp.access-transfer-events+xml": {
+		"source": "iana"
+	},
+	"application/vnd.3gpp.bsf+xml": {
+		"source": "iana"
+	},
+	"application/vnd.3gpp.mid-call+xml": {
+		"source": "iana"
+	},
+	"application/vnd.3gpp.pic-bw-large": {
+		"source": "iana",
+		"extensions": [
+			"plb"
+		]
+	},
+	"application/vnd.3gpp.pic-bw-small": {
+		"source": "iana",
+		"extensions": [
+			"psb"
+		]
+	},
+	"application/vnd.3gpp.pic-bw-var": {
+		"source": "iana",
+		"extensions": [
+			"pvb"
+		]
+	},
+	"application/vnd.3gpp.sms": {
+		"source": "iana"
+	},
+	"application/vnd.3gpp.sms+xml": {
+		"source": "iana"
+	},
+	"application/vnd.3gpp.srvcc-ext+xml": {
+		"source": "iana"
+	},
+	"application/vnd.3gpp.srvcc-info+xml": {
+		"source": "iana"
+	},
+	"application/vnd.3gpp.state-and-event-info+xml": {
+		"source": "iana"
+	},
+	"application/vnd.3gpp.ussd+xml": {
+		"source": "iana"
+	},
+	"application/vnd.3gpp2.bcmcsinfo+xml": {
+		"source": "iana"
+	},
+	"application/vnd.3gpp2.sms": {
+		"source": "iana"
+	},
+	"application/vnd.3gpp2.tcap": {
+		"source": "iana",
+		"extensions": [
+			"tcap"
+		]
+	},
+	"application/vnd.3lightssoftware.imagescal": {
+		"source": "iana"
+	},
+	"application/vnd.3m.post-it-notes": {
+		"source": "iana",
+		"extensions": [
+			"pwn"
+		]
+	},
+	"application/vnd.accpac.simply.aso": {
+		"source": "iana",
+		"extensions": [
+			"aso"
+		]
+	},
+	"application/vnd.accpac.simply.imp": {
+		"source": "iana",
+		"extensions": [
+			"imp"
+		]
+	},
+	"application/vnd.acucobol": {
+		"source": "iana",
+		"extensions": [
+			"acu"
+		]
+	},
+	"application/vnd.acucorp": {
+		"source": "iana",
+		"extensions": [
+			"atc",
+			"acutc"
+		]
+	},
+	"application/vnd.adobe.air-application-installer-package+zip": {
+		"source": "apache",
+		"extensions": [
+			"air"
+		]
+	},
+	"application/vnd.adobe.flash.movie": {
+		"source": "iana"
+	},
+	"application/vnd.adobe.formscentral.fcdt": {
+		"source": "iana",
+		"extensions": [
+			"fcdt"
+		]
+	},
+	"application/vnd.adobe.fxp": {
+		"source": "iana",
+		"extensions": [
+			"fxp",
+			"fxpl"
+		]
+	},
+	"application/vnd.adobe.partial-upload": {
+		"source": "iana"
+	},
+	"application/vnd.adobe.xdp+xml": {
+		"source": "iana",
+		"extensions": [
+			"xdp"
+		]
+	},
+	"application/vnd.adobe.xfdf": {
+		"source": "iana",
+		"extensions": [
+			"xfdf"
+		]
+	},
+	"application/vnd.aether.imp": {
+		"source": "iana"
+	},
+	"application/vnd.ah-barcode": {
+		"source": "iana"
+	},
+	"application/vnd.ahead.space": {
+		"source": "iana",
+		"extensions": [
+			"ahead"
+		]
+	},
+	"application/vnd.airzip.filesecure.azf": {
+		"source": "iana",
+		"extensions": [
+			"azf"
+		]
+	},
+	"application/vnd.airzip.filesecure.azs": {
+		"source": "iana",
+		"extensions": [
+			"azs"
+		]
+	},
+	"application/vnd.amazon.ebook": {
+		"source": "apache",
+		"extensions": [
+			"azw"
+		]
+	},
+	"application/vnd.amazon.mobi8-ebook": {
+		"source": "iana"
+	},
+	"application/vnd.americandynamics.acc": {
+		"source": "iana",
+		"extensions": [
+			"acc"
+		]
+	},
+	"application/vnd.amiga.ami": {
+		"source": "iana",
+		"extensions": [
+			"ami"
+		]
+	},
+	"application/vnd.amundsen.maze+xml": {
+		"source": "iana"
+	},
+	"application/vnd.android.package-archive": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"apk"
+		]
+	},
+	"application/vnd.anki": {
+		"source": "iana"
+	},
+	"application/vnd.anser-web-certificate-issue-initiation": {
+		"source": "iana",
+		"extensions": [
+			"cii"
+		]
+	},
+	"application/vnd.anser-web-funds-transfer-initiation": {
+		"source": "apache",
+		"extensions": [
+			"fti"
+		]
+	},
+	"application/vnd.antix.game-component": {
+		"source": "iana",
+		"extensions": [
+			"atx"
+		]
+	},
+	"application/vnd.apache.thrift.binary": {
+		"source": "iana"
+	},
+	"application/vnd.apache.thrift.compact": {
+		"source": "iana"
+	},
+	"application/vnd.apache.thrift.json": {
+		"source": "iana"
+	},
+	"application/vnd.api+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.apothekende.reservation+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.apple.installer+xml": {
+		"source": "iana",
+		"extensions": [
+			"mpkg"
+		]
+	},
+	"application/vnd.apple.mpegurl": {
+		"source": "iana",
+		"extensions": [
+			"m3u8"
+		]
+	},
+	"application/vnd.apple.pkpass": {
+		"compressible": false,
+		"extensions": [
+			"pkpass"
+		]
+	},
+	"application/vnd.arastra.swi": {
+		"source": "iana"
+	},
+	"application/vnd.aristanetworks.swi": {
+		"source": "iana",
+		"extensions": [
+			"swi"
+		]
+	},
+	"application/vnd.artsquare": {
+		"source": "iana"
+	},
+	"application/vnd.astraea-software.iota": {
+		"source": "iana",
+		"extensions": [
+			"iota"
+		]
+	},
+	"application/vnd.audiograph": {
+		"source": "iana",
+		"extensions": [
+			"aep"
+		]
+	},
+	"application/vnd.autopackage": {
+		"source": "iana"
+	},
+	"application/vnd.avistar+xml": {
+		"source": "iana"
+	},
+	"application/vnd.balsamiq.bmml+xml": {
+		"source": "iana"
+	},
+	"application/vnd.balsamiq.bmpr": {
+		"source": "iana"
+	},
+	"application/vnd.bekitzur-stech+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.biopax.rdf+xml": {
+		"source": "iana"
+	},
+	"application/vnd.blueice.multipass": {
+		"source": "iana",
+		"extensions": [
+			"mpm"
+		]
+	},
+	"application/vnd.bluetooth.ep.oob": {
+		"source": "iana"
+	},
+	"application/vnd.bluetooth.le.oob": {
+		"source": "iana"
+	},
+	"application/vnd.bmi": {
+		"source": "iana",
+		"extensions": [
+			"bmi"
+		]
+	},
+	"application/vnd.businessobjects": {
+		"source": "iana",
+		"extensions": [
+			"rep"
+		]
+	},
+	"application/vnd.cab-jscript": {
+		"source": "iana"
+	},
+	"application/vnd.canon-cpdl": {
+		"source": "iana"
+	},
+	"application/vnd.canon-lips": {
+		"source": "iana"
+	},
+	"application/vnd.cendio.thinlinc.clientconf": {
+		"source": "iana"
+	},
+	"application/vnd.century-systems.tcp_stream": {
+		"source": "iana"
+	},
+	"application/vnd.chemdraw+xml": {
+		"source": "iana",
+		"extensions": [
+			"cdxml"
+		]
+	},
+	"application/vnd.chess-pgn": {
+		"source": "iana"
+	},
+	"application/vnd.chipnuts.karaoke-mmd": {
+		"source": "iana",
+		"extensions": [
+			"mmd"
+		]
+	},
+	"application/vnd.cinderella": {
+		"source": "iana",
+		"extensions": [
+			"cdy"
+		]
+	},
+	"application/vnd.cirpack.isdn-ext": {
+		"source": "iana"
+	},
+	"application/vnd.citationstyles.style+xml": {
+		"source": "iana"
+	},
+	"application/vnd.claymore": {
+		"source": "iana",
+		"extensions": [
+			"cla"
+		]
+	},
+	"application/vnd.cloanto.rp9": {
+		"source": "iana",
+		"extensions": [
+			"rp9"
+		]
+	},
+	"application/vnd.clonk.c4group": {
+		"source": "iana",
+		"extensions": [
+			"c4g",
+			"c4d",
+			"c4f",
+			"c4p",
+			"c4u"
+		]
+	},
+	"application/vnd.cluetrust.cartomobile-config": {
+		"source": "iana",
+		"extensions": [
+			"c11amc"
+		]
+	},
+	"application/vnd.cluetrust.cartomobile-config-pkg": {
+		"source": "iana",
+		"extensions": [
+			"c11amz"
+		]
+	},
+	"application/vnd.coffeescript": {
+		"source": "iana"
+	},
+	"application/vnd.collection+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.collection.doc+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.collection.next+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.comicbook+zip": {
+		"source": "iana"
+	},
+	"application/vnd.commerce-battelle": {
+		"source": "iana"
+	},
+	"application/vnd.commonspace": {
+		"source": "iana",
+		"extensions": [
+			"csp"
+		]
+	},
+	"application/vnd.contact.cmsg": {
+		"source": "iana",
+		"extensions": [
+			"cdbcmsg"
+		]
+	},
+	"application/vnd.coreos.ignition+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.cosmocaller": {
+		"source": "iana",
+		"extensions": [
+			"cmc"
+		]
+	},
+	"application/vnd.crick.clicker": {
+		"source": "iana",
+		"extensions": [
+			"clkx"
+		]
+	},
+	"application/vnd.crick.clicker.keyboard": {
+		"source": "iana",
+		"extensions": [
+			"clkk"
+		]
+	},
+	"application/vnd.crick.clicker.palette": {
+		"source": "iana",
+		"extensions": [
+			"clkp"
+		]
+	},
+	"application/vnd.crick.clicker.template": {
+		"source": "iana",
+		"extensions": [
+			"clkt"
+		]
+	},
+	"application/vnd.crick.clicker.wordbank": {
+		"source": "iana",
+		"extensions": [
+			"clkw"
+		]
+	},
+	"application/vnd.criticaltools.wbs+xml": {
+		"source": "iana",
+		"extensions": [
+			"wbs"
+		]
+	},
+	"application/vnd.ctc-posml": {
+		"source": "iana",
+		"extensions": [
+			"pml"
+		]
+	},
+	"application/vnd.ctct.ws+xml": {
+		"source": "iana"
+	},
+	"application/vnd.cups-pdf": {
+		"source": "iana"
+	},
+	"application/vnd.cups-postscript": {
+		"source": "iana"
+	},
+	"application/vnd.cups-ppd": {
+		"source": "iana",
+		"extensions": [
+			"ppd"
+		]
+	},
+	"application/vnd.cups-raster": {
+		"source": "iana"
+	},
+	"application/vnd.cups-raw": {
+		"source": "iana"
+	},
+	"application/vnd.curl": {
+		"source": "iana"
+	},
+	"application/vnd.curl.car": {
+		"source": "apache",
+		"extensions": [
+			"car"
+		]
+	},
+	"application/vnd.curl.pcurl": {
+		"source": "apache",
+		"extensions": [
+			"pcurl"
+		]
+	},
+	"application/vnd.cyan.dean.root+xml": {
+		"source": "iana"
+	},
+	"application/vnd.cybank": {
+		"source": "iana"
+	},
+	"application/vnd.d2l.coursepackage1p0+zip": {
+		"source": "iana"
+	},
+	"application/vnd.dart": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"dart"
+		]
+	},
+	"application/vnd.data-vision.rdz": {
+		"source": "iana",
+		"extensions": [
+			"rdz"
+		]
+	},
+	"application/vnd.dataresource+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.debian.binary-package": {
+		"source": "iana"
+	},
+	"application/vnd.dece.data": {
+		"source": "iana",
+		"extensions": [
+			"uvf",
+			"uvvf",
+			"uvd",
+			"uvvd"
+		]
+	},
+	"application/vnd.dece.ttml+xml": {
+		"source": "iana",
+		"extensions": [
+			"uvt",
+			"uvvt"
+		]
+	},
+	"application/vnd.dece.unspecified": {
+		"source": "iana",
+		"extensions": [
+			"uvx",
+			"uvvx"
+		]
+	},
+	"application/vnd.dece.zip": {
+		"source": "iana",
+		"extensions": [
+			"uvz",
+			"uvvz"
+		]
+	},
+	"application/vnd.denovo.fcselayout-link": {
+		"source": "iana",
+		"extensions": [
+			"fe_launch"
+		]
+	},
+	"application/vnd.desmume-movie": {
+		"source": "iana"
+	},
+	"application/vnd.desmume.movie": {
+		"source": "apache"
+	},
+	"application/vnd.dir-bi.plate-dl-nosuffix": {
+		"source": "iana"
+	},
+	"application/vnd.dm.delegation+xml": {
+		"source": "iana"
+	},
+	"application/vnd.dna": {
+		"source": "iana",
+		"extensions": [
+			"dna"
+		]
+	},
+	"application/vnd.document+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.dolby.mlp": {
+		"source": "apache",
+		"extensions": [
+			"mlp"
+		]
+	},
+	"application/vnd.dolby.mobile.1": {
+		"source": "iana"
+	},
+	"application/vnd.dolby.mobile.2": {
+		"source": "iana"
+	},
+	"application/vnd.doremir.scorecloud-binary-document": {
+		"source": "iana"
+	},
+	"application/vnd.dpgraph": {
+		"source": "iana",
+		"extensions": [
+			"dpg"
+		]
+	},
+	"application/vnd.dreamfactory": {
+		"source": "iana",
+		"extensions": [
+			"dfac"
+		]
+	},
+	"application/vnd.drive+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.ds-keypoint": {
+		"source": "apache",
+		"extensions": [
+			"kpxx"
+		]
+	},
+	"application/vnd.dtg.local": {
+		"source": "iana"
+	},
+	"application/vnd.dtg.local.flash": {
+		"source": "iana"
+	},
+	"application/vnd.dtg.local.html": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.ait": {
+		"source": "iana",
+		"extensions": [
+			"ait"
+		]
+	},
+	"application/vnd.dvb.dvbj": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.esgcontainer": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.ipdcdftnotifaccess": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.ipdcesgaccess": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.ipdcesgaccess2": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.ipdcesgpdd": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.ipdcroaming": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.iptv.alfec-base": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.iptv.alfec-enhancement": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.notif-aggregate-root+xml": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.notif-container+xml": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.notif-generic+xml": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.notif-ia-msglist+xml": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.notif-ia-registration-request+xml": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.notif-ia-registration-response+xml": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.notif-init+xml": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.pfr": {
+		"source": "iana"
+	},
+	"application/vnd.dvb.service": {
+		"source": "iana",
+		"extensions": [
+			"svc"
+		]
+	},
+	"application/vnd.dxr": {
+		"source": "iana"
+	},
+	"application/vnd.dynageo": {
+		"source": "iana",
+		"extensions": [
+			"geo"
+		]
+	},
+	"application/vnd.dzr": {
+		"source": "iana"
+	},
+	"application/vnd.easykaraoke.cdgdownload": {
+		"source": "iana"
+	},
+	"application/vnd.ecdis-update": {
+		"source": "iana"
+	},
+	"application/vnd.ecowin.chart": {
+		"source": "iana",
+		"extensions": [
+			"mag"
+		]
+	},
+	"application/vnd.ecowin.filerequest": {
+		"source": "iana"
+	},
+	"application/vnd.ecowin.fileupdate": {
+		"source": "iana"
+	},
+	"application/vnd.ecowin.series": {
+		"source": "iana"
+	},
+	"application/vnd.ecowin.seriesrequest": {
+		"source": "iana"
+	},
+	"application/vnd.ecowin.seriesupdate": {
+		"source": "iana"
+	},
+	"application/vnd.efi.img": {
+		"source": "iana"
+	},
+	"application/vnd.efi.iso": {
+		"source": "iana"
+	},
+	"application/vnd.emclient.accessrequest+xml": {
+		"source": "iana"
+	},
+	"application/vnd.enliven": {
+		"source": "iana",
+		"extensions": [
+			"nml"
+		]
+	},
+	"application/vnd.enphase.envoy": {
+		"source": "iana"
+	},
+	"application/vnd.eprints.data+xml": {
+		"source": "iana"
+	},
+	"application/vnd.epson.esf": {
+		"source": "iana",
+		"extensions": [
+			"esf"
+		]
+	},
+	"application/vnd.epson.msf": {
+		"source": "iana",
+		"extensions": [
+			"msf"
+		]
+	},
+	"application/vnd.epson.quickanime": {
+		"source": "iana",
+		"extensions": [
+			"qam"
+		]
+	},
+	"application/vnd.epson.salt": {
+		"source": "iana",
+		"extensions": [
+			"slt"
+		]
+	},
+	"application/vnd.epson.ssf": {
+		"source": "iana",
+		"extensions": [
+			"ssf"
+		]
+	},
+	"application/vnd.ericsson.quickcall": {
+		"source": "iana"
+	},
+	"application/vnd.espass-espass+zip": {
+		"source": "iana"
+	},
+	"application/vnd.eszigno3+xml": {
+		"source": "iana",
+		"extensions": [
+			"es3",
+			"et3"
+		]
+	},
+	"application/vnd.etsi.aoc+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.asic-e+zip": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.asic-s+zip": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.cug+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.iptvcommand+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.iptvdiscovery+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.iptvprofile+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.iptvsad-bc+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.iptvsad-cod+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.iptvsad-npvr+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.iptvservice+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.iptvsync+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.iptvueprofile+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.mcid+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.mheg5": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.overload-control-policy-dataset+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.pstn+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.sci+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.simservs+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.timestamp-token": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.tsl+xml": {
+		"source": "iana"
+	},
+	"application/vnd.etsi.tsl.der": {
+		"source": "iana"
+	},
+	"application/vnd.eudora.data": {
+		"source": "iana"
+	},
+	"application/vnd.ezpix-album": {
+		"source": "iana",
+		"extensions": [
+			"ez2"
+		]
+	},
+	"application/vnd.ezpix-package": {
+		"source": "iana",
+		"extensions": [
+			"ez3"
+		]
+	},
+	"application/vnd.f-secure.mobile": {
+		"source": "iana"
+	},
+	"application/vnd.fastcopy-disk-image": {
+		"source": "iana"
+	},
+	"application/vnd.fdf": {
+		"source": "iana",
+		"extensions": [
+			"fdf"
+		]
+	},
+	"application/vnd.fdsn.mseed": {
+		"source": "iana",
+		"extensions": [
+			"mseed"
+		]
+	},
+	"application/vnd.fdsn.seed": {
+		"source": "iana",
+		"extensions": [
+			"seed",
+			"dataless"
+		]
+	},
+	"application/vnd.ffsns": {
+		"source": "iana"
+	},
+	"application/vnd.filmit.zfc": {
+		"source": "iana"
+	},
+	"application/vnd.fints": {
+		"source": "iana"
+	},
+	"application/vnd.firemonkeys.cloudcell": {
+		"source": "iana"
+	},
+	"application/vnd.flographit": {
+		"source": "iana",
+		"extensions": [
+			"gph"
+		]
+	},
+	"application/vnd.fluxtime.clip": {
+		"source": "iana",
+		"extensions": [
+			"ftc"
+		]
+	},
+	"application/vnd.font-fontforge-sfd": {
+		"source": "iana"
+	},
+	"application/vnd.framemaker": {
+		"source": "iana",
+		"extensions": [
+			"fm",
+			"frame",
+			"maker",
+			"book"
+		]
+	},
+	"application/vnd.frogans.fnc": {
+		"source": "iana",
+		"extensions": [
+			"fnc"
+		]
+	},
+	"application/vnd.frogans.ltf": {
+		"source": "iana",
+		"extensions": [
+			"ltf"
+		]
+	},
+	"application/vnd.fsc.weblaunch": {
+		"source": "iana",
+		"extensions": [
+			"fsc"
+		]
+	},
+	"application/vnd.fujitsu.oasys": {
+		"source": "iana",
+		"extensions": [
+			"oas"
+		]
+	},
+	"application/vnd.fujitsu.oasys2": {
+		"source": "iana",
+		"extensions": [
+			"oa2"
+		]
+	},
+	"application/vnd.fujitsu.oasys3": {
+		"source": "iana",
+		"extensions": [
+			"oa3"
+		]
+	},
+	"application/vnd.fujitsu.oasysgp": {
+		"source": "iana",
+		"extensions": [
+			"fg5"
+		]
+	},
+	"application/vnd.fujitsu.oasysprs": {
+		"source": "iana",
+		"extensions": [
+			"bh2"
+		]
+	},
+	"application/vnd.fujixerox.art-ex": {
+		"source": "iana"
+	},
+	"application/vnd.fujixerox.art4": {
+		"source": "iana"
+	},
+	"application/vnd.fujixerox.ddd": {
+		"source": "iana",
+		"extensions": [
+			"ddd"
+		]
+	},
+	"application/vnd.fujixerox.docuworks": {
+		"source": "iana",
+		"extensions": [
+			"xdw"
+		]
+	},
+	"application/vnd.fujixerox.docuworks.binder": {
+		"source": "iana",
+		"extensions": [
+			"xbd"
+		]
+	},
+	"application/vnd.fujixerox.docuworks.container": {
+		"source": "iana"
+	},
+	"application/vnd.fujixerox.hbpl": {
+		"source": "iana"
+	},
+	"application/vnd.fut-misnet": {
+		"source": "iana"
+	},
+	"application/vnd.fuzzysheet": {
+		"source": "iana",
+		"extensions": [
+			"fzs"
+		]
+	},
+	"application/vnd.genomatix.tuxedo": {
+		"source": "iana",
+		"extensions": [
+			"txd"
+		]
+	},
+	"application/vnd.geo+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.geocube+xml": {
+		"source": "iana"
+	},
+	"application/vnd.geogebra.file": {
+		"source": "iana",
+		"extensions": [
+			"ggb"
+		]
+	},
+	"application/vnd.geogebra.tool": {
+		"source": "iana",
+		"extensions": [
+			"ggt"
+		]
+	},
+	"application/vnd.geometry-explorer": {
+		"source": "iana",
+		"extensions": [
+			"gex",
+			"gre"
+		]
+	},
+	"application/vnd.geonext": {
+		"source": "iana",
+		"extensions": [
+			"gxt"
+		]
+	},
+	"application/vnd.geoplan": {
+		"source": "iana",
+		"extensions": [
+			"g2w"
+		]
+	},
+	"application/vnd.geospace": {
+		"source": "iana",
+		"extensions": [
+			"g3w"
+		]
+	},
+	"application/vnd.gerber": {
+		"source": "iana"
+	},
+	"application/vnd.globalplatform.card-content-mgt": {
+		"source": "iana"
+	},
+	"application/vnd.globalplatform.card-content-mgt-response": {
+		"source": "iana"
+	},
+	"application/vnd.gmx": {
+		"source": "iana",
+		"extensions": [
+			"gmx"
+		]
+	},
+	"application/vnd.google-apps.document": {
+		"compressible": false,
+		"extensions": [
+			"gdoc"
+		]
+	},
+	"application/vnd.google-apps.presentation": {
+		"compressible": false,
+		"extensions": [
+			"gslides"
+		]
+	},
+	"application/vnd.google-apps.spreadsheet": {
+		"compressible": false,
+		"extensions": [
+			"gsheet"
+		]
+	},
+	"application/vnd.google-earth.kml+xml": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"kml"
+		]
+	},
+	"application/vnd.google-earth.kmz": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"kmz"
+		]
+	},
+	"application/vnd.gov.sk.e-form+xml": {
+		"source": "iana"
+	},
+	"application/vnd.gov.sk.e-form+zip": {
+		"source": "iana"
+	},
+	"application/vnd.gov.sk.xmldatacontainer+xml": {
+		"source": "iana"
+	},
+	"application/vnd.grafeq": {
+		"source": "iana",
+		"extensions": [
+			"gqf",
+			"gqs"
+		]
+	},
+	"application/vnd.gridmp": {
+		"source": "iana"
+	},
+	"application/vnd.groove-account": {
+		"source": "iana",
+		"extensions": [
+			"gac"
+		]
+	},
+	"application/vnd.groove-help": {
+		"source": "iana",
+		"extensions": [
+			"ghf"
+		]
+	},
+	"application/vnd.groove-identity-message": {
+		"source": "iana",
+		"extensions": [
+			"gim"
+		]
+	},
+	"application/vnd.groove-injector": {
+		"source": "iana",
+		"extensions": [
+			"grv"
+		]
+	},
+	"application/vnd.groove-tool-message": {
+		"source": "iana",
+		"extensions": [
+			"gtm"
+		]
+	},
+	"application/vnd.groove-tool-template": {
+		"source": "iana",
+		"extensions": [
+			"tpl"
+		]
+	},
+	"application/vnd.groove-vcard": {
+		"source": "iana",
+		"extensions": [
+			"vcg"
+		]
+	},
+	"application/vnd.hal+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.hal+xml": {
+		"source": "iana",
+		"extensions": [
+			"hal"
+		]
+	},
+	"application/vnd.handheld-entertainment+xml": {
+		"source": "iana",
+		"extensions": [
+			"zmm"
+		]
+	},
+	"application/vnd.hbci": {
+		"source": "iana",
+		"extensions": [
+			"hbci"
+		]
+	},
+	"application/vnd.hc+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.hcl-bireports": {
+		"source": "iana"
+	},
+	"application/vnd.hdt": {
+		"source": "iana"
+	},
+	"application/vnd.heroku+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.hhe.lesson-player": {
+		"source": "iana",
+		"extensions": [
+			"les"
+		]
+	},
+	"application/vnd.hp-hpgl": {
+		"source": "iana",
+		"extensions": [
+			"hpgl"
+		]
+	},
+	"application/vnd.hp-hpid": {
+		"source": "iana",
+		"extensions": [
+			"hpid"
+		]
+	},
+	"application/vnd.hp-hps": {
+		"source": "iana",
+		"extensions": [
+			"hps"
+		]
+	},
+	"application/vnd.hp-jlyt": {
+		"source": "iana",
+		"extensions": [
+			"jlt"
+		]
+	},
+	"application/vnd.hp-pcl": {
+		"source": "iana",
+		"extensions": [
+			"pcl"
+		]
+	},
+	"application/vnd.hp-pclxl": {
+		"source": "iana",
+		"extensions": [
+			"pclxl"
+		]
+	},
+	"application/vnd.httphone": {
+		"source": "iana"
+	},
+	"application/vnd.hydrostatix.sof-data": {
+		"source": "iana",
+		"extensions": [
+			"sfd-hdstx"
+		]
+	},
+	"application/vnd.hyperdrive+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.hzn-3d-crossword": {
+		"source": "iana"
+	},
+	"application/vnd.ibm.afplinedata": {
+		"source": "iana"
+	},
+	"application/vnd.ibm.electronic-media": {
+		"source": "iana"
+	},
+	"application/vnd.ibm.minipay": {
+		"source": "iana",
+		"extensions": [
+			"mpy"
+		]
+	},
+	"application/vnd.ibm.modcap": {
+		"source": "iana",
+		"extensions": [
+			"afp",
+			"listafp",
+			"list3820"
+		]
+	},
+	"application/vnd.ibm.rights-management": {
+		"source": "iana",
+		"extensions": [
+			"irm"
+		]
+	},
+	"application/vnd.ibm.secure-container": {
+		"source": "iana",
+		"extensions": [
+			"sc"
+		]
+	},
+	"application/vnd.iccprofile": {
+		"source": "iana",
+		"extensions": [
+			"icc",
+			"icm"
+		]
+	},
+	"application/vnd.ieee.1905": {
+		"source": "iana"
+	},
+	"application/vnd.igloader": {
+		"source": "iana",
+		"extensions": [
+			"igl"
+		]
+	},
+	"application/vnd.imagemeter.image+zip": {
+		"source": "iana"
+	},
+	"application/vnd.immervision-ivp": {
+		"source": "iana",
+		"extensions": [
+			"ivp"
+		]
+	},
+	"application/vnd.immervision-ivu": {
+		"source": "iana",
+		"extensions": [
+			"ivu"
+		]
+	},
+	"application/vnd.ims.imsccv1p1": {
+		"source": "iana"
+	},
+	"application/vnd.ims.imsccv1p2": {
+		"source": "iana"
+	},
+	"application/vnd.ims.imsccv1p3": {
+		"source": "iana"
+	},
+	"application/vnd.ims.lis.v2.result+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.ims.lti.v2.toolconsumerprofile+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.ims.lti.v2.toolproxy+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.ims.lti.v2.toolproxy.id+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.ims.lti.v2.toolsettings+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.ims.lti.v2.toolsettings.simple+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.informedcontrol.rms+xml": {
+		"source": "iana"
+	},
+	"application/vnd.informix-visionary": {
+		"source": "iana"
+	},
+	"application/vnd.infotech.project": {
+		"source": "iana"
+	},
+	"application/vnd.infotech.project+xml": {
+		"source": "iana"
+	},
+	"application/vnd.innopath.wamp.notification": {
+		"source": "iana"
+	},
+	"application/vnd.insors.igm": {
+		"source": "iana",
+		"extensions": [
+			"igm"
+		]
+	},
+	"application/vnd.intercon.formnet": {
+		"source": "iana",
+		"extensions": [
+			"xpw",
+			"xpx"
+		]
+	},
+	"application/vnd.intergeo": {
+		"source": "iana",
+		"extensions": [
+			"i2g"
+		]
+	},
+	"application/vnd.intertrust.digibox": {
+		"source": "iana"
+	},
+	"application/vnd.intertrust.nncp": {
+		"source": "iana"
+	},
+	"application/vnd.intu.qbo": {
+		"source": "iana",
+		"extensions": [
+			"qbo"
+		]
+	},
+	"application/vnd.intu.qfx": {
+		"source": "iana",
+		"extensions": [
+			"qfx"
+		]
+	},
+	"application/vnd.iptc.g2.catalogitem+xml": {
+		"source": "iana"
+	},
+	"application/vnd.iptc.g2.conceptitem+xml": {
+		"source": "iana"
+	},
+	"application/vnd.iptc.g2.knowledgeitem+xml": {
+		"source": "iana"
+	},
+	"application/vnd.iptc.g2.newsitem+xml": {
+		"source": "iana"
+	},
+	"application/vnd.iptc.g2.newsmessage+xml": {
+		"source": "iana"
+	},
+	"application/vnd.iptc.g2.packageitem+xml": {
+		"source": "iana"
+	},
+	"application/vnd.iptc.g2.planningitem+xml": {
+		"source": "iana"
+	},
+	"application/vnd.ipunplugged.rcprofile": {
+		"source": "iana",
+		"extensions": [
+			"rcprofile"
+		]
+	},
+	"application/vnd.irepository.package+xml": {
+		"source": "iana",
+		"extensions": [
+			"irp"
+		]
+	},
+	"application/vnd.is-xpr": {
+		"source": "iana",
+		"extensions": [
+			"xpr"
+		]
+	},
+	"application/vnd.isac.fcs": {
+		"source": "iana",
+		"extensions": [
+			"fcs"
+		]
+	},
+	"application/vnd.jam": {
+		"source": "iana",
+		"extensions": [
+			"jam"
+		]
+	},
+	"application/vnd.japannet-directory-service": {
+		"source": "iana"
+	},
+	"application/vnd.japannet-jpnstore-wakeup": {
+		"source": "iana"
+	},
+	"application/vnd.japannet-payment-wakeup": {
+		"source": "iana"
+	},
+	"application/vnd.japannet-registration": {
+		"source": "iana"
+	},
+	"application/vnd.japannet-registration-wakeup": {
+		"source": "iana"
+	},
+	"application/vnd.japannet-setstore-wakeup": {
+		"source": "iana"
+	},
+	"application/vnd.japannet-verification": {
+		"source": "iana"
+	},
+	"application/vnd.japannet-verification-wakeup": {
+		"source": "iana"
+	},
+	"application/vnd.jcp.javame.midlet-rms": {
+		"source": "iana",
+		"extensions": [
+			"rms"
+		]
+	},
+	"application/vnd.jisp": {
+		"source": "iana",
+		"extensions": [
+			"jisp"
+		]
+	},
+	"application/vnd.joost.joda-archive": {
+		"source": "iana",
+		"extensions": [
+			"joda"
+		]
+	},
+	"application/vnd.jsk.isdn-ngn": {
+		"source": "iana"
+	},
+	"application/vnd.kahootz": {
+		"source": "iana",
+		"extensions": [
+			"ktz",
+			"ktr"
+		]
+	},
+	"application/vnd.kde.karbon": {
+		"source": "iana",
+		"extensions": [
+			"karbon"
+		]
+	},
+	"application/vnd.kde.kchart": {
+		"source": "iana",
+		"extensions": [
+			"chrt"
+		]
+	},
+	"application/vnd.kde.kformula": {
+		"source": "iana",
+		"extensions": [
+			"kfo"
+		]
+	},
+	"application/vnd.kde.kivio": {
+		"source": "iana",
+		"extensions": [
+			"flw"
+		]
+	},
+	"application/vnd.kde.kontour": {
+		"source": "iana",
+		"extensions": [
+			"kon"
+		]
+	},
+	"application/vnd.kde.kpresenter": {
+		"source": "iana",
+		"extensions": [
+			"kpr",
+			"kpt"
+		]
+	},
+	"application/vnd.kde.kspread": {
+		"source": "iana",
+		"extensions": [
+			"ksp"
+		]
+	},
+	"application/vnd.kde.kword": {
+		"source": "iana",
+		"extensions": [
+			"kwd",
+			"kwt"
+		]
+	},
+	"application/vnd.kenameaapp": {
+		"source": "iana",
+		"extensions": [
+			"htke"
+		]
+	},
+	"application/vnd.kidspiration": {
+		"source": "iana",
+		"extensions": [
+			"kia"
+		]
+	},
+	"application/vnd.kinar": {
+		"source": "iana",
+		"extensions": [
+			"kne",
+			"knp"
+		]
+	},
+	"application/vnd.koan": {
+		"source": "iana",
+		"extensions": [
+			"skp",
+			"skd",
+			"skt",
+			"skm"
+		]
+	},
+	"application/vnd.kodak-descriptor": {
+		"source": "iana",
+		"extensions": [
+			"sse"
+		]
+	},
+	"application/vnd.las.las+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.las.las+xml": {
+		"source": "iana",
+		"extensions": [
+			"lasxml"
+		]
+	},
+	"application/vnd.liberty-request+xml": {
+		"source": "iana"
+	},
+	"application/vnd.llamagraphics.life-balance.desktop": {
+		"source": "iana",
+		"extensions": [
+			"lbd"
+		]
+	},
+	"application/vnd.llamagraphics.life-balance.exchange+xml": {
+		"source": "iana",
+		"extensions": [
+			"lbe"
+		]
+	},
+	"application/vnd.lotus-1-2-3": {
+		"source": "iana",
+		"extensions": [
+			"123"
+		]
+	},
+	"application/vnd.lotus-approach": {
+		"source": "iana",
+		"extensions": [
+			"apr"
+		]
+	},
+	"application/vnd.lotus-freelance": {
+		"source": "iana",
+		"extensions": [
+			"pre"
+		]
+	},
+	"application/vnd.lotus-notes": {
+		"source": "iana",
+		"extensions": [
+			"nsf"
+		]
+	},
+	"application/vnd.lotus-organizer": {
+		"source": "iana",
+		"extensions": [
+			"org"
+		]
+	},
+	"application/vnd.lotus-screencam": {
+		"source": "iana",
+		"extensions": [
+			"scm"
+		]
+	},
+	"application/vnd.lotus-wordpro": {
+		"source": "iana",
+		"extensions": [
+			"lwp"
+		]
+	},
+	"application/vnd.macports.portpkg": {
+		"source": "iana",
+		"extensions": [
+			"portpkg"
+		]
+	},
+	"application/vnd.mapbox-vector-tile": {
+		"source": "iana"
+	},
+	"application/vnd.marlin.drm.actiontoken+xml": {
+		"source": "iana"
+	},
+	"application/vnd.marlin.drm.conftoken+xml": {
+		"source": "iana"
+	},
+	"application/vnd.marlin.drm.license+xml": {
+		"source": "iana"
+	},
+	"application/vnd.marlin.drm.mdcf": {
+		"source": "iana"
+	},
+	"application/vnd.mason+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.maxmind.maxmind-db": {
+		"source": "iana"
+	},
+	"application/vnd.mcd": {
+		"source": "iana",
+		"extensions": [
+			"mcd"
+		]
+	},
+	"application/vnd.medcalcdata": {
+		"source": "iana",
+		"extensions": [
+			"mc1"
+		]
+	},
+	"application/vnd.mediastation.cdkey": {
+		"source": "iana",
+		"extensions": [
+			"cdkey"
+		]
+	},
+	"application/vnd.meridian-slingshot": {
+		"source": "iana"
+	},
+	"application/vnd.mfer": {
+		"source": "iana",
+		"extensions": [
+			"mwf"
+		]
+	},
+	"application/vnd.mfmp": {
+		"source": "iana",
+		"extensions": [
+			"mfm"
+		]
+	},
+	"application/vnd.micro+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.micrografx.flo": {
+		"source": "iana",
+		"extensions": [
+			"flo"
+		]
+	},
+	"application/vnd.micrografx.igx": {
+		"source": "iana",
+		"extensions": [
+			"igx"
+		]
+	},
+	"application/vnd.microsoft.portable-executable": {
+		"source": "iana"
+	},
+	"application/vnd.miele+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.mif": {
+		"source": "iana",
+		"extensions": [
+			"mif"
+		]
+	},
+	"application/vnd.minisoft-hp3000-save": {
+		"source": "iana"
+	},
+	"application/vnd.mitsubishi.misty-guard.trustweb": {
+		"source": "iana"
+	},
+	"application/vnd.mobius.daf": {
+		"source": "iana",
+		"extensions": [
+			"daf"
+		]
+	},
+	"application/vnd.mobius.dis": {
+		"source": "iana",
+		"extensions": [
+			"dis"
+		]
+	},
+	"application/vnd.mobius.mbk": {
+		"source": "iana",
+		"extensions": [
+			"mbk"
+		]
+	},
+	"application/vnd.mobius.mqy": {
+		"source": "iana",
+		"extensions": [
+			"mqy"
+		]
+	},
+	"application/vnd.mobius.msl": {
+		"source": "iana",
+		"extensions": [
+			"msl"
+		]
+	},
+	"application/vnd.mobius.plc": {
+		"source": "iana",
+		"extensions": [
+			"plc"
+		]
+	},
+	"application/vnd.mobius.txf": {
+		"source": "iana",
+		"extensions": [
+			"txf"
+		]
+	},
+	"application/vnd.mophun.application": {
+		"source": "iana",
+		"extensions": [
+			"mpn"
+		]
+	},
+	"application/vnd.mophun.certificate": {
+		"source": "iana",
+		"extensions": [
+			"mpc"
+		]
+	},
+	"application/vnd.motorola.flexsuite": {
+		"source": "iana"
+	},
+	"application/vnd.motorola.flexsuite.adsi": {
+		"source": "iana"
+	},
+	"application/vnd.motorola.flexsuite.fis": {
+		"source": "iana"
+	},
+	"application/vnd.motorola.flexsuite.gotap": {
+		"source": "iana"
+	},
+	"application/vnd.motorola.flexsuite.kmr": {
+		"source": "iana"
+	},
+	"application/vnd.motorola.flexsuite.ttc": {
+		"source": "iana"
+	},
+	"application/vnd.motorola.flexsuite.wem": {
+		"source": "iana"
+	},
+	"application/vnd.motorola.iprm": {
+		"source": "iana"
+	},
+	"application/vnd.mozilla.xul+xml": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"xul"
+		]
+	},
+	"application/vnd.ms-3mfdocument": {
+		"source": "iana"
+	},
+	"application/vnd.ms-artgalry": {
+		"source": "iana",
+		"extensions": [
+			"cil"
+		]
+	},
+	"application/vnd.ms-asf": {
+		"source": "iana"
+	},
+	"application/vnd.ms-cab-compressed": {
+		"source": "iana",
+		"extensions": [
+			"cab"
+		]
+	},
+	"application/vnd.ms-color.iccprofile": {
+		"source": "apache"
+	},
+	"application/vnd.ms-excel": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"xls",
+			"xlm",
+			"xla",
+			"xlc",
+			"xlt",
+			"xlw"
+		]
+	},
+	"application/vnd.ms-excel.addin.macroenabled.12": {
+		"source": "iana",
+		"extensions": [
+			"xlam"
+		]
+	},
+	"application/vnd.ms-excel.sheet.binary.macroenabled.12": {
+		"source": "iana",
+		"extensions": [
+			"xlsb"
+		]
+	},
+	"application/vnd.ms-excel.sheet.macroenabled.12": {
+		"source": "iana",
+		"extensions": [
+			"xlsm"
+		]
+	},
+	"application/vnd.ms-excel.template.macroenabled.12": {
+		"source": "iana",
+		"extensions": [
+			"xltm"
+		]
+	},
+	"application/vnd.ms-fontobject": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"eot"
+		]
+	},
+	"application/vnd.ms-htmlhelp": {
+		"source": "iana",
+		"extensions": [
+			"chm"
+		]
+	},
+	"application/vnd.ms-ims": {
+		"source": "iana",
+		"extensions": [
+			"ims"
+		]
+	},
+	"application/vnd.ms-lrm": {
+		"source": "iana",
+		"extensions": [
+			"lrm"
+		]
+	},
+	"application/vnd.ms-office.activex+xml": {
+		"source": "iana"
+	},
+	"application/vnd.ms-officetheme": {
+		"source": "iana",
+		"extensions": [
+			"thmx"
+		]
+	},
+	"application/vnd.ms-opentype": {
+		"source": "apache",
+		"compressible": true
+	},
+	"application/vnd.ms-package.obfuscated-opentype": {
+		"source": "apache"
+	},
+	"application/vnd.ms-pki.seccat": {
+		"source": "apache",
+		"extensions": [
+			"cat"
+		]
+	},
+	"application/vnd.ms-pki.stl": {
+		"source": "apache",
+		"extensions": [
+			"stl"
+		]
+	},
+	"application/vnd.ms-playready.initiator+xml": {
+		"source": "iana"
+	},
+	"application/vnd.ms-powerpoint": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"ppt",
+			"pps",
+			"pot"
+		]
+	},
+	"application/vnd.ms-powerpoint.addin.macroenabled.12": {
+		"source": "iana",
+		"extensions": [
+			"ppam"
+		]
+	},
+	"application/vnd.ms-powerpoint.presentation.macroenabled.12": {
+		"source": "iana",
+		"extensions": [
+			"pptm"
+		]
+	},
+	"application/vnd.ms-powerpoint.slide.macroenabled.12": {
+		"source": "iana",
+		"extensions": [
+			"sldm"
+		]
+	},
+	"application/vnd.ms-powerpoint.slideshow.macroenabled.12": {
+		"source": "iana",
+		"extensions": [
+			"ppsm"
+		]
+	},
+	"application/vnd.ms-powerpoint.template.macroenabled.12": {
+		"source": "iana",
+		"extensions": [
+			"potm"
+		]
+	},
+	"application/vnd.ms-printdevicecapabilities+xml": {
+		"source": "iana"
+	},
+	"application/vnd.ms-printing.printticket+xml": {
+		"source": "apache"
+	},
+	"application/vnd.ms-printschematicket+xml": {
+		"source": "iana"
+	},
+	"application/vnd.ms-project": {
+		"source": "iana",
+		"extensions": [
+			"mpp",
+			"mpt"
+		]
+	},
+	"application/vnd.ms-tnef": {
+		"source": "iana"
+	},
+	"application/vnd.ms-windows.devicepairing": {
+		"source": "iana"
+	},
+	"application/vnd.ms-windows.nwprinting.oob": {
+		"source": "iana"
+	},
+	"application/vnd.ms-windows.printerpairing": {
+		"source": "iana"
+	},
+	"application/vnd.ms-windows.wsd.oob": {
+		"source": "iana"
+	},
+	"application/vnd.ms-wmdrm.lic-chlg-req": {
+		"source": "iana"
+	},
+	"application/vnd.ms-wmdrm.lic-resp": {
+		"source": "iana"
+	},
+	"application/vnd.ms-wmdrm.meter-chlg-req": {
+		"source": "iana"
+	},
+	"application/vnd.ms-wmdrm.meter-resp": {
+		"source": "iana"
+	},
+	"application/vnd.ms-word.document.macroenabled.12": {
+		"source": "iana",
+		"extensions": [
+			"docm"
+		]
+	},
+	"application/vnd.ms-word.template.macroenabled.12": {
+		"source": "iana",
+		"extensions": [
+			"dotm"
+		]
+	},
+	"application/vnd.ms-works": {
+		"source": "iana",
+		"extensions": [
+			"wps",
+			"wks",
+			"wcm",
+			"wdb"
+		]
+	},
+	"application/vnd.ms-wpl": {
+		"source": "iana",
+		"extensions": [
+			"wpl"
+		]
+	},
+	"application/vnd.ms-xpsdocument": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"xps"
+		]
+	},
+	"application/vnd.msa-disk-image": {
+		"source": "iana"
+	},
+	"application/vnd.mseq": {
+		"source": "iana",
+		"extensions": [
+			"mseq"
+		]
+	},
+	"application/vnd.msign": {
+		"source": "iana"
+	},
+	"application/vnd.multiad.creator": {
+		"source": "iana"
+	},
+	"application/vnd.multiad.creator.cif": {
+		"source": "iana"
+	},
+	"application/vnd.music-niff": {
+		"source": "iana"
+	},
+	"application/vnd.musician": {
+		"source": "iana",
+		"extensions": [
+			"mus"
+		]
+	},
+	"application/vnd.muvee.style": {
+		"source": "iana",
+		"extensions": [
+			"msty"
+		]
+	},
+	"application/vnd.mynfc": {
+		"source": "iana",
+		"extensions": [
+			"taglet"
+		]
+	},
+	"application/vnd.ncd.control": {
+		"source": "iana"
+	},
+	"application/vnd.ncd.reference": {
+		"source": "iana"
+	},
+	"application/vnd.nearst.inv+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.nervana": {
+		"source": "iana"
+	},
+	"application/vnd.netfpx": {
+		"source": "iana"
+	},
+	"application/vnd.neurolanguage.nlu": {
+		"source": "iana",
+		"extensions": [
+			"nlu"
+		]
+	},
+	"application/vnd.nintendo.nitro.rom": {
+		"source": "iana"
+	},
+	"application/vnd.nintendo.snes.rom": {
+		"source": "iana"
+	},
+	"application/vnd.nitf": {
+		"source": "iana",
+		"extensions": [
+			"ntf",
+			"nitf"
+		]
+	},
+	"application/vnd.noblenet-directory": {
+		"source": "iana",
+		"extensions": [
+			"nnd"
+		]
+	},
+	"application/vnd.noblenet-sealer": {
+		"source": "iana",
+		"extensions": [
+			"nns"
+		]
+	},
+	"application/vnd.noblenet-web": {
+		"source": "iana",
+		"extensions": [
+			"nnw"
+		]
+	},
+	"application/vnd.nokia.catalogs": {
+		"source": "iana"
+	},
+	"application/vnd.nokia.conml+wbxml": {
+		"source": "iana"
+	},
+	"application/vnd.nokia.conml+xml": {
+		"source": "iana"
+	},
+	"application/vnd.nokia.iptv.config+xml": {
+		"source": "iana"
+	},
+	"application/vnd.nokia.isds-radio-presets": {
+		"source": "iana"
+	},
+	"application/vnd.nokia.landmark+wbxml": {
+		"source": "iana"
+	},
+	"application/vnd.nokia.landmark+xml": {
+		"source": "iana"
+	},
+	"application/vnd.nokia.landmarkcollection+xml": {
+		"source": "iana"
+	},
+	"application/vnd.nokia.n-gage.ac+xml": {
+		"source": "iana"
+	},
+	"application/vnd.nokia.n-gage.data": {
+		"source": "iana",
+		"extensions": [
+			"ngdat"
+		]
+	},
+	"application/vnd.nokia.n-gage.symbian.install": {
+		"source": "iana",
+		"extensions": [
+			"n-gage"
+		]
+	},
+	"application/vnd.nokia.ncd": {
+		"source": "iana"
+	},
+	"application/vnd.nokia.pcd+wbxml": {
+		"source": "iana"
+	},
+	"application/vnd.nokia.pcd+xml": {
+		"source": "iana"
+	},
+	"application/vnd.nokia.radio-preset": {
+		"source": "iana",
+		"extensions": [
+			"rpst"
+		]
+	},
+	"application/vnd.nokia.radio-presets": {
+		"source": "iana",
+		"extensions": [
+			"rpss"
+		]
+	},
+	"application/vnd.novadigm.edm": {
+		"source": "iana",
+		"extensions": [
+			"edm"
+		]
+	},
+	"application/vnd.novadigm.edx": {
+		"source": "iana",
+		"extensions": [
+			"edx"
+		]
+	},
+	"application/vnd.novadigm.ext": {
+		"source": "iana",
+		"extensions": [
+			"ext"
+		]
+	},
+	"application/vnd.ntt-local.content-share": {
+		"source": "iana"
+	},
+	"application/vnd.ntt-local.file-transfer": {
+		"source": "iana"
+	},
+	"application/vnd.ntt-local.ogw_remote-access": {
+		"source": "iana"
+	},
+	"application/vnd.ntt-local.sip-ta_remote": {
+		"source": "iana"
+	},
+	"application/vnd.ntt-local.sip-ta_tcp_stream": {
+		"source": "iana"
+	},
+	"application/vnd.oasis.opendocument.chart": {
+		"source": "iana",
+		"extensions": [
+			"odc"
+		]
+	},
+	"application/vnd.oasis.opendocument.chart-template": {
+		"source": "iana",
+		"extensions": [
+			"otc"
+		]
+	},
+	"application/vnd.oasis.opendocument.database": {
+		"source": "iana",
+		"extensions": [
+			"odb"
+		]
+	},
+	"application/vnd.oasis.opendocument.formula": {
+		"source": "iana",
+		"extensions": [
+			"odf"
+		]
+	},
+	"application/vnd.oasis.opendocument.formula-template": {
+		"source": "iana",
+		"extensions": [
+			"odft"
+		]
+	},
+	"application/vnd.oasis.opendocument.graphics": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"odg"
+		]
+	},
+	"application/vnd.oasis.opendocument.graphics-template": {
+		"source": "iana",
+		"extensions": [
+			"otg"
+		]
+	},
+	"application/vnd.oasis.opendocument.image": {
+		"source": "iana",
+		"extensions": [
+			"odi"
+		]
+	},
+	"application/vnd.oasis.opendocument.image-template": {
+		"source": "iana",
+		"extensions": [
+			"oti"
+		]
+	},
+	"application/vnd.oasis.opendocument.presentation": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"odp"
+		]
+	},
+	"application/vnd.oasis.opendocument.presentation-template": {
+		"source": "iana",
+		"extensions": [
+			"otp"
+		]
+	},
+	"application/vnd.oasis.opendocument.spreadsheet": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"ods"
+		]
+	},
+	"application/vnd.oasis.opendocument.spreadsheet-template": {
+		"source": "iana",
+		"extensions": [
+			"ots"
+		]
+	},
+	"application/vnd.oasis.opendocument.text": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"odt"
+		]
+	},
+	"application/vnd.oasis.opendocument.text-master": {
+		"source": "iana",
+		"extensions": [
+			"odm"
+		]
+	},
+	"application/vnd.oasis.opendocument.text-template": {
+		"source": "iana",
+		"extensions": [
+			"ott"
+		]
+	},
+	"application/vnd.oasis.opendocument.text-web": {
+		"source": "iana",
+		"extensions": [
+			"oth"
+		]
+	},
+	"application/vnd.obn": {
+		"source": "iana"
+	},
+	"application/vnd.ocf+cbor": {
+		"source": "iana"
+	},
+	"application/vnd.oftn.l10n+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.oipf.contentaccessdownload+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oipf.contentaccessstreaming+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oipf.cspg-hexbinary": {
+		"source": "iana"
+	},
+	"application/vnd.oipf.dae.svg+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oipf.dae.xhtml+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oipf.mippvcontrolmessage+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oipf.pae.gem": {
+		"source": "iana"
+	},
+	"application/vnd.oipf.spdiscovery+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oipf.spdlist+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oipf.ueprofile+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oipf.userprofile+xml": {
+		"source": "iana"
+	},
+	"application/vnd.olpc-sugar": {
+		"source": "iana",
+		"extensions": [
+			"xo"
+		]
+	},
+	"application/vnd.oma-scws-config": {
+		"source": "iana"
+	},
+	"application/vnd.oma-scws-http-request": {
+		"source": "iana"
+	},
+	"application/vnd.oma-scws-http-response": {
+		"source": "iana"
+	},
+	"application/vnd.oma.bcast.associated-procedure-parameter+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.bcast.drm-trigger+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.bcast.imd+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.bcast.ltkm": {
+		"source": "iana"
+	},
+	"application/vnd.oma.bcast.notification+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.bcast.provisioningtrigger": {
+		"source": "iana"
+	},
+	"application/vnd.oma.bcast.sgboot": {
+		"source": "iana"
+	},
+	"application/vnd.oma.bcast.sgdd+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.bcast.sgdu": {
+		"source": "iana"
+	},
+	"application/vnd.oma.bcast.simple-symbol-container": {
+		"source": "iana"
+	},
+	"application/vnd.oma.bcast.smartcard-trigger+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.bcast.sprov+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.bcast.stkm": {
+		"source": "iana"
+	},
+	"application/vnd.oma.cab-address-book+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.cab-feature-handler+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.cab-pcc+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.cab-subs-invite+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.cab-user-prefs+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.dcd": {
+		"source": "iana"
+	},
+	"application/vnd.oma.dcdc": {
+		"source": "iana"
+	},
+	"application/vnd.oma.dd2+xml": {
+		"source": "iana",
+		"extensions": [
+			"dd2"
+		]
+	},
+	"application/vnd.oma.drm.risd+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.group-usage-list+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.lwm2m+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.oma.lwm2m+tlv": {
+		"source": "iana"
+	},
+	"application/vnd.oma.pal+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.poc.detailed-progress-report+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.poc.final-report+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.poc.groups+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.poc.invocation-descriptor+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.poc.optimized-progress-report+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.push": {
+		"source": "iana"
+	},
+	"application/vnd.oma.scidm.messages+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oma.xcap-directory+xml": {
+		"source": "iana"
+	},
+	"application/vnd.omads-email+xml": {
+		"source": "iana"
+	},
+	"application/vnd.omads-file+xml": {
+		"source": "iana"
+	},
+	"application/vnd.omads-folder+xml": {
+		"source": "iana"
+	},
+	"application/vnd.omaloc-supl-init": {
+		"source": "iana"
+	},
+	"application/vnd.onepager": {
+		"source": "iana"
+	},
+	"application/vnd.openblox.game+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openblox.game-binary": {
+		"source": "iana"
+	},
+	"application/vnd.openeye.oeb": {
+		"source": "iana"
+	},
+	"application/vnd.openofficeorg.extension": {
+		"source": "apache",
+		"extensions": [
+			"oxt"
+		]
+	},
+	"application/vnd.openstreetmap.data+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.custom-properties+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.customxmlproperties+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.drawing+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.drawingml.chart+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.drawingml.chartshapes+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.drawingml.diagramcolors+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.drawingml.diagramdata+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.drawingml.diagramlayout+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.drawingml.diagramstyle+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.extended-properties+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml-template": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.commentauthors+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.comments+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.handoutmaster+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.notesmaster+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.notesslide+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.presentation": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"pptx"
+		]
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.presprops+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.slide": {
+		"source": "iana",
+		"extensions": [
+			"sldx"
+		]
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.slide+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.slidelayout+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.slidemaster+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.slideshow": {
+		"source": "iana",
+		"extensions": [
+			"ppsx"
+		]
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.slideshow.main+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.slideupdateinfo+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.tablestyles+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.tags+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.template": {
+		"source": "apache",
+		"extensions": [
+			"potx"
+		]
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.template.main+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.presentationml.viewprops+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml-template": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.calcchain+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.chartsheet+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.comments+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.connections+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.dialogsheet+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.externallink+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.pivotcachedefinition+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.pivotcacherecords+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.pivottable+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.querytable+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.revisionheaders+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.revisionlog+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.sharedstrings+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"xlsx"
+		]
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.sheetmetadata+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.table+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.tablesinglecells+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.template": {
+		"source": "apache",
+		"extensions": [
+			"xltx"
+		]
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.template.main+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.usernames+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.volatiledependencies+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.theme+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.themeoverride+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.vmldrawing": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.wordprocessingml-template": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.comments+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.document": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"docx"
+		]
+	},
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.document.glossary+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.endnotes+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.fonttable+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.footnotes+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.numbering+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.settings+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.template": {
+		"source": "apache",
+		"extensions": [
+			"dotx"
+		]
+	},
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.template.main+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.websettings+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-package.core-properties+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-package.digital-signature-xmlsignature+xml": {
+		"source": "iana"
+	},
+	"application/vnd.openxmlformats-package.relationships+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oracle.resource+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.orange.indata": {
+		"source": "iana"
+	},
+	"application/vnd.osa.netdeploy": {
+		"source": "iana"
+	},
+	"application/vnd.osgeo.mapguide.package": {
+		"source": "iana",
+		"extensions": [
+			"mgp"
+		]
+	},
+	"application/vnd.osgi.bundle": {
+		"source": "iana"
+	},
+	"application/vnd.osgi.dp": {
+		"source": "iana",
+		"extensions": [
+			"dp"
+		]
+	},
+	"application/vnd.osgi.subsystem": {
+		"source": "iana",
+		"extensions": [
+			"esa"
+		]
+	},
+	"application/vnd.otps.ct-kip+xml": {
+		"source": "iana"
+	},
+	"application/vnd.oxli.countgraph": {
+		"source": "iana"
+	},
+	"application/vnd.pagerduty+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.palm": {
+		"source": "iana",
+		"extensions": [
+			"pdb",
+			"pqa",
+			"oprc"
+		]
+	},
+	"application/vnd.panoply": {
+		"source": "iana"
+	},
+	"application/vnd.paos+xml": {
+		"source": "iana"
+	},
+	"application/vnd.paos.xml": {
+		"source": "apache"
+	},
+	"application/vnd.pawaafile": {
+		"source": "iana",
+		"extensions": [
+			"paw"
+		]
+	},
+	"application/vnd.pcos": {
+		"source": "iana"
+	},
+	"application/vnd.pg.format": {
+		"source": "iana",
+		"extensions": [
+			"str"
+		]
+	},
+	"application/vnd.pg.osasli": {
+		"source": "iana",
+		"extensions": [
+			"ei6"
+		]
+	},
+	"application/vnd.piaccess.application-licence": {
+		"source": "iana"
+	},
+	"application/vnd.picsel": {
+		"source": "iana",
+		"extensions": [
+			"efif"
+		]
+	},
+	"application/vnd.pmi.widget": {
+		"source": "iana",
+		"extensions": [
+			"wg"
+		]
+	},
+	"application/vnd.poc.group-advertisement+xml": {
+		"source": "iana"
+	},
+	"application/vnd.pocketlearn": {
+		"source": "iana",
+		"extensions": [
+			"plf"
+		]
+	},
+	"application/vnd.powerbuilder6": {
+		"source": "iana",
+		"extensions": [
+			"pbd"
+		]
+	},
+	"application/vnd.powerbuilder6-s": {
+		"source": "iana"
+	},
+	"application/vnd.powerbuilder7": {
+		"source": "iana"
+	},
+	"application/vnd.powerbuilder7-s": {
+		"source": "iana"
+	},
+	"application/vnd.powerbuilder75": {
+		"source": "iana"
+	},
+	"application/vnd.powerbuilder75-s": {
+		"source": "iana"
+	},
+	"application/vnd.preminet": {
+		"source": "iana"
+	},
+	"application/vnd.previewsystems.box": {
+		"source": "iana",
+		"extensions": [
+			"box"
+		]
+	},
+	"application/vnd.proteus.magazine": {
+		"source": "iana",
+		"extensions": [
+			"mgz"
+		]
+	},
+	"application/vnd.publishare-delta-tree": {
+		"source": "iana",
+		"extensions": [
+			"qps"
+		]
+	},
+	"application/vnd.pvi.ptid1": {
+		"source": "iana",
+		"extensions": [
+			"ptid"
+		]
+	},
+	"application/vnd.pwg-multiplexed": {
+		"source": "iana"
+	},
+	"application/vnd.pwg-xhtml-print+xml": {
+		"source": "iana"
+	},
+	"application/vnd.qualcomm.brew-app-res": {
+		"source": "iana"
+	},
+	"application/vnd.quarantainenet": {
+		"source": "iana"
+	},
+	"application/vnd.quark.quarkxpress": {
+		"source": "iana",
+		"extensions": [
+			"qxd",
+			"qxt",
+			"qwd",
+			"qwt",
+			"qxl",
+			"qxb"
+		]
+	},
+	"application/vnd.quobject-quoxdocument": {
+		"source": "iana"
+	},
+	"application/vnd.radisys.moml+xml": {
+		"source": "iana"
+	},
+	"application/vnd.radisys.msml+xml": {
+		"source": "iana"
+	},
+	"application/vnd.radisys.msml-audit+xml": {
+		"source": "iana"
+	},
+	"application/vnd.radisys.msml-audit-conf+xml": {
+		"source": "iana"
+	},
+	"application/vnd.radisys.msml-audit-conn+xml": {
+		"source": "iana"
+	},
+	"application/vnd.radisys.msml-audit-dialog+xml": {
+		"source": "iana"
+	},
+	"application/vnd.radisys.msml-audit-stream+xml": {
+		"source": "iana"
+	},
+	"application/vnd.radisys.msml-conf+xml": {
+		"source": "iana"
+	},
+	"application/vnd.radisys.msml-dialog+xml": {
+		"source": "iana"
+	},
+	"application/vnd.radisys.msml-dialog-base+xml": {
+		"source": "iana"
+	},
+	"application/vnd.radisys.msml-dialog-fax-detect+xml": {
+		"source": "iana"
+	},
+	"application/vnd.radisys.msml-dialog-fax-sendrecv+xml": {
+		"source": "iana"
+	},
+	"application/vnd.radisys.msml-dialog-group+xml": {
+		"source": "iana"
+	},
+	"application/vnd.radisys.msml-dialog-speech+xml": {
+		"source": "iana"
+	},
+	"application/vnd.radisys.msml-dialog-transform+xml": {
+		"source": "iana"
+	},
+	"application/vnd.rainstor.data": {
+		"source": "iana"
+	},
+	"application/vnd.rapid": {
+		"source": "iana"
+	},
+	"application/vnd.rar": {
+		"source": "iana"
+	},
+	"application/vnd.realvnc.bed": {
+		"source": "iana",
+		"extensions": [
+			"bed"
+		]
+	},
+	"application/vnd.recordare.musicxml": {
+		"source": "iana",
+		"extensions": [
+			"mxl"
+		]
+	},
+	"application/vnd.recordare.musicxml+xml": {
+		"source": "iana",
+		"extensions": [
+			"musicxml"
+		]
+	},
+	"application/vnd.renlearn.rlprint": {
+		"source": "iana"
+	},
+	"application/vnd.rig.cryptonote": {
+		"source": "iana",
+		"extensions": [
+			"cryptonote"
+		]
+	},
+	"application/vnd.rim.cod": {
+		"source": "apache",
+		"extensions": [
+			"cod"
+		]
+	},
+	"application/vnd.rn-realmedia": {
+		"source": "apache",
+		"extensions": [
+			"rm"
+		]
+	},
+	"application/vnd.rn-realmedia-vbr": {
+		"source": "apache",
+		"extensions": [
+			"rmvb"
+		]
+	},
+	"application/vnd.route66.link66+xml": {
+		"source": "iana",
+		"extensions": [
+			"link66"
+		]
+	},
+	"application/vnd.rs-274x": {
+		"source": "iana"
+	},
+	"application/vnd.ruckus.download": {
+		"source": "iana"
+	},
+	"application/vnd.s3sms": {
+		"source": "iana"
+	},
+	"application/vnd.sailingtracker.track": {
+		"source": "iana",
+		"extensions": [
+			"st"
+		]
+	},
+	"application/vnd.sbm.cid": {
+		"source": "iana"
+	},
+	"application/vnd.sbm.mid2": {
+		"source": "iana"
+	},
+	"application/vnd.scribus": {
+		"source": "iana"
+	},
+	"application/vnd.sealed.3df": {
+		"source": "iana"
+	},
+	"application/vnd.sealed.csf": {
+		"source": "iana"
+	},
+	"application/vnd.sealed.doc": {
+		"source": "iana"
+	},
+	"application/vnd.sealed.eml": {
+		"source": "iana"
+	},
+	"application/vnd.sealed.mht": {
+		"source": "iana"
+	},
+	"application/vnd.sealed.net": {
+		"source": "iana"
+	},
+	"application/vnd.sealed.ppt": {
+		"source": "iana"
+	},
+	"application/vnd.sealed.tiff": {
+		"source": "iana"
+	},
+	"application/vnd.sealed.xls": {
+		"source": "iana"
+	},
+	"application/vnd.sealedmedia.softseal.html": {
+		"source": "iana"
+	},
+	"application/vnd.sealedmedia.softseal.pdf": {
+		"source": "iana"
+	},
+	"application/vnd.seemail": {
+		"source": "iana",
+		"extensions": [
+			"see"
+		]
+	},
+	"application/vnd.sema": {
+		"source": "iana",
+		"extensions": [
+			"sema"
+		]
+	},
+	"application/vnd.semd": {
+		"source": "iana",
+		"extensions": [
+			"semd"
+		]
+	},
+	"application/vnd.semf": {
+		"source": "iana",
+		"extensions": [
+			"semf"
+		]
+	},
+	"application/vnd.shana.informed.formdata": {
+		"source": "iana",
+		"extensions": [
+			"ifm"
+		]
+	},
+	"application/vnd.shana.informed.formtemplate": {
+		"source": "iana",
+		"extensions": [
+			"itp"
+		]
+	},
+	"application/vnd.shana.informed.interchange": {
+		"source": "iana",
+		"extensions": [
+			"iif"
+		]
+	},
+	"application/vnd.shana.informed.package": {
+		"source": "iana",
+		"extensions": [
+			"ipk"
+		]
+	},
+	"application/vnd.simtech-mindmapper": {
+		"source": "iana",
+		"extensions": [
+			"twd",
+			"twds"
+		]
+	},
+	"application/vnd.siren+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.smaf": {
+		"source": "iana",
+		"extensions": [
+			"mmf"
+		]
+	},
+	"application/vnd.smart.notebook": {
+		"source": "iana"
+	},
+	"application/vnd.smart.teacher": {
+		"source": "iana",
+		"extensions": [
+			"teacher"
+		]
+	},
+	"application/vnd.software602.filler.form+xml": {
+		"source": "iana"
+	},
+	"application/vnd.software602.filler.form-xml-zip": {
+		"source": "iana"
+	},
+	"application/vnd.solent.sdkm+xml": {
+		"source": "iana",
+		"extensions": [
+			"sdkm",
+			"sdkd"
+		]
+	},
+	"application/vnd.spotfire.dxp": {
+		"source": "iana",
+		"extensions": [
+			"dxp"
+		]
+	},
+	"application/vnd.spotfire.sfs": {
+		"source": "iana",
+		"extensions": [
+			"sfs"
+		]
+	},
+	"application/vnd.sss-cod": {
+		"source": "iana"
+	},
+	"application/vnd.sss-dtf": {
+		"source": "iana"
+	},
+	"application/vnd.sss-ntf": {
+		"source": "iana"
+	},
+	"application/vnd.stardivision.calc": {
+		"source": "apache",
+		"extensions": [
+			"sdc"
+		]
+	},
+	"application/vnd.stardivision.draw": {
+		"source": "apache",
+		"extensions": [
+			"sda"
+		]
+	},
+	"application/vnd.stardivision.impress": {
+		"source": "apache",
+		"extensions": [
+			"sdd"
+		]
+	},
+	"application/vnd.stardivision.math": {
+		"source": "apache",
+		"extensions": [
+			"smf"
+		]
+	},
+	"application/vnd.stardivision.writer": {
+		"source": "apache",
+		"extensions": [
+			"sdw",
+			"vor"
+		]
+	},
+	"application/vnd.stardivision.writer-global": {
+		"source": "apache",
+		"extensions": [
+			"sgl"
+		]
+	},
+	"application/vnd.stepmania.package": {
+		"source": "iana",
+		"extensions": [
+			"smzip"
+		]
+	},
+	"application/vnd.stepmania.stepchart": {
+		"source": "iana",
+		"extensions": [
+			"sm"
+		]
+	},
+	"application/vnd.street-stream": {
+		"source": "iana"
+	},
+	"application/vnd.sun.wadl+xml": {
+		"source": "iana"
+	},
+	"application/vnd.sun.xml.calc": {
+		"source": "apache",
+		"extensions": [
+			"sxc"
+		]
+	},
+	"application/vnd.sun.xml.calc.template": {
+		"source": "apache",
+		"extensions": [
+			"stc"
+		]
+	},
+	"application/vnd.sun.xml.draw": {
+		"source": "apache",
+		"extensions": [
+			"sxd"
+		]
+	},
+	"application/vnd.sun.xml.draw.template": {
+		"source": "apache",
+		"extensions": [
+			"std"
+		]
+	},
+	"application/vnd.sun.xml.impress": {
+		"source": "apache",
+		"extensions": [
+			"sxi"
+		]
+	},
+	"application/vnd.sun.xml.impress.template": {
+		"source": "apache",
+		"extensions": [
+			"sti"
+		]
+	},
+	"application/vnd.sun.xml.math": {
+		"source": "apache",
+		"extensions": [
+			"sxm"
+		]
+	},
+	"application/vnd.sun.xml.writer": {
+		"source": "apache",
+		"extensions": [
+			"sxw"
+		]
+	},
+	"application/vnd.sun.xml.writer.global": {
+		"source": "apache",
+		"extensions": [
+			"sxg"
+		]
+	},
+	"application/vnd.sun.xml.writer.template": {
+		"source": "apache",
+		"extensions": [
+			"stw"
+		]
+	},
+	"application/vnd.sus-calendar": {
+		"source": "iana",
+		"extensions": [
+			"sus",
+			"susp"
+		]
+	},
+	"application/vnd.svd": {
+		"source": "iana",
+		"extensions": [
+			"svd"
+		]
+	},
+	"application/vnd.swiftview-ics": {
+		"source": "iana"
+	},
+	"application/vnd.symbian.install": {
+		"source": "apache",
+		"extensions": [
+			"sis",
+			"sisx"
+		]
+	},
+	"application/vnd.syncml+xml": {
+		"source": "iana",
+		"extensions": [
+			"xsm"
+		]
+	},
+	"application/vnd.syncml.dm+wbxml": {
+		"source": "iana",
+		"extensions": [
+			"bdm"
+		]
+	},
+	"application/vnd.syncml.dm+xml": {
+		"source": "iana",
+		"extensions": [
+			"xdm"
+		]
+	},
+	"application/vnd.syncml.dm.notification": {
+		"source": "iana"
+	},
+	"application/vnd.syncml.dmddf+wbxml": {
+		"source": "iana"
+	},
+	"application/vnd.syncml.dmddf+xml": {
+		"source": "iana"
+	},
+	"application/vnd.syncml.dmtnds+wbxml": {
+		"source": "iana"
+	},
+	"application/vnd.syncml.dmtnds+xml": {
+		"source": "iana"
+	},
+	"application/vnd.syncml.ds.notification": {
+		"source": "iana"
+	},
+	"application/vnd.tableschema+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.tao.intent-module-archive": {
+		"source": "iana",
+		"extensions": [
+			"tao"
+		]
+	},
+	"application/vnd.tcpdump.pcap": {
+		"source": "iana",
+		"extensions": [
+			"pcap",
+			"cap",
+			"dmp"
+		]
+	},
+	"application/vnd.tmd.mediaflex.api+xml": {
+		"source": "iana"
+	},
+	"application/vnd.tml": {
+		"source": "iana"
+	},
+	"application/vnd.tmobile-livetv": {
+		"source": "iana",
+		"extensions": [
+			"tmo"
+		]
+	},
+	"application/vnd.tri.onesource": {
+		"source": "iana"
+	},
+	"application/vnd.trid.tpt": {
+		"source": "iana",
+		"extensions": [
+			"tpt"
+		]
+	},
+	"application/vnd.triscape.mxs": {
+		"source": "iana",
+		"extensions": [
+			"mxs"
+		]
+	},
+	"application/vnd.trueapp": {
+		"source": "iana",
+		"extensions": [
+			"tra"
+		]
+	},
+	"application/vnd.truedoc": {
+		"source": "iana"
+	},
+	"application/vnd.ubisoft.webplayer": {
+		"source": "iana"
+	},
+	"application/vnd.ufdl": {
+		"source": "iana",
+		"extensions": [
+			"ufd",
+			"ufdl"
+		]
+	},
+	"application/vnd.uiq.theme": {
+		"source": "iana",
+		"extensions": [
+			"utz"
+		]
+	},
+	"application/vnd.umajin": {
+		"source": "iana",
+		"extensions": [
+			"umj"
+		]
+	},
+	"application/vnd.unity": {
+		"source": "iana",
+		"extensions": [
+			"unityweb"
+		]
+	},
+	"application/vnd.uoml+xml": {
+		"source": "iana",
+		"extensions": [
+			"uoml"
+		]
+	},
+	"application/vnd.uplanet.alert": {
+		"source": "iana"
+	},
+	"application/vnd.uplanet.alert-wbxml": {
+		"source": "iana"
+	},
+	"application/vnd.uplanet.bearer-choice": {
+		"source": "iana"
+	},
+	"application/vnd.uplanet.bearer-choice-wbxml": {
+		"source": "iana"
+	},
+	"application/vnd.uplanet.cacheop": {
+		"source": "iana"
+	},
+	"application/vnd.uplanet.cacheop-wbxml": {
+		"source": "iana"
+	},
+	"application/vnd.uplanet.channel": {
+		"source": "iana"
+	},
+	"application/vnd.uplanet.channel-wbxml": {
+		"source": "iana"
+	},
+	"application/vnd.uplanet.list": {
+		"source": "iana"
+	},
+	"application/vnd.uplanet.list-wbxml": {
+		"source": "iana"
+	},
+	"application/vnd.uplanet.listcmd": {
+		"source": "iana"
+	},
+	"application/vnd.uplanet.listcmd-wbxml": {
+		"source": "iana"
+	},
+	"application/vnd.uplanet.signal": {
+		"source": "iana"
+	},
+	"application/vnd.uri-map": {
+		"source": "iana"
+	},
+	"application/vnd.valve.source.material": {
+		"source": "iana"
+	},
+	"application/vnd.vcx": {
+		"source": "iana",
+		"extensions": [
+			"vcx"
+		]
+	},
+	"application/vnd.vd-study": {
+		"source": "iana"
+	},
+	"application/vnd.vectorworks": {
+		"source": "iana"
+	},
+	"application/vnd.vel+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.verimatrix.vcas": {
+		"source": "iana"
+	},
+	"application/vnd.vidsoft.vidconference": {
+		"source": "iana"
+	},
+	"application/vnd.visio": {
+		"source": "iana",
+		"extensions": [
+			"vsd",
+			"vst",
+			"vss",
+			"vsw"
+		]
+	},
+	"application/vnd.visionary": {
+		"source": "iana",
+		"extensions": [
+			"vis"
+		]
+	},
+	"application/vnd.vividence.scriptfile": {
+		"source": "iana"
+	},
+	"application/vnd.vsf": {
+		"source": "iana",
+		"extensions": [
+			"vsf"
+		]
+	},
+	"application/vnd.wap.sic": {
+		"source": "iana"
+	},
+	"application/vnd.wap.slc": {
+		"source": "iana"
+	},
+	"application/vnd.wap.wbxml": {
+		"source": "iana",
+		"extensions": [
+			"wbxml"
+		]
+	},
+	"application/vnd.wap.wmlc": {
+		"source": "iana",
+		"extensions": [
+			"wmlc"
+		]
+	},
+	"application/vnd.wap.wmlscriptc": {
+		"source": "iana",
+		"extensions": [
+			"wmlsc"
+		]
+	},
+	"application/vnd.webturbo": {
+		"source": "iana",
+		"extensions": [
+			"wtb"
+		]
+	},
+	"application/vnd.wfa.p2p": {
+		"source": "iana"
+	},
+	"application/vnd.wfa.wsc": {
+		"source": "iana"
+	},
+	"application/vnd.windows.devicepairing": {
+		"source": "iana"
+	},
+	"application/vnd.wmc": {
+		"source": "iana"
+	},
+	"application/vnd.wmf.bootstrap": {
+		"source": "iana"
+	},
+	"application/vnd.wolfram.mathematica": {
+		"source": "iana"
+	},
+	"application/vnd.wolfram.mathematica.package": {
+		"source": "iana"
+	},
+	"application/vnd.wolfram.player": {
+		"source": "iana",
+		"extensions": [
+			"nbp"
+		]
+	},
+	"application/vnd.wordperfect": {
+		"source": "iana",
+		"extensions": [
+			"wpd"
+		]
+	},
+	"application/vnd.wqd": {
+		"source": "iana",
+		"extensions": [
+			"wqd"
+		]
+	},
+	"application/vnd.wrq-hp3000-labelled": {
+		"source": "iana"
+	},
+	"application/vnd.wt.stf": {
+		"source": "iana",
+		"extensions": [
+			"stf"
+		]
+	},
+	"application/vnd.wv.csp+wbxml": {
+		"source": "iana"
+	},
+	"application/vnd.wv.csp+xml": {
+		"source": "iana"
+	},
+	"application/vnd.wv.ssp+xml": {
+		"source": "iana"
+	},
+	"application/vnd.xacml+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/vnd.xara": {
+		"source": "iana",
+		"extensions": [
+			"xar"
+		]
+	},
+	"application/vnd.xfdl": {
+		"source": "iana",
+		"extensions": [
+			"xfdl"
+		]
+	},
+	"application/vnd.xfdl.webform": {
+		"source": "iana"
+	},
+	"application/vnd.xmi+xml": {
+		"source": "iana"
+	},
+	"application/vnd.xmpie.cpkg": {
+		"source": "iana"
+	},
+	"application/vnd.xmpie.dpkg": {
+		"source": "iana"
+	},
+	"application/vnd.xmpie.plan": {
+		"source": "iana"
+	},
+	"application/vnd.xmpie.ppkg": {
+		"source": "iana"
+	},
+	"application/vnd.xmpie.xlim": {
+		"source": "iana"
+	},
+	"application/vnd.yamaha.hv-dic": {
+		"source": "iana",
+		"extensions": [
+			"hvd"
+		]
+	},
+	"application/vnd.yamaha.hv-script": {
+		"source": "iana",
+		"extensions": [
+			"hvs"
+		]
+	},
+	"application/vnd.yamaha.hv-voice": {
+		"source": "iana",
+		"extensions": [
+			"hvp"
+		]
+	},
+	"application/vnd.yamaha.openscoreformat": {
+		"source": "iana",
+		"extensions": [
+			"osf"
+		]
+	},
+	"application/vnd.yamaha.openscoreformat.osfpvg+xml": {
+		"source": "iana",
+		"extensions": [
+			"osfpvg"
+		]
+	},
+	"application/vnd.yamaha.remote-setup": {
+		"source": "iana"
+	},
+	"application/vnd.yamaha.smaf-audio": {
+		"source": "iana",
+		"extensions": [
+			"saf"
+		]
+	},
+	"application/vnd.yamaha.smaf-phrase": {
+		"source": "iana",
+		"extensions": [
+			"spf"
+		]
+	},
+	"application/vnd.yamaha.through-ngn": {
+		"source": "iana"
+	},
+	"application/vnd.yamaha.tunnel-udpencap": {
+		"source": "iana"
+	},
+	"application/vnd.yaoweme": {
+		"source": "iana"
+	},
+	"application/vnd.yellowriver-custom-menu": {
+		"source": "iana",
+		"extensions": [
+			"cmp"
+		]
+	},
+	"application/vnd.zul": {
+		"source": "iana",
+		"extensions": [
+			"zir",
+			"zirz"
+		]
+	},
+	"application/vnd.zzazz.deck+xml": {
+		"source": "iana",
+		"extensions": [
+			"zaz"
+		]
+	},
+	"application/voicexml+xml": {
+		"source": "iana",
+		"extensions": [
+			"vxml"
+		]
+	},
+	"application/vq-rtcpxr": {
+		"source": "iana"
+	},
+	"application/watcherinfo+xml": {
+		"source": "iana"
+	},
+	"application/whoispp-query": {
+		"source": "iana"
+	},
+	"application/whoispp-response": {
+		"source": "iana"
+	},
+	"application/widget": {
+		"source": "iana",
+		"extensions": [
+			"wgt"
+		]
+	},
+	"application/winhlp": {
+		"source": "apache",
+		"extensions": [
+			"hlp"
+		]
+	},
+	"application/wita": {
+		"source": "iana"
+	},
+	"application/wordperfect5.1": {
+		"source": "iana"
+	},
+	"application/wsdl+xml": {
+		"source": "iana",
+		"extensions": [
+			"wsdl"
+		]
+	},
+	"application/wspolicy+xml": {
+		"source": "iana",
+		"extensions": [
+			"wspolicy"
+		]
+	},
+	"application/x-7z-compressed": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"7z"
+		]
+	},
+	"application/x-abiword": {
+		"source": "apache",
+		"extensions": [
+			"abw"
+		]
+	},
+	"application/x-ace-compressed": {
+		"source": "apache",
+		"extensions": [
+			"ace"
+		]
+	},
+	"application/x-amf": {
+		"source": "apache"
+	},
+	"application/x-apple-diskimage": {
+		"source": "apache",
+		"extensions": [
+			"dmg"
+		]
+	},
+	"application/x-authorware-bin": {
+		"source": "apache",
+		"extensions": [
+			"aab",
+			"x32",
+			"u32",
+			"vox"
+		]
+	},
+	"application/x-authorware-map": {
+		"source": "apache",
+		"extensions": [
+			"aam"
+		]
+	},
+	"application/x-authorware-seg": {
+		"source": "apache",
+		"extensions": [
+			"aas"
+		]
+	},
+	"application/x-bcpio": {
+		"source": "apache",
+		"extensions": [
+			"bcpio"
+		]
+	},
+	"application/x-bdoc": {
+		"compressible": false,
+		"extensions": [
+			"bdoc"
+		]
+	},
+	"application/x-bittorrent": {
+		"source": "apache",
+		"extensions": [
+			"torrent"
+		]
+	},
+	"application/x-blorb": {
+		"source": "apache",
+		"extensions": [
+			"blb",
+			"blorb"
+		]
+	},
+	"application/x-bzip": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"bz"
+		]
+	},
+	"application/x-bzip2": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"bz2",
+			"boz"
+		]
+	},
+	"application/x-cbr": {
+		"source": "apache",
+		"extensions": [
+			"cbr",
+			"cba",
+			"cbt",
+			"cbz",
+			"cb7"
+		]
+	},
+	"application/x-cdlink": {
+		"source": "apache",
+		"extensions": [
+			"vcd"
+		]
+	},
+	"application/x-cfs-compressed": {
+		"source": "apache",
+		"extensions": [
+			"cfs"
+		]
+	},
+	"application/x-chat": {
+		"source": "apache",
+		"extensions": [
+			"chat"
+		]
+	},
+	"application/x-chess-pgn": {
+		"source": "apache",
+		"extensions": [
+			"pgn"
+		]
+	},
+	"application/x-chrome-extension": {
+		"extensions": [
+			"crx"
+		]
+	},
+	"application/x-cocoa": {
+		"source": "nginx",
+		"extensions": [
+			"cco"
+		]
+	},
+	"application/x-compress": {
+		"source": "apache"
+	},
+	"application/x-conference": {
+		"source": "apache",
+		"extensions": [
+			"nsc"
+		]
+	},
+	"application/x-cpio": {
+		"source": "apache",
+		"extensions": [
+			"cpio"
+		]
+	},
+	"application/x-csh": {
+		"source": "apache",
+		"extensions": [
+			"csh"
+		]
+	},
+	"application/x-deb": {
+		"compressible": false
+	},
+	"application/x-debian-package": {
+		"source": "apache",
+		"extensions": [
+			"deb",
+			"udeb"
+		]
+	},
+	"application/x-dgc-compressed": {
+		"source": "apache",
+		"extensions": [
+			"dgc"
+		]
+	},
+	"application/x-director": {
+		"source": "apache",
+		"extensions": [
+			"dir",
+			"dcr",
+			"dxr",
+			"cst",
+			"cct",
+			"cxt",
+			"w3d",
+			"fgd",
+			"swa"
+		]
+	},
+	"application/x-doom": {
+		"source": "apache",
+		"extensions": [
+			"wad"
+		]
+	},
+	"application/x-dtbncx+xml": {
+		"source": "apache",
+		"extensions": [
+			"ncx"
+		]
+	},
+	"application/x-dtbook+xml": {
+		"source": "apache",
+		"extensions": [
+			"dtb"
+		]
+	},
+	"application/x-dtbresource+xml": {
+		"source": "apache",
+		"extensions": [
+			"res"
+		]
+	},
+	"application/x-dvi": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"dvi"
+		]
+	},
+	"application/x-envoy": {
+		"source": "apache",
+		"extensions": [
+			"evy"
+		]
+	},
+	"application/x-eva": {
+		"source": "apache",
+		"extensions": [
+			"eva"
+		]
+	},
+	"application/x-font-bdf": {
+		"source": "apache",
+		"extensions": [
+			"bdf"
+		]
+	},
+	"application/x-font-dos": {
+		"source": "apache"
+	},
+	"application/x-font-framemaker": {
+		"source": "apache"
+	},
+	"application/x-font-ghostscript": {
+		"source": "apache",
+		"extensions": [
+			"gsf"
+		]
+	},
+	"application/x-font-libgrx": {
+		"source": "apache"
+	},
+	"application/x-font-linux-psf": {
+		"source": "apache",
+		"extensions": [
+			"psf"
+		]
+	},
+	"application/x-font-otf": {
+		"source": "apache",
+		"compressible": true,
+		"extensions": [
+			"otf"
+		]
+	},
+	"application/x-font-pcf": {
+		"source": "apache",
+		"extensions": [
+			"pcf"
+		]
+	},
+	"application/x-font-snf": {
+		"source": "apache",
+		"extensions": [
+			"snf"
+		]
+	},
+	"application/x-font-speedo": {
+		"source": "apache"
+	},
+	"application/x-font-sunos-news": {
+		"source": "apache"
+	},
+	"application/x-font-ttf": {
+		"source": "apache",
+		"compressible": true,
+		"extensions": [
+			"ttf",
+			"ttc"
+		]
+	},
+	"application/x-font-type1": {
+		"source": "apache",
+		"extensions": [
+			"pfa",
+			"pfb",
+			"pfm",
+			"afm"
+		]
+	},
+	"application/x-font-vfont": {
+		"source": "apache"
+	},
+	"application/x-freearc": {
+		"source": "apache",
+		"extensions": [
+			"arc"
+		]
+	},
+	"application/x-futuresplash": {
+		"source": "apache",
+		"extensions": [
+			"spl"
+		]
+	},
+	"application/x-gca-compressed": {
+		"source": "apache",
+		"extensions": [
+			"gca"
+		]
+	},
+	"application/x-glulx": {
+		"source": "apache",
+		"extensions": [
+			"ulx"
+		]
+	},
+	"application/x-gnumeric": {
+		"source": "apache",
+		"extensions": [
+			"gnumeric"
+		]
+	},
+	"application/x-gramps-xml": {
+		"source": "apache",
+		"extensions": [
+			"gramps"
+		]
+	},
+	"application/x-gtar": {
+		"source": "apache",
+		"extensions": [
+			"gtar"
+		]
+	},
+	"application/x-gzip": {
+		"source": "apache"
+	},
+	"application/x-hdf": {
+		"source": "apache",
+		"extensions": [
+			"hdf"
+		]
+	},
+	"application/x-httpd-php": {
+		"compressible": true,
+		"extensions": [
+			"php"
+		]
+	},
+	"application/x-install-instructions": {
+		"source": "apache",
+		"extensions": [
+			"install"
+		]
+	},
+	"application/x-iso9660-image": {
+		"source": "apache",
+		"extensions": [
+			"iso"
+		]
+	},
+	"application/x-java-archive-diff": {
+		"source": "nginx",
+		"extensions": [
+			"jardiff"
+		]
+	},
+	"application/x-java-jnlp-file": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"jnlp"
+		]
+	},
+	"application/x-javascript": {
+		"compressible": true
+	},
+	"application/x-latex": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"latex"
+		]
+	},
+	"application/x-lua-bytecode": {
+		"extensions": [
+			"luac"
+		]
+	},
+	"application/x-lzh-compressed": {
+		"source": "apache",
+		"extensions": [
+			"lzh",
+			"lha"
+		]
+	},
+	"application/x-makeself": {
+		"source": "nginx",
+		"extensions": [
+			"run"
+		]
+	},
+	"application/x-mie": {
+		"source": "apache",
+		"extensions": [
+			"mie"
+		]
+	},
+	"application/x-mobipocket-ebook": {
+		"source": "apache",
+		"extensions": [
+			"prc",
+			"mobi"
+		]
+	},
+	"application/x-mpegurl": {
+		"compressible": false
+	},
+	"application/x-ms-application": {
+		"source": "apache",
+		"extensions": [
+			"application"
+		]
+	},
+	"application/x-ms-shortcut": {
+		"source": "apache",
+		"extensions": [
+			"lnk"
+		]
+	},
+	"application/x-ms-wmd": {
+		"source": "apache",
+		"extensions": [
+			"wmd"
+		]
+	},
+	"application/x-ms-wmz": {
+		"source": "apache",
+		"extensions": [
+			"wmz"
+		]
+	},
+	"application/x-ms-xbap": {
+		"source": "apache",
+		"extensions": [
+			"xbap"
+		]
+	},
+	"application/x-msaccess": {
+		"source": "apache",
+		"extensions": [
+			"mdb"
+		]
+	},
+	"application/x-msbinder": {
+		"source": "apache",
+		"extensions": [
+			"obd"
+		]
+	},
+	"application/x-mscardfile": {
+		"source": "apache",
+		"extensions": [
+			"crd"
+		]
+	},
+	"application/x-msclip": {
+		"source": "apache",
+		"extensions": [
+			"clp"
+		]
+	},
+	"application/x-msdos-program": {
+		"extensions": [
+			"exe"
+		]
+	},
+	"application/x-msdownload": {
+		"source": "apache",
+		"extensions": [
+			"exe",
+			"dll",
+			"com",
+			"bat",
+			"msi"
+		]
+	},
+	"application/x-msmediaview": {
+		"source": "apache",
+		"extensions": [
+			"mvb",
+			"m13",
+			"m14"
+		]
+	},
+	"application/x-msmetafile": {
+		"source": "apache",
+		"extensions": [
+			"wmf",
+			"wmz",
+			"emf",
+			"emz"
+		]
+	},
+	"application/x-msmoney": {
+		"source": "apache",
+		"extensions": [
+			"mny"
+		]
+	},
+	"application/x-mspublisher": {
+		"source": "apache",
+		"extensions": [
+			"pub"
+		]
+	},
+	"application/x-msschedule": {
+		"source": "apache",
+		"extensions": [
+			"scd"
+		]
+	},
+	"application/x-msterminal": {
+		"source": "apache",
+		"extensions": [
+			"trm"
+		]
+	},
+	"application/x-mswrite": {
+		"source": "apache",
+		"extensions": [
+			"wri"
+		]
+	},
+	"application/x-netcdf": {
+		"source": "apache",
+		"extensions": [
+			"nc",
+			"cdf"
+		]
+	},
+	"application/x-ns-proxy-autoconfig": {
+		"compressible": true,
+		"extensions": [
+			"pac"
+		]
+	},
+	"application/x-nzb": {
+		"source": "apache",
+		"extensions": [
+			"nzb"
+		]
+	},
+	"application/x-perl": {
+		"source": "nginx",
+		"extensions": [
+			"pl",
+			"pm"
+		]
+	},
+	"application/x-pilot": {
+		"source": "nginx",
+		"extensions": [
+			"prc",
+			"pdb"
+		]
+	},
+	"application/x-pkcs12": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"p12",
+			"pfx"
+		]
+	},
+	"application/x-pkcs7-certificates": {
+		"source": "apache",
+		"extensions": [
+			"p7b",
+			"spc"
+		]
+	},
+	"application/x-pkcs7-certreqresp": {
+		"source": "apache",
+		"extensions": [
+			"p7r"
+		]
+	},
+	"application/x-rar-compressed": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"rar"
+		]
+	},
+	"application/x-redhat-package-manager": {
+		"source": "nginx",
+		"extensions": [
+			"rpm"
+		]
+	},
+	"application/x-research-info-systems": {
+		"source": "apache",
+		"extensions": [
+			"ris"
+		]
+	},
+	"application/x-sea": {
+		"source": "nginx",
+		"extensions": [
+			"sea"
+		]
+	},
+	"application/x-sh": {
+		"source": "apache",
+		"compressible": true,
+		"extensions": [
+			"sh"
+		]
+	},
+	"application/x-shar": {
+		"source": "apache",
+		"extensions": [
+			"shar"
+		]
+	},
+	"application/x-shockwave-flash": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"swf"
+		]
+	},
+	"application/x-silverlight-app": {
+		"source": "apache",
+		"extensions": [
+			"xap"
+		]
+	},
+	"application/x-sql": {
+		"source": "apache",
+		"extensions": [
+			"sql"
+		]
+	},
+	"application/x-stuffit": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"sit"
+		]
+	},
+	"application/x-stuffitx": {
+		"source": "apache",
+		"extensions": [
+			"sitx"
+		]
+	},
+	"application/x-subrip": {
+		"source": "apache",
+		"extensions": [
+			"srt"
+		]
+	},
+	"application/x-sv4cpio": {
+		"source": "apache",
+		"extensions": [
+			"sv4cpio"
+		]
+	},
+	"application/x-sv4crc": {
+		"source": "apache",
+		"extensions": [
+			"sv4crc"
+		]
+	},
+	"application/x-t3vm-image": {
+		"source": "apache",
+		"extensions": [
+			"t3"
+		]
+	},
+	"application/x-tads": {
+		"source": "apache",
+		"extensions": [
+			"gam"
+		]
+	},
+	"application/x-tar": {
+		"source": "apache",
+		"compressible": true,
+		"extensions": [
+			"tar"
+		]
+	},
+	"application/x-tcl": {
+		"source": "apache",
+		"extensions": [
+			"tcl",
+			"tk"
+		]
+	},
+	"application/x-tex": {
+		"source": "apache",
+		"extensions": [
+			"tex"
+		]
+	},
+	"application/x-tex-tfm": {
+		"source": "apache",
+		"extensions": [
+			"tfm"
+		]
+	},
+	"application/x-texinfo": {
+		"source": "apache",
+		"extensions": [
+			"texinfo",
+			"texi"
+		]
+	},
+	"application/x-tgif": {
+		"source": "apache",
+		"extensions": [
+			"obj"
+		]
+	},
+	"application/x-ustar": {
+		"source": "apache",
+		"extensions": [
+			"ustar"
+		]
+	},
+	"application/x-wais-source": {
+		"source": "apache",
+		"extensions": [
+			"src"
+		]
+	},
+	"application/x-web-app-manifest+json": {
+		"compressible": true,
+		"extensions": [
+			"webapp"
+		]
+	},
+	"application/x-www-form-urlencoded": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/x-x509-ca-cert": {
+		"source": "apache",
+		"extensions": [
+			"der",
+			"crt",
+			"pem"
+		]
+	},
+	"application/x-xfig": {
+		"source": "apache",
+		"extensions": [
+			"fig"
+		]
+	},
+	"application/x-xliff+xml": {
+		"source": "apache",
+		"extensions": [
+			"xlf"
+		]
+	},
+	"application/x-xpinstall": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"xpi"
+		]
+	},
+	"application/x-xz": {
+		"source": "apache",
+		"extensions": [
+			"xz"
+		]
+	},
+	"application/x-zmachine": {
+		"source": "apache",
+		"extensions": [
+			"z1",
+			"z2",
+			"z3",
+			"z4",
+			"z5",
+			"z6",
+			"z7",
+			"z8"
+		]
+	},
+	"application/x400-bp": {
+		"source": "iana"
+	},
+	"application/xacml+xml": {
+		"source": "iana"
+	},
+	"application/xaml+xml": {
+		"source": "apache",
+		"extensions": [
+			"xaml"
+		]
+	},
+	"application/xcap-att+xml": {
+		"source": "iana"
+	},
+	"application/xcap-caps+xml": {
+		"source": "iana"
+	},
+	"application/xcap-diff+xml": {
+		"source": "iana",
+		"extensions": [
+			"xdf"
+		]
+	},
+	"application/xcap-el+xml": {
+		"source": "iana"
+	},
+	"application/xcap-error+xml": {
+		"source": "iana"
+	},
+	"application/xcap-ns+xml": {
+		"source": "iana"
+	},
+	"application/xcon-conference-info+xml": {
+		"source": "iana"
+	},
+	"application/xcon-conference-info-diff+xml": {
+		"source": "iana"
+	},
+	"application/xenc+xml": {
+		"source": "iana",
+		"extensions": [
+			"xenc"
+		]
+	},
+	"application/xhtml+xml": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"xhtml",
+			"xht"
+		]
+	},
+	"application/xhtml-voice+xml": {
+		"source": "apache"
+	},
+	"application/xml": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"xml",
+			"xsl",
+			"xsd",
+			"rng"
+		]
+	},
+	"application/xml-dtd": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"dtd"
+		]
+	},
+	"application/xml-external-parsed-entity": {
+		"source": "iana"
+	},
+	"application/xml-patch+xml": {
+		"source": "iana"
+	},
+	"application/xmpp+xml": {
+		"source": "iana"
+	},
+	"application/xop+xml": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"xop"
+		]
+	},
+	"application/xproc+xml": {
+		"source": "apache",
+		"extensions": [
+			"xpl"
+		]
+	},
+	"application/xslt+xml": {
+		"source": "iana",
+		"extensions": [
+			"xslt"
+		]
+	},
+	"application/xspf+xml": {
+		"source": "apache",
+		"extensions": [
+			"xspf"
+		]
+	},
+	"application/xv+xml": {
+		"source": "iana",
+		"extensions": [
+			"mxml",
+			"xhvml",
+			"xvml",
+			"xvm"
+		]
+	},
+	"application/yang": {
+		"source": "iana",
+		"extensions": [
+			"yang"
+		]
+	},
+	"application/yang-data+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/yang-data+xml": {
+		"source": "iana"
+	},
+	"application/yang-patch+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"application/yang-patch+xml": {
+		"source": "iana"
+	},
+	"application/yin+xml": {
+		"source": "iana",
+		"extensions": [
+			"yin"
+		]
+	},
+	"application/zip": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"zip"
+		]
+	},
+	"application/zlib": {
+		"source": "iana"
+	},
+	"audio/1d-interleaved-parityfec": {
+		"source": "iana"
+	},
+	"audio/32kadpcm": {
+		"source": "iana"
+	},
+	"audio/3gpp": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"3gpp"
+		]
+	},
+	"audio/3gpp2": {
+		"source": "iana"
+	},
+	"audio/ac3": {
+		"source": "iana"
+	},
+	"audio/adpcm": {
+		"source": "apache",
+		"extensions": [
+			"adp"
+		]
+	},
+	"audio/amr": {
+		"source": "iana"
+	},
+	"audio/amr-wb": {
+		"source": "iana"
+	},
+	"audio/amr-wb+": {
+		"source": "iana"
+	},
+	"audio/aptx": {
+		"source": "iana"
+	},
+	"audio/asc": {
+		"source": "iana"
+	},
+	"audio/atrac-advanced-lossless": {
+		"source": "iana"
+	},
+	"audio/atrac-x": {
+		"source": "iana"
+	},
+	"audio/atrac3": {
+		"source": "iana"
+	},
+	"audio/basic": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"au",
+			"snd"
+		]
+	},
+	"audio/bv16": {
+		"source": "iana"
+	},
+	"audio/bv32": {
+		"source": "iana"
+	},
+	"audio/clearmode": {
+		"source": "iana"
+	},
+	"audio/cn": {
+		"source": "iana"
+	},
+	"audio/dat12": {
+		"source": "iana"
+	},
+	"audio/dls": {
+		"source": "iana"
+	},
+	"audio/dsr-es201108": {
+		"source": "iana"
+	},
+	"audio/dsr-es202050": {
+		"source": "iana"
+	},
+	"audio/dsr-es202211": {
+		"source": "iana"
+	},
+	"audio/dsr-es202212": {
+		"source": "iana"
+	},
+	"audio/dv": {
+		"source": "iana"
+	},
+	"audio/dvi4": {
+		"source": "iana"
+	},
+	"audio/eac3": {
+		"source": "iana"
+	},
+	"audio/encaprtp": {
+		"source": "iana"
+	},
+	"audio/evrc": {
+		"source": "iana"
+	},
+	"audio/evrc-qcp": {
+		"source": "iana"
+	},
+	"audio/evrc0": {
+		"source": "iana"
+	},
+	"audio/evrc1": {
+		"source": "iana"
+	},
+	"audio/evrcb": {
+		"source": "iana"
+	},
+	"audio/evrcb0": {
+		"source": "iana"
+	},
+	"audio/evrcb1": {
+		"source": "iana"
+	},
+	"audio/evrcnw": {
+		"source": "iana"
+	},
+	"audio/evrcnw0": {
+		"source": "iana"
+	},
+	"audio/evrcnw1": {
+		"source": "iana"
+	},
+	"audio/evrcwb": {
+		"source": "iana"
+	},
+	"audio/evrcwb0": {
+		"source": "iana"
+	},
+	"audio/evrcwb1": {
+		"source": "iana"
+	},
+	"audio/evs": {
+		"source": "iana"
+	},
+	"audio/fwdred": {
+		"source": "iana"
+	},
+	"audio/g711-0": {
+		"source": "iana"
+	},
+	"audio/g719": {
+		"source": "iana"
+	},
+	"audio/g722": {
+		"source": "iana"
+	},
+	"audio/g7221": {
+		"source": "iana"
+	},
+	"audio/g723": {
+		"source": "iana"
+	},
+	"audio/g726-16": {
+		"source": "iana"
+	},
+	"audio/g726-24": {
+		"source": "iana"
+	},
+	"audio/g726-32": {
+		"source": "iana"
+	},
+	"audio/g726-40": {
+		"source": "iana"
+	},
+	"audio/g728": {
+		"source": "iana"
+	},
+	"audio/g729": {
+		"source": "iana"
+	},
+	"audio/g7291": {
+		"source": "iana"
+	},
+	"audio/g729d": {
+		"source": "iana"
+	},
+	"audio/g729e": {
+		"source": "iana"
+	},
+	"audio/gsm": {
+		"source": "iana"
+	},
+	"audio/gsm-efr": {
+		"source": "iana"
+	},
+	"audio/gsm-hr-08": {
+		"source": "iana"
+	},
+	"audio/ilbc": {
+		"source": "iana"
+	},
+	"audio/ip-mr_v2.5": {
+		"source": "iana"
+	},
+	"audio/isac": {
+		"source": "apache"
+	},
+	"audio/l16": {
+		"source": "iana"
+	},
+	"audio/l20": {
+		"source": "iana"
+	},
+	"audio/l24": {
+		"source": "iana",
+		"compressible": false
+	},
+	"audio/l8": {
+		"source": "iana"
+	},
+	"audio/lpc": {
+		"source": "iana"
+	},
+	"audio/melp": {
+		"source": "iana"
+	},
+	"audio/melp1200": {
+		"source": "iana"
+	},
+	"audio/melp2400": {
+		"source": "iana"
+	},
+	"audio/melp600": {
+		"source": "iana"
+	},
+	"audio/midi": {
+		"source": "apache",
+		"extensions": [
+			"mid",
+			"midi",
+			"kar",
+			"rmi"
+		]
+	},
+	"audio/mobile-xmf": {
+		"source": "iana"
+	},
+	"audio/mp3": {
+		"compressible": false,
+		"extensions": [
+			"mp3"
+		]
+	},
+	"audio/mp4": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"m4a",
+			"mp4a"
+		]
+	},
+	"audio/mp4a-latm": {
+		"source": "iana"
+	},
+	"audio/mpa": {
+		"source": "iana"
+	},
+	"audio/mpa-robust": {
+		"source": "iana"
+	},
+	"audio/mpeg": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"mpga",
+			"mp2",
+			"mp2a",
+			"mp3",
+			"m2a",
+			"m3a"
+		]
+	},
+	"audio/mpeg4-generic": {
+		"source": "iana"
+	},
+	"audio/musepack": {
+		"source": "apache"
+	},
+	"audio/ogg": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"oga",
+			"ogg",
+			"spx"
+		]
+	},
+	"audio/opus": {
+		"source": "iana"
+	},
+	"audio/parityfec": {
+		"source": "iana"
+	},
+	"audio/pcma": {
+		"source": "iana"
+	},
+	"audio/pcma-wb": {
+		"source": "iana"
+	},
+	"audio/pcmu": {
+		"source": "iana"
+	},
+	"audio/pcmu-wb": {
+		"source": "iana"
+	},
+	"audio/prs.sid": {
+		"source": "iana"
+	},
+	"audio/qcelp": {
+		"source": "iana"
+	},
+	"audio/raptorfec": {
+		"source": "iana"
+	},
+	"audio/red": {
+		"source": "iana"
+	},
+	"audio/rtp-enc-aescm128": {
+		"source": "iana"
+	},
+	"audio/rtp-midi": {
+		"source": "iana"
+	},
+	"audio/rtploopback": {
+		"source": "iana"
+	},
+	"audio/rtx": {
+		"source": "iana"
+	},
+	"audio/s3m": {
+		"source": "apache",
+		"extensions": [
+			"s3m"
+		]
+	},
+	"audio/silk": {
+		"source": "apache",
+		"extensions": [
+			"sil"
+		]
+	},
+	"audio/smv": {
+		"source": "iana"
+	},
+	"audio/smv-qcp": {
+		"source": "iana"
+	},
+	"audio/smv0": {
+		"source": "iana"
+	},
+	"audio/sp-midi": {
+		"source": "iana"
+	},
+	"audio/speex": {
+		"source": "iana"
+	},
+	"audio/t140c": {
+		"source": "iana"
+	},
+	"audio/t38": {
+		"source": "iana"
+	},
+	"audio/telephone-event": {
+		"source": "iana"
+	},
+	"audio/tone": {
+		"source": "iana"
+	},
+	"audio/uemclip": {
+		"source": "iana"
+	},
+	"audio/ulpfec": {
+		"source": "iana"
+	},
+	"audio/vdvi": {
+		"source": "iana"
+	},
+	"audio/vmr-wb": {
+		"source": "iana"
+	},
+	"audio/vnd.3gpp.iufp": {
+		"source": "iana"
+	},
+	"audio/vnd.4sb": {
+		"source": "iana"
+	},
+	"audio/vnd.audiokoz": {
+		"source": "iana"
+	},
+	"audio/vnd.celp": {
+		"source": "iana"
+	},
+	"audio/vnd.cisco.nse": {
+		"source": "iana"
+	},
+	"audio/vnd.cmles.radio-events": {
+		"source": "iana"
+	},
+	"audio/vnd.cns.anp1": {
+		"source": "iana"
+	},
+	"audio/vnd.cns.inf1": {
+		"source": "iana"
+	},
+	"audio/vnd.dece.audio": {
+		"source": "iana",
+		"extensions": [
+			"uva",
+			"uvva"
+		]
+	},
+	"audio/vnd.digital-winds": {
+		"source": "iana",
+		"extensions": [
+			"eol"
+		]
+	},
+	"audio/vnd.dlna.adts": {
+		"source": "iana"
+	},
+	"audio/vnd.dolby.heaac.1": {
+		"source": "iana"
+	},
+	"audio/vnd.dolby.heaac.2": {
+		"source": "iana"
+	},
+	"audio/vnd.dolby.mlp": {
+		"source": "iana"
+	},
+	"audio/vnd.dolby.mps": {
+		"source": "iana"
+	},
+	"audio/vnd.dolby.pl2": {
+		"source": "iana"
+	},
+	"audio/vnd.dolby.pl2x": {
+		"source": "iana"
+	},
+	"audio/vnd.dolby.pl2z": {
+		"source": "iana"
+	},
+	"audio/vnd.dolby.pulse.1": {
+		"source": "iana"
+	},
+	"audio/vnd.dra": {
+		"source": "iana",
+		"extensions": [
+			"dra"
+		]
+	},
+	"audio/vnd.dts": {
+		"source": "iana",
+		"extensions": [
+			"dts"
+		]
+	},
+	"audio/vnd.dts.hd": {
+		"source": "iana",
+		"extensions": [
+			"dtshd"
+		]
+	},
+	"audio/vnd.dvb.file": {
+		"source": "iana"
+	},
+	"audio/vnd.everad.plj": {
+		"source": "iana"
+	},
+	"audio/vnd.hns.audio": {
+		"source": "iana"
+	},
+	"audio/vnd.lucent.voice": {
+		"source": "iana",
+		"extensions": [
+			"lvp"
+		]
+	},
+	"audio/vnd.ms-playready.media.pya": {
+		"source": "iana",
+		"extensions": [
+			"pya"
+		]
+	},
+	"audio/vnd.nokia.mobile-xmf": {
+		"source": "iana"
+	},
+	"audio/vnd.nortel.vbk": {
+		"source": "iana"
+	},
+	"audio/vnd.nuera.ecelp4800": {
+		"source": "iana",
+		"extensions": [
+			"ecelp4800"
+		]
+	},
+	"audio/vnd.nuera.ecelp7470": {
+		"source": "iana",
+		"extensions": [
+			"ecelp7470"
+		]
+	},
+	"audio/vnd.nuera.ecelp9600": {
+		"source": "iana",
+		"extensions": [
+			"ecelp9600"
+		]
+	},
+	"audio/vnd.octel.sbc": {
+		"source": "iana"
+	},
+	"audio/vnd.qcelp": {
+		"source": "iana"
+	},
+	"audio/vnd.rhetorex.32kadpcm": {
+		"source": "iana"
+	},
+	"audio/vnd.rip": {
+		"source": "iana",
+		"extensions": [
+			"rip"
+		]
+	},
+	"audio/vnd.rn-realaudio": {
+		"compressible": false
+	},
+	"audio/vnd.sealedmedia.softseal.mpeg": {
+		"source": "iana"
+	},
+	"audio/vnd.vmx.cvsd": {
+		"source": "iana"
+	},
+	"audio/vnd.wave": {
+		"compressible": false
+	},
+	"audio/vorbis": {
+		"source": "iana",
+		"compressible": false
+	},
+	"audio/vorbis-config": {
+		"source": "iana"
+	},
+	"audio/wav": {
+		"compressible": false,
+		"extensions": [
+			"wav"
+		]
+	},
+	"audio/wave": {
+		"compressible": false,
+		"extensions": [
+			"wav"
+		]
+	},
+	"audio/webm": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"weba"
+		]
+	},
+	"audio/x-aac": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"aac"
+		]
+	},
+	"audio/x-aiff": {
+		"source": "apache",
+		"extensions": [
+			"aif",
+			"aiff",
+			"aifc"
+		]
+	},
+	"audio/x-caf": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"caf"
+		]
+	},
+	"audio/x-flac": {
+		"source": "apache",
+		"extensions": [
+			"flac"
+		]
+	},
+	"audio/x-m4a": {
+		"source": "nginx",
+		"extensions": [
+			"m4a"
+		]
+	},
+	"audio/x-matroska": {
+		"source": "apache",
+		"extensions": [
+			"mka"
+		]
+	},
+	"audio/x-mpegurl": {
+		"source": "apache",
+		"extensions": [
+			"m3u"
+		]
+	},
+	"audio/x-ms-wax": {
+		"source": "apache",
+		"extensions": [
+			"wax"
+		]
+	},
+	"audio/x-ms-wma": {
+		"source": "apache",
+		"extensions": [
+			"wma"
+		]
+	},
+	"audio/x-pn-realaudio": {
+		"source": "apache",
+		"extensions": [
+			"ram",
+			"ra"
+		]
+	},
+	"audio/x-pn-realaudio-plugin": {
+		"source": "apache",
+		"extensions": [
+			"rmp"
+		]
+	},
+	"audio/x-realaudio": {
+		"source": "nginx",
+		"extensions": [
+			"ra"
+		]
+	},
+	"audio/x-tta": {
+		"source": "apache"
+	},
+	"audio/x-wav": {
+		"source": "apache",
+		"extensions": [
+			"wav"
+		]
+	},
+	"audio/xm": {
+		"source": "apache",
+		"extensions": [
+			"xm"
+		]
+	},
+	"chemical/x-cdx": {
+		"source": "apache",
+		"extensions": [
+			"cdx"
+		]
+	},
+	"chemical/x-cif": {
+		"source": "apache",
+		"extensions": [
+			"cif"
+		]
+	},
+	"chemical/x-cmdf": {
+		"source": "apache",
+		"extensions": [
+			"cmdf"
+		]
+	},
+	"chemical/x-cml": {
+		"source": "apache",
+		"extensions": [
+			"cml"
+		]
+	},
+	"chemical/x-csml": {
+		"source": "apache",
+		"extensions": [
+			"csml"
+		]
+	},
+	"chemical/x-pdb": {
+		"source": "apache"
+	},
+	"chemical/x-xyz": {
+		"source": "apache",
+		"extensions": [
+			"xyz"
+		]
+	},
+	"font/opentype": {
+		"compressible": true,
+		"extensions": [
+			"otf"
+		]
+	},
+	"image/apng": {
+		"compressible": false,
+		"extensions": [
+			"apng"
+		]
+	},
+	"image/bmp": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"bmp"
+		]
+	},
+	"image/cgm": {
+		"source": "iana",
+		"extensions": [
+			"cgm"
+		]
+	},
+	"image/dicom-rle": {
+		"source": "iana"
+	},
+	"image/emf": {
+		"source": "iana"
+	},
+	"image/fits": {
+		"source": "iana"
+	},
+	"image/g3fax": {
+		"source": "iana",
+		"extensions": [
+			"g3"
+		]
+	},
+	"image/gif": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"gif"
+		]
+	},
+	"image/ief": {
+		"source": "iana",
+		"extensions": [
+			"ief"
+		]
+	},
+	"image/jls": {
+		"source": "iana"
+	},
+	"image/jp2": {
+		"source": "iana"
+	},
+	"image/jpeg": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"jpeg",
+			"jpg",
+			"jpe"
+		]
+	},
+	"image/jpm": {
+		"source": "iana"
+	},
+	"image/jpx": {
+		"source": "iana"
+	},
+	"image/ktx": {
+		"source": "iana",
+		"extensions": [
+			"ktx"
+		]
+	},
+	"image/naplps": {
+		"source": "iana"
+	},
+	"image/pjpeg": {
+		"compressible": false
+	},
+	"image/png": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"png"
+		]
+	},
+	"image/prs.btif": {
+		"source": "iana",
+		"extensions": [
+			"btif"
+		]
+	},
+	"image/prs.pti": {
+		"source": "iana"
+	},
+	"image/pwg-raster": {
+		"source": "iana"
+	},
+	"image/sgi": {
+		"source": "apache",
+		"extensions": [
+			"sgi"
+		]
+	},
+	"image/svg+xml": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"svg",
+			"svgz"
+		]
+	},
+	"image/t38": {
+		"source": "iana"
+	},
+	"image/tiff": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"tiff",
+			"tif"
+		]
+	},
+	"image/tiff-fx": {
+		"source": "iana"
+	},
+	"image/vnd.adobe.photoshop": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"psd"
+		]
+	},
+	"image/vnd.airzip.accelerator.azv": {
+		"source": "iana"
+	},
+	"image/vnd.cns.inf2": {
+		"source": "iana"
+	},
+	"image/vnd.dece.graphic": {
+		"source": "iana",
+		"extensions": [
+			"uvi",
+			"uvvi",
+			"uvg",
+			"uvvg"
+		]
+	},
+	"image/vnd.djvu": {
+		"source": "iana",
+		"extensions": [
+			"djvu",
+			"djv"
+		]
+	},
+	"image/vnd.dvb.subtitle": {
+		"source": "iana",
+		"extensions": [
+			"sub"
+		]
+	},
+	"image/vnd.dwg": {
+		"source": "iana",
+		"extensions": [
+			"dwg"
+		]
+	},
+	"image/vnd.dxf": {
+		"source": "iana",
+		"extensions": [
+			"dxf"
+		]
+	},
+	"image/vnd.fastbidsheet": {
+		"source": "iana",
+		"extensions": [
+			"fbs"
+		]
+	},
+	"image/vnd.fpx": {
+		"source": "iana",
+		"extensions": [
+			"fpx"
+		]
+	},
+	"image/vnd.fst": {
+		"source": "iana",
+		"extensions": [
+			"fst"
+		]
+	},
+	"image/vnd.fujixerox.edmics-mmr": {
+		"source": "iana",
+		"extensions": [
+			"mmr"
+		]
+	},
+	"image/vnd.fujixerox.edmics-rlc": {
+		"source": "iana",
+		"extensions": [
+			"rlc"
+		]
+	},
+	"image/vnd.globalgraphics.pgb": {
+		"source": "iana"
+	},
+	"image/vnd.microsoft.icon": {
+		"source": "iana"
+	},
+	"image/vnd.mix": {
+		"source": "iana"
+	},
+	"image/vnd.mozilla.apng": {
+		"source": "iana"
+	},
+	"image/vnd.ms-modi": {
+		"source": "iana",
+		"extensions": [
+			"mdi"
+		]
+	},
+	"image/vnd.ms-photo": {
+		"source": "apache",
+		"extensions": [
+			"wdp"
+		]
+	},
+	"image/vnd.net-fpx": {
+		"source": "iana",
+		"extensions": [
+			"npx"
+		]
+	},
+	"image/vnd.radiance": {
+		"source": "iana"
+	},
+	"image/vnd.sealed.png": {
+		"source": "iana"
+	},
+	"image/vnd.sealedmedia.softseal.gif": {
+		"source": "iana"
+	},
+	"image/vnd.sealedmedia.softseal.jpg": {
+		"source": "iana"
+	},
+	"image/vnd.svf": {
+		"source": "iana"
+	},
+	"image/vnd.tencent.tap": {
+		"source": "iana"
+	},
+	"image/vnd.valve.source.texture": {
+		"source": "iana"
+	},
+	"image/vnd.wap.wbmp": {
+		"source": "iana",
+		"extensions": [
+			"wbmp"
+		]
+	},
+	"image/vnd.xiff": {
+		"source": "iana",
+		"extensions": [
+			"xif"
+		]
+	},
+	"image/vnd.zbrush.pcx": {
+		"source": "iana"
+	},
+	"image/webp": {
+		"source": "apache",
+		"extensions": [
+			"webp"
+		]
+	},
+	"image/wmf": {
+		"source": "iana"
+	},
+	"image/x-3ds": {
+		"source": "apache",
+		"extensions": [
+			"3ds"
+		]
+	},
+	"image/x-cmu-raster": {
+		"source": "apache",
+		"extensions": [
+			"ras"
+		]
+	},
+	"image/x-cmx": {
+		"source": "apache",
+		"extensions": [
+			"cmx"
+		]
+	},
+	"image/x-freehand": {
+		"source": "apache",
+		"extensions": [
+			"fh",
+			"fhc",
+			"fh4",
+			"fh5",
+			"fh7"
+		]
+	},
+	"image/x-icon": {
+		"source": "apache",
+		"compressible": true,
+		"extensions": [
+			"ico"
+		]
+	},
+	"image/x-jng": {
+		"source": "nginx",
+		"extensions": [
+			"jng"
+		]
+	},
+	"image/x-mrsid-image": {
+		"source": "apache",
+		"extensions": [
+			"sid"
+		]
+	},
+	"image/x-ms-bmp": {
+		"source": "nginx",
+		"compressible": true,
+		"extensions": [
+			"bmp"
+		]
+	},
+	"image/x-pcx": {
+		"source": "apache",
+		"extensions": [
+			"pcx"
+		]
+	},
+	"image/x-pict": {
+		"source": "apache",
+		"extensions": [
+			"pic",
+			"pct"
+		]
+	},
+	"image/x-portable-anymap": {
+		"source": "apache",
+		"extensions": [
+			"pnm"
+		]
+	},
+	"image/x-portable-bitmap": {
+		"source": "apache",
+		"extensions": [
+			"pbm"
+		]
+	},
+	"image/x-portable-graymap": {
+		"source": "apache",
+		"extensions": [
+			"pgm"
+		]
+	},
+	"image/x-portable-pixmap": {
+		"source": "apache",
+		"extensions": [
+			"ppm"
+		]
+	},
+	"image/x-rgb": {
+		"source": "apache",
+		"extensions": [
+			"rgb"
+		]
+	},
+	"image/x-tga": {
+		"source": "apache",
+		"extensions": [
+			"tga"
+		]
+	},
+	"image/x-xbitmap": {
+		"source": "apache",
+		"extensions": [
+			"xbm"
+		]
+	},
+	"image/x-xcf": {
+		"compressible": false
+	},
+	"image/x-xpixmap": {
+		"source": "apache",
+		"extensions": [
+			"xpm"
+		]
+	},
+	"image/x-xwindowdump": {
+		"source": "apache",
+		"extensions": [
+			"xwd"
+		]
+	},
+	"message/cpim": {
+		"source": "iana"
+	},
+	"message/delivery-status": {
+		"source": "iana"
+	},
+	"message/disposition-notification": {
+		"source": "iana"
+	},
+	"message/external-body": {
+		"source": "iana"
+	},
+	"message/feedback-report": {
+		"source": "iana"
+	},
+	"message/global": {
+		"source": "iana"
+	},
+	"message/global-delivery-status": {
+		"source": "iana"
+	},
+	"message/global-disposition-notification": {
+		"source": "iana"
+	},
+	"message/global-headers": {
+		"source": "iana"
+	},
+	"message/http": {
+		"source": "iana",
+		"compressible": false
+	},
+	"message/imdn+xml": {
+		"source": "iana",
+		"compressible": true
+	},
+	"message/news": {
+		"source": "iana"
+	},
+	"message/partial": {
+		"source": "iana",
+		"compressible": false
+	},
+	"message/rfc822": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"eml",
+			"mime"
+		]
+	},
+	"message/s-http": {
+		"source": "iana"
+	},
+	"message/sip": {
+		"source": "iana"
+	},
+	"message/sipfrag": {
+		"source": "iana"
+	},
+	"message/tracking-status": {
+		"source": "iana"
+	},
+	"message/vnd.si.simp": {
+		"source": "iana"
+	},
+	"message/vnd.wfa.wsc": {
+		"source": "iana"
+	},
+	"model/gltf+json": {
+		"source": "iana",
+		"compressible": true
+	},
+	"model/iges": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"igs",
+			"iges"
+		]
+	},
+	"model/mesh": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"msh",
+			"mesh",
+			"silo"
+		]
+	},
+	"model/vnd.collada+xml": {
+		"source": "iana",
+		"extensions": [
+			"dae"
+		]
+	},
+	"model/vnd.dwf": {
+		"source": "iana",
+		"extensions": [
+			"dwf"
+		]
+	},
+	"model/vnd.flatland.3dml": {
+		"source": "iana"
+	},
+	"model/vnd.gdl": {
+		"source": "iana",
+		"extensions": [
+			"gdl"
+		]
+	},
+	"model/vnd.gs-gdl": {
+		"source": "apache"
+	},
+	"model/vnd.gs.gdl": {
+		"source": "iana"
+	},
+	"model/vnd.gtw": {
+		"source": "iana",
+		"extensions": [
+			"gtw"
+		]
+	},
+	"model/vnd.moml+xml": {
+		"source": "iana"
+	},
+	"model/vnd.mts": {
+		"source": "iana",
+		"extensions": [
+			"mts"
+		]
+	},
+	"model/vnd.opengex": {
+		"source": "iana"
+	},
+	"model/vnd.parasolid.transmit.binary": {
+		"source": "iana"
+	},
+	"model/vnd.parasolid.transmit.text": {
+		"source": "iana"
+	},
+	"model/vnd.rosette.annotated-data-model": {
+		"source": "iana"
+	},
+	"model/vnd.valve.source.compiled-map": {
+		"source": "iana"
+	},
+	"model/vnd.vtu": {
+		"source": "iana",
+		"extensions": [
+			"vtu"
+		]
+	},
+	"model/vrml": {
+		"source": "iana",
+		"compressible": false,
+		"extensions": [
+			"wrl",
+			"vrml"
+		]
+	},
+	"model/x3d+binary": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"x3db",
+			"x3dbz"
+		]
+	},
+	"model/x3d+fastinfoset": {
+		"source": "iana"
+	},
+	"model/x3d+vrml": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"x3dv",
+			"x3dvz"
+		]
+	},
+	"model/x3d+xml": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"x3d",
+			"x3dz"
+		]
+	},
+	"model/x3d-vrml": {
+		"source": "iana"
+	},
+	"multipart/alternative": {
+		"source": "iana",
+		"compressible": false
+	},
+	"multipart/appledouble": {
+		"source": "iana"
+	},
+	"multipart/byteranges": {
+		"source": "iana"
+	},
+	"multipart/digest": {
+		"source": "iana"
+	},
+	"multipart/encrypted": {
+		"source": "iana",
+		"compressible": false
+	},
+	"multipart/form-data": {
+		"source": "iana",
+		"compressible": false
+	},
+	"multipart/header-set": {
+		"source": "iana"
+	},
+	"multipart/mixed": {
+		"source": "iana",
+		"compressible": false
+	},
+	"multipart/parallel": {
+		"source": "iana"
+	},
+	"multipart/related": {
+		"source": "iana",
+		"compressible": false
+	},
+	"multipart/report": {
+		"source": "iana"
+	},
+	"multipart/signed": {
+		"source": "iana",
+		"compressible": false
+	},
+	"multipart/voice-message": {
+		"source": "iana"
+	},
+	"multipart/x-mixed-replace": {
+		"source": "iana"
+	},
+	"text/1d-interleaved-parityfec": {
+		"source": "iana"
+	},
+	"text/cache-manifest": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"appcache",
+			"manifest"
+		]
+	},
+	"text/calendar": {
+		"source": "iana",
+		"extensions": [
+			"ics",
+			"ifb"
+		]
+	},
+	"text/calender": {
+		"compressible": true
+	},
+	"text/cmd": {
+		"compressible": true
+	},
+	"text/coffeescript": {
+		"extensions": [
+			"coffee",
+			"litcoffee"
+		]
+	},
+	"text/css": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"css"
+		]
+	},
+	"text/csv": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"csv"
+		]
+	},
+	"text/csv-schema": {
+		"source": "iana"
+	},
+	"text/directory": {
+		"source": "iana"
+	},
+	"text/dns": {
+		"source": "iana"
+	},
+	"text/ecmascript": {
+		"source": "iana"
+	},
+	"text/encaprtp": {
+		"source": "iana"
+	},
+	"text/enriched": {
+		"source": "iana"
+	},
+	"text/fwdred": {
+		"source": "iana"
+	},
+	"text/grammar-ref-list": {
+		"source": "iana"
+	},
+	"text/hjson": {
+		"extensions": [
+			"hjson"
+		]
+	},
+	"text/html": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"html",
+			"htm",
+			"shtml"
+		]
+	},
+	"text/jade": {
+		"extensions": [
+			"jade"
+		]
+	},
+	"text/javascript": {
+		"source": "iana",
+		"compressible": true
+	},
+	"text/jcr-cnd": {
+		"source": "iana"
+	},
+	"text/jsx": {
+		"compressible": true,
+		"extensions": [
+			"jsx"
+		]
+	},
+	"text/less": {
+		"extensions": [
+			"less"
+		]
+	},
+	"text/markdown": {
+		"source": "iana"
+	},
+	"text/mathml": {
+		"source": "nginx",
+		"extensions": [
+			"mml"
+		]
+	},
+	"text/mizar": {
+		"source": "iana"
+	},
+	"text/n3": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"n3"
+		]
+	},
+	"text/parameters": {
+		"source": "iana"
+	},
+	"text/parityfec": {
+		"source": "iana"
+	},
+	"text/plain": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"txt",
+			"text",
+			"conf",
+			"def",
+			"list",
+			"log",
+			"in",
+			"ini"
+		]
+	},
+	"text/provenance-notation": {
+		"source": "iana"
+	},
+	"text/prs.fallenstein.rst": {
+		"source": "iana"
+	},
+	"text/prs.lines.tag": {
+		"source": "iana",
+		"extensions": [
+			"dsc"
+		]
+	},
+	"text/prs.prop.logic": {
+		"source": "iana"
+	},
+	"text/raptorfec": {
+		"source": "iana"
+	},
+	"text/red": {
+		"source": "iana"
+	},
+	"text/rfc822-headers": {
+		"source": "iana"
+	},
+	"text/richtext": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"rtx"
+		]
+	},
+	"text/rtf": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"rtf"
+		]
+	},
+	"text/rtp-enc-aescm128": {
+		"source": "iana"
+	},
+	"text/rtploopback": {
+		"source": "iana"
+	},
+	"text/rtx": {
+		"source": "iana"
+	},
+	"text/sgml": {
+		"source": "iana",
+		"extensions": [
+			"sgml",
+			"sgm"
+		]
+	},
+	"text/slim": {
+		"extensions": [
+			"slim",
+			"slm"
+		]
+	},
+	"text/stylus": {
+		"extensions": [
+			"stylus",
+			"styl"
+		]
+	},
+	"text/t140": {
+		"source": "iana"
+	},
+	"text/tab-separated-values": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"tsv"
+		]
+	},
+	"text/troff": {
+		"source": "iana",
+		"extensions": [
+			"t",
+			"tr",
+			"roff",
+			"man",
+			"me",
+			"ms"
+		]
+	},
+	"text/turtle": {
+		"source": "iana",
+		"extensions": [
+			"ttl"
+		]
+	},
+	"text/ulpfec": {
+		"source": "iana"
+	},
+	"text/uri-list": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"uri",
+			"uris",
+			"urls"
+		]
+	},
+	"text/vcard": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"vcard"
+		]
+	},
+	"text/vnd.a": {
+		"source": "iana"
+	},
+	"text/vnd.abc": {
+		"source": "iana"
+	},
+	"text/vnd.ascii-art": {
+		"source": "iana"
+	},
+	"text/vnd.curl": {
+		"source": "iana",
+		"extensions": [
+			"curl"
+		]
+	},
+	"text/vnd.curl.dcurl": {
+		"source": "apache",
+		"extensions": [
+			"dcurl"
+		]
+	},
+	"text/vnd.curl.mcurl": {
+		"source": "apache",
+		"extensions": [
+			"mcurl"
+		]
+	},
+	"text/vnd.curl.scurl": {
+		"source": "apache",
+		"extensions": [
+			"scurl"
+		]
+	},
+	"text/vnd.debian.copyright": {
+		"source": "iana"
+	},
+	"text/vnd.dmclientscript": {
+		"source": "iana"
+	},
+	"text/vnd.dvb.subtitle": {
+		"source": "iana",
+		"extensions": [
+			"sub"
+		]
+	},
+	"text/vnd.esmertec.theme-descriptor": {
+		"source": "iana"
+	},
+	"text/vnd.fly": {
+		"source": "iana",
+		"extensions": [
+			"fly"
+		]
+	},
+	"text/vnd.fmi.flexstor": {
+		"source": "iana",
+		"extensions": [
+			"flx"
+		]
+	},
+	"text/vnd.graphviz": {
+		"source": "iana",
+		"extensions": [
+			"gv"
+		]
+	},
+	"text/vnd.in3d.3dml": {
+		"source": "iana",
+		"extensions": [
+			"3dml"
+		]
+	},
+	"text/vnd.in3d.spot": {
+		"source": "iana",
+		"extensions": [
+			"spot"
+		]
+	},
+	"text/vnd.iptc.newsml": {
+		"source": "iana"
+	},
+	"text/vnd.iptc.nitf": {
+		"source": "iana"
+	},
+	"text/vnd.latex-z": {
+		"source": "iana"
+	},
+	"text/vnd.motorola.reflex": {
+		"source": "iana"
+	},
+	"text/vnd.ms-mediapackage": {
+		"source": "iana"
+	},
+	"text/vnd.net2phone.commcenter.command": {
+		"source": "iana"
+	},
+	"text/vnd.radisys.msml-basic-layout": {
+		"source": "iana"
+	},
+	"text/vnd.si.uricatalogue": {
+		"source": "iana"
+	},
+	"text/vnd.sun.j2me.app-descriptor": {
+		"source": "iana",
+		"extensions": [
+			"jad"
+		]
+	},
+	"text/vnd.trolltech.linguist": {
+		"source": "iana"
+	},
+	"text/vnd.wap.si": {
+		"source": "iana"
+	},
+	"text/vnd.wap.sl": {
+		"source": "iana"
+	},
+	"text/vnd.wap.wml": {
+		"source": "iana",
+		"extensions": [
+			"wml"
+		]
+	},
+	"text/vnd.wap.wmlscript": {
+		"source": "iana",
+		"extensions": [
+			"wmls"
+		]
+	},
+	"text/vtt": {
+		"charset": "UTF-8",
+		"compressible": true,
+		"extensions": [
+			"vtt"
+		]
+	},
+	"text/x-asm": {
+		"source": "apache",
+		"extensions": [
+			"s",
+			"asm"
+		]
+	},
+	"text/x-c": {
+		"source": "apache",
+		"extensions": [
+			"c",
+			"cc",
+			"cxx",
+			"cpp",
+			"h",
+			"hh",
+			"dic"
+		]
+	},
+	"text/x-component": {
+		"source": "nginx",
+		"extensions": [
+			"htc"
+		]
+	},
+	"text/x-fortran": {
+		"source": "apache",
+		"extensions": [
+			"f",
+			"for",
+			"f77",
+			"f90"
+		]
+	},
+	"text/x-gwt-rpc": {
+		"compressible": true
+	},
+	"text/x-handlebars-template": {
+		"extensions": [
+			"hbs"
+		]
+	},
+	"text/x-java-source": {
+		"source": "apache",
+		"extensions": [
+			"java"
+		]
+	},
+	"text/x-jquery-tmpl": {
+		"compressible": true
+	},
+	"text/x-lua": {
+		"extensions": [
+			"lua"
+		]
+	},
+	"text/x-markdown": {
+		"compressible": true,
+		"extensions": [
+			"markdown",
+			"md",
+			"mkd"
+		]
+	},
+	"text/x-nfo": {
+		"source": "apache",
+		"extensions": [
+			"nfo"
+		]
+	},
+	"text/x-opml": {
+		"source": "apache",
+		"extensions": [
+			"opml"
+		]
+	},
+	"text/x-pascal": {
+		"source": "apache",
+		"extensions": [
+			"p",
+			"pas"
+		]
+	},
+	"text/x-processing": {
+		"compressible": true,
+		"extensions": [
+			"pde"
+		]
+	},
+	"text/x-sass": {
+		"extensions": [
+			"sass"
+		]
+	},
+	"text/x-scss": {
+		"extensions": [
+			"scss"
+		]
+	},
+	"text/x-setext": {
+		"source": "apache",
+		"extensions": [
+			"etx"
+		]
+	},
+	"text/x-sfv": {
+		"source": "apache",
+		"extensions": [
+			"sfv"
+		]
+	},
+	"text/x-suse-ymp": {
+		"compressible": true,
+		"extensions": [
+			"ymp"
+		]
+	},
+	"text/x-uuencode": {
+		"source": "apache",
+		"extensions": [
+			"uu"
+		]
+	},
+	"text/x-vcalendar": {
+		"source": "apache",
+		"extensions": [
+			"vcs"
+		]
+	},
+	"text/x-vcard": {
+		"source": "apache",
+		"extensions": [
+			"vcf"
+		]
+	},
+	"text/xml": {
+		"source": "iana",
+		"compressible": true,
+		"extensions": [
+			"xml"
+		]
+	},
+	"text/xml-external-parsed-entity": {
+		"source": "iana"
+	},
+	"text/yaml": {
+		"extensions": [
+			"yaml",
+			"yml"
+		]
+	},
+	"video/1d-interleaved-parityfec": {
+		"source": "apache"
+	},
+	"video/3gpp": {
+		"source": "apache",
+		"extensions": [
+			"3gp",
+			"3gpp"
+		]
+	},
+	"video/3gpp-tt": {
+		"source": "apache"
+	},
+	"video/3gpp2": {
+		"source": "apache",
+		"extensions": [
+			"3g2"
+		]
+	},
+	"video/bmpeg": {
+		"source": "apache"
+	},
+	"video/bt656": {
+		"source": "apache"
+	},
+	"video/celb": {
+		"source": "apache"
+	},
+	"video/dv": {
+		"source": "apache"
+	},
+	"video/encaprtp": {
+		"source": "apache"
+	},
+	"video/h261": {
+		"source": "apache",
+		"extensions": [
+			"h261"
+		]
+	},
+	"video/h263": {
+		"source": "apache",
+		"extensions": [
+			"h263"
+		]
+	},
+	"video/h263-1998": {
+		"source": "apache"
+	},
+	"video/h263-2000": {
+		"source": "apache"
+	},
+	"video/h264": {
+		"source": "apache",
+		"extensions": [
+			"h264"
+		]
+	},
+	"video/h264-rcdo": {
+		"source": "apache"
+	},
+	"video/h264-svc": {
+		"source": "apache"
+	},
+	"video/h265": {
+		"source": "apache"
+	},
+	"video/iso.segment": {
+		"source": "apache"
+	},
+	"video/jpeg": {
+		"source": "apache",
+		"extensions": [
+			"jpgv"
+		]
+	},
+	"video/jpeg2000": {
+		"source": "apache"
+	},
+	"video/jpm": {
+		"source": "apache",
+		"extensions": [
+			"jpm",
+			"jpgm"
+		]
+	},
+	"video/mj2": {
+		"source": "apache",
+		"extensions": [
+			"mj2",
+			"mjp2"
+		]
+	},
+	"video/mp1s": {
+		"source": "apache"
+	},
+	"video/mp2p": {
+		"source": "apache"
+	},
+	"video/mp2t": {
+		"source": "apache",
+		"extensions": [
+			"ts"
+		]
+	},
+	"video/mp4": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"mp4",
+			"mp4v",
+			"mpg4"
+		]
+	},
+	"video/mp4v-es": {
+		"source": "apache"
+	},
+	"video/mpeg": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"mpeg",
+			"mpg",
+			"mpe",
+			"m1v",
+			"m2v"
+		]
+	},
+	"video/mpeg4-generic": {
+		"source": "apache"
+	},
+	"video/mpv": {
+		"source": "apache"
+	},
+	"video/nv": {
+		"source": "apache"
+	},
+	"video/ogg": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"ogv"
+		]
+	},
+	"video/parityfec": {
+		"source": "apache"
+	},
+	"video/pointer": {
+		"source": "apache"
+	},
+	"video/quicktime": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"qt",
+			"mov"
+		]
+	},
+	"video/raptorfec": {
+		"source": "apache"
+	},
+	"video/raw": {
+		"source": "apache"
+	},
+	"video/rtp-enc-aescm128": {
+		"source": "apache"
+	},
+	"video/rtploopback": {
+		"source": "apache"
+	},
+	"video/rtx": {
+		"source": "apache"
+	},
+	"video/smpte292m": {
+		"source": "apache"
+	},
+	"video/ulpfec": {
+		"source": "apache"
+	},
+	"video/vc1": {
+		"source": "apache"
+	},
+	"video/vnd.cctv": {
+		"source": "apache"
+	},
+	"video/vnd.dece.hd": {
+		"source": "apache",
+		"extensions": [
+			"uvh",
+			"uvvh"
+		]
+	},
+	"video/vnd.dece.mobile": {
+		"source": "apache",
+		"extensions": [
+			"uvm",
+			"uvvm"
+		]
+	},
+	"video/vnd.dece.mp4": {
+		"source": "apache"
+	},
+	"video/vnd.dece.pd": {
+		"source": "apache",
+		"extensions": [
+			"uvp",
+			"uvvp"
+		]
+	},
+	"video/vnd.dece.sd": {
+		"source": "apache",
+		"extensions": [
+			"uvs",
+			"uvvs"
+		]
+	},
+	"video/vnd.dece.video": {
+		"source": "apache",
+		"extensions": [
+			"uvv",
+			"uvvv"
+		]
+	},
+	"video/vnd.directv.mpeg": {
+		"source": "apache"
+	},
+	"video/vnd.directv.mpeg-tts": {
+		"source": "apache"
+	},
+	"video/vnd.dlna.mpeg-tts": {
+		"source": "apache"
+	},
+	"video/vnd.dvb.file": {
+		"source": "apache",
+		"extensions": [
+			"dvb"
+		]
+	},
+	"video/vnd.fvt": {
+		"source": "apache",
+		"extensions": [
+			"fvt"
+		]
+	},
+	"video/vnd.hns.video": {
+		"source": "apache"
+	},
+	"video/vnd.iptvforum.1dparityfec-1010": {
+		"source": "apache"
+	},
+	"video/vnd.iptvforum.1dparityfec-2005": {
+		"source": "apache"
+	},
+	"video/vnd.iptvforum.2dparityfec-1010": {
+		"source": "apache"
+	},
+	"video/vnd.iptvforum.2dparityfec-2005": {
+		"source": "apache"
+	},
+	"video/vnd.iptvforum.ttsavc": {
+		"source": "apache"
+	},
+	"video/vnd.iptvforum.ttsmpeg2": {
+		"source": "apache"
+	},
+	"video/vnd.motorola.video": {
+		"source": "apache"
+	},
+	"video/vnd.motorola.videop": {
+		"source": "apache"
+	},
+	"video/vnd.mpegurl": {
+		"source": "apache",
+		"extensions": [
+			"mxu",
+			"m4u"
+		]
+	},
+	"video/vnd.ms-playready.media.pyv": {
+		"source": "apache",
+		"extensions": [
+			"pyv"
+		]
+	},
+	"video/vnd.nokia.interleaved-multimedia": {
+		"source": "apache"
+	},
+	"video/vnd.nokia.videovoip": {
+		"source": "apache"
+	},
+	"video/vnd.objectvideo": {
+		"source": "apache"
+	},
+	"video/vnd.radgamettools.bink": {
+		"source": "apache"
+	},
+	"video/vnd.radgamettools.smacker": {
+		"source": "apache"
+	},
+	"video/vnd.sealed.mpeg1": {
+		"source": "apache"
+	},
+	"video/vnd.sealed.mpeg4": {
+		"source": "apache"
+	},
+	"video/vnd.sealed.swf": {
+		"source": "apache"
+	},
+	"video/vnd.sealedmedia.softseal.mov": {
+		"source": "apache"
+	},
+	"video/vnd.uvvu.mp4": {
+		"source": "apache",
+		"extensions": [
+			"uvu",
+			"uvvu"
+		]
+	},
+	"video/vnd.vivo": {
+		"source": "apache",
+		"extensions": [
+			"viv"
+		]
+	},
+	"video/vp8": {
+		"source": "apache"
+	},
+	"video/webm": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"webm"
+		]
+	},
+	"video/x-f4v": {
+		"source": "apache",
+		"extensions": [
+			"f4v"
+		]
+	},
+	"video/x-fli": {
+		"source": "apache",
+		"extensions": [
+			"fli"
+		]
+	},
+	"video/x-flv": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"flv"
+		]
+	},
+	"video/x-m4v": {
+		"source": "apache",
+		"extensions": [
+			"m4v"
+		]
+	},
+	"video/x-matroska": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"mkv",
+			"mk3d",
+			"mks"
+		]
+	},
+	"video/x-mng": {
+		"source": "apache",
+		"extensions": [
+			"mng"
+		]
+	},
+	"video/x-ms-asf": {
+		"source": "apache",
+		"extensions": [
+			"asf",
+			"asx"
+		]
+	},
+	"video/x-ms-vob": {
+		"source": "apache",
+		"extensions": [
+			"vob"
+		]
+	},
+	"video/x-ms-wm": {
+		"source": "apache",
+		"extensions": [
+			"wm"
+		]
+	},
+	"video/x-ms-wmv": {
+		"source": "apache",
+		"compressible": false,
+		"extensions": [
+			"wmv"
+		]
+	},
+	"video/x-ms-wmx": {
+		"source": "apache",
+		"extensions": [
+			"wmx"
+		]
+	},
+	"video/x-ms-wvx": {
+		"source": "apache",
+		"extensions": [
+			"wvx"
+		]
+	},
+	"video/x-msvideo": {
+		"source": "apache",
+		"extensions": [
+			"avi"
+		]
+	},
+	"video/x-sgi-movie": {
+		"source": "apache",
+		"extensions": [
+			"movie"
+		]
+	},
+	"video/x-smv": {
+		"source": "apache",
+		"extensions": [
+			"smv"
+		]
+	},
+	"x-conference/x-cooltalk": {
+		"source": "apache",
+		"extensions": [
+			"ice"
+		]
+	},
+	"x-shader/x-fragment": {
+		"compressible": true
+	},
+	"x-shader/x-vertex": {
+		"compressible": true
+	}
+};
+
+/***/ }),
+/* 324 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*!
+ * mime-db
+ * Copyright(c) 2014 Jonathan Ong
+ * MIT Licensed
+ */
+
+/**
+ * Module exports.
+ */
+
+module.exports = __webpack_require__(323)
+
+
+/***/ }),
+/* 325 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/*!
+ * mime-types
+ * Copyright(c) 2014 Jonathan Ong
+ * Copyright(c) 2015 Douglas Christopher Wilson
+ * MIT Licensed
+ */
 
 
-exports.atob = self.atob.bind(self);
-exports.btoa = self.btoa.bind(self);
+
+/**
+ * Module dependencies.
+ * @private
+ */
+
+var db = __webpack_require__(324)
+var extname = __webpack_require__(128).extname
+
+/**
+ * Module variables.
+ * @private
+ */
+
+var extractTypeRegExp = /^\s*([^;\s]*)(?:;|\s|$)/
+var textTypeRegExp = /^text\//i
+
+/**
+ * Module exports.
+ * @public
+ */
+
+exports.charset = charset
+exports.charsets = { lookup: charset }
+exports.contentType = contentType
+exports.extension = extension
+exports.extensions = Object.create(null)
+exports.lookup = lookup
+exports.types = Object.create(null)
+
+// Populate the extensions/types maps
+populateMaps(exports.extensions, exports.types)
+
+/**
+ * Get the default charset for a MIME type.
+ *
+ * @param {string} type
+ * @return {boolean|string}
+ */
+
+function charset (type) {
+  if (!type || typeof type !== 'string') {
+    return false
+  }
+
+  // TODO: use media-typer
+  var match = extractTypeRegExp.exec(type)
+  var mime = match && db[match[1].toLowerCase()]
+
+  if (mime && mime.charset) {
+    return mime.charset
+  }
+
+  // default text/* to utf-8
+  if (match && textTypeRegExp.test(match[1])) {
+    return 'UTF-8'
+  }
+
+  return false
+}
+
+/**
+ * Create a full Content-Type header given a MIME type or extension.
+ *
+ * @param {string} str
+ * @return {boolean|string}
+ */
+
+function contentType (str) {
+  // TODO: should this even be in this module?
+  if (!str || typeof str !== 'string') {
+    return false
+  }
+
+  var mime = str.indexOf('/') === -1
+    ? exports.lookup(str)
+    : str
+
+  if (!mime) {
+    return false
+  }
+
+  // TODO: use content-type or other module
+  if (mime.indexOf('charset') === -1) {
+    var charset = exports.charset(mime)
+    if (charset) mime += '; charset=' + charset.toLowerCase()
+  }
+
+  return mime
+}
+
+/**
+ * Get the default extension for a MIME type.
+ *
+ * @param {string} type
+ * @return {boolean|string}
+ */
+
+function extension (type) {
+  if (!type || typeof type !== 'string') {
+    return false
+  }
+
+  // TODO: use media-typer
+  var match = extractTypeRegExp.exec(type)
+
+  // get extensions
+  var exts = match && exports.extensions[match[1].toLowerCase()]
+
+  if (!exts || !exts.length) {
+    return false
+  }
+
+  return exts[0]
+}
+
+/**
+ * Lookup the MIME type for a file path/extension.
+ *
+ * @param {string} path
+ * @return {boolean|string}
+ */
+
+function lookup (path) {
+  if (!path || typeof path !== 'string') {
+    return false
+  }
+
+  // get the extension ("ext" or ".ext" or full path)
+  var extension = extname('x.' + path)
+    .toLowerCase()
+    .substr(1)
+
+  if (!extension) {
+    return false
+  }
+
+  return exports.types[extension] || false
+}
+
+/**
+ * Populate the extensions and types maps.
+ * @private
+ */
+
+function populateMaps (extensions, types) {
+  // source preference (least -> most)
+  var preference = ['nginx', 'apache', undefined, 'iana']
+
+  Object.keys(db).forEach(function forEachMimeType (type) {
+    var mime = db[type]
+    var exts = mime.extensions
+
+    if (!exts || !exts.length) {
+      return
+    }
+
+    // mime -> extensions
+    extensions[type] = exts
+
+    // extension -> mime
+    for (var i = 0; i < exts.length; i++) {
+      var extension = exts[i]
+
+      if (types[extension]) {
+        var from = preference.indexOf(db[types[extension]].source)
+        var to = preference.indexOf(mime.source)
+
+        if (types[extension] !== 'application/octet-stream' &&
+          (from > to || (from === to && types[extension].substr(0, 12) === 'application/'))) {
+          // skip the remapping
+          continue
+        }
+      }
+
+      // set the extension -> mime
+      types[extension] = type
+    }
+  })
+}
 
 
 /***/ }),
-/* 302 */
-/***/ (function(module, exports, __webpack_require__) {
+/* 326 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// the whatwg-fetch polyfill installs the fetch() function
-// on the global object (window or self)
-//
-// Return that as the export for use in Webpack, Browserify etc.
-__webpack_require__(306);
-module.exports = self.fetch.bind(self);
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Headers", function() { return Headers; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Request", function() { return Request; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Response", function() { return Response; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FetchError", function() { return FetchError; });
+// Based on https://github.com/tmpvar/jsdom/blob/aa85b2abf07766ff7bf5c1f6daafb3726f2f2db5/lib/jsdom/living/blob.js
+// (MIT licensed)
+
+const BUFFER = Symbol('buffer');
+const TYPE = Symbol('type');
+
+class Blob {
+	constructor() {
+		this[TYPE] = '';
+
+		const blobParts = arguments[0];
+		const options = arguments[1];
+
+		const buffers = [];
+
+		if (blobParts) {
+			const a = blobParts;
+			const length = Number(a.length);
+			for (let i = 0; i < length; i++) {
+				const element = a[i];
+				let buffer;
+				if (element instanceof Buffer) {
+					buffer = element;
+				} else if (ArrayBuffer.isView(element)) {
+					buffer = Buffer.from(element.buffer, element.byteOffset, element.byteLength);
+				} else if (element instanceof ArrayBuffer) {
+					buffer = Buffer.from(element);
+				} else if (element instanceof Blob) {
+					buffer = element[BUFFER];
+				} else {
+					buffer = Buffer.from(typeof element === 'string' ? element : String(element));
+				}
+				buffers.push(buffer);
+			}
+		}
+
+		this[BUFFER] = Buffer.concat(buffers);
+
+		let type = options && options.type !== undefined && String(options.type).toLowerCase();
+		if (type && !/[^\u0020-\u007E]/.test(type)) {
+			this[TYPE] = type;
+		}
+	}
+	get size() {
+		return this[BUFFER].length;
+	}
+	get type() {
+		return this[TYPE];
+	}
+	slice() {
+		const size = this.size;
+
+		const start = arguments[0];
+		const end = arguments[1];
+		let relativeStart, relativeEnd;
+		if (start === undefined) {
+			relativeStart = 0;
+		} else if (start < 0) {
+			relativeStart = Math.max(size + start, 0);
+		} else {
+			relativeStart = Math.min(start, size);
+		}
+		if (end === undefined) {
+			relativeEnd = size;
+		} else if (end < 0) {
+			relativeEnd = Math.max(size + end, 0);
+		} else {
+			relativeEnd = Math.min(end, size);
+		}
+		const span = Math.max(relativeEnd - relativeStart, 0);
+
+		const buffer = this[BUFFER];
+		const slicedBuffer = buffer.slice(relativeStart, relativeStart + span);
+		const blob = new Blob([], { type: arguments[2] });
+		blob[BUFFER] = slicedBuffer;
+		return blob;
+	}
+}
+
+Object.defineProperties(Blob.prototype, {
+	size: { enumerable: true },
+	type: { enumerable: true },
+	slice: { enumerable: true }
+});
+
+Object.defineProperty(Blob.prototype, Symbol.toStringTag, {
+	value: 'Blob',
+	writable: false,
+	enumerable: false,
+	configurable: true
+});
+
+/**
+ * fetch-error.js
+ *
+ * FetchError interface for operational errors
+ */
+
+/**
+ * Create FetchError instance
+ *
+ * @param   String      message      Error message for human
+ * @param   String      type         Error type for machine
+ * @param   String      systemError  For Node.js system error
+ * @return  FetchError
+ */
+function FetchError(message, type, systemError) {
+  Error.call(this, message);
+
+  this.message = message;
+  this.type = type;
+
+  // when err.type is `system`, err.code contains system error code
+  if (systemError) {
+    this.code = this.errno = systemError.code;
+  }
+
+  // hide custom error implementation details from end-users
+  Error.captureStackTrace(this, this.constructor);
+}
+
+FetchError.prototype = Object.create(Error.prototype);
+FetchError.prototype.constructor = FetchError;
+FetchError.prototype.name = 'FetchError';
+
+/**
+ * body.js
+ *
+ * Body interface provides common methods for Request and Response
+ */
+
+const Stream = __webpack_require__(48);
+
+var _require = __webpack_require__(48);
+
+const PassThrough = _require.PassThrough;
+
+
+let convert;
+try {
+	convert = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"encoding\""); e.code = 'MODULE_NOT_FOUND'; throw e; }())).convert;
+} catch (e) {}
+
+const INTERNALS = Symbol('Body internals');
+
+/**
+ * Body mixin
+ *
+ * Ref: https://fetch.spec.whatwg.org/#body
+ *
+ * @param   Stream  body  Readable stream
+ * @param   Object  opts  Response options
+ * @return  Void
+ */
+function Body(body) {
+	var _this = this;
+
+	var _ref = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {},
+	    _ref$size = _ref.size;
+
+	let size = _ref$size === undefined ? 0 : _ref$size;
+	var _ref$timeout = _ref.timeout;
+	let timeout = _ref$timeout === undefined ? 0 : _ref$timeout;
+
+	if (body == null) {
+		// body is undefined or null
+		body = null;
+	} else if (typeof body === 'string') {
+		// body is string
+	} else if (isURLSearchParams(body)) {
+		// body is a URLSearchParams
+	} else if (body instanceof Blob) {
+		// body is blob
+	} else if (Buffer.isBuffer(body)) {
+		// body is buffer
+	} else if (Object.prototype.toString.call(body) === '[object ArrayBuffer]') {
+		// body is array buffer
+	} else if (body instanceof Stream) {
+		// body is stream
+	} else {
+		// none of the above
+		// coerce to string
+		body = String(body);
+	}
+	this[INTERNALS] = {
+		body,
+		disturbed: false,
+		error: null
+	};
+	this.size = size;
+	this.timeout = timeout;
+
+	if (body instanceof Stream) {
+		body.on('error', function (err) {
+			_this[INTERNALS].error = new FetchError(`Invalid response body while trying to fetch ${_this.url}: ${err.message}`, 'system', err);
+		});
+	}
+}
+
+Body.prototype = {
+	get body() {
+		return this[INTERNALS].body;
+	},
+
+	get bodyUsed() {
+		return this[INTERNALS].disturbed;
+	},
+
+	/**
+  * Decode response as ArrayBuffer
+  *
+  * @return  Promise
+  */
+	arrayBuffer() {
+		return consumeBody.call(this).then(function (buf) {
+			return buf.buffer.slice(buf.byteOffset, buf.byteOffset + buf.byteLength);
+		});
+	},
+
+	/**
+  * Return raw response as Blob
+  *
+  * @return Promise
+  */
+	blob() {
+		let ct = this.headers && this.headers.get('content-type') || '';
+		return consumeBody.call(this).then(function (buf) {
+			return Object.assign(
+			// Prevent copying
+			new Blob([], {
+				type: ct.toLowerCase()
+			}), {
+				[BUFFER]: buf
+			});
+		});
+	},
+
+	/**
+  * Decode response as json
+  *
+  * @return  Promise
+  */
+	json() {
+		var _this2 = this;
+
+		return consumeBody.call(this).then(function (buffer) {
+			try {
+				return JSON.parse(buffer.toString());
+			} catch (err) {
+				return Body.Promise.reject(new FetchError(`invalid json response body at ${_this2.url} reason: ${err.message}`, 'invalid-json'));
+			}
+		});
+	},
+
+	/**
+  * Decode response as text
+  *
+  * @return  Promise
+  */
+	text() {
+		return consumeBody.call(this).then(function (buffer) {
+			return buffer.toString();
+		});
+	},
+
+	/**
+  * Decode response as buffer (non-spec api)
+  *
+  * @return  Promise
+  */
+	buffer() {
+		return consumeBody.call(this);
+	},
+
+	/**
+  * Decode response as text, while automatically detecting the encoding and
+  * trying to decode to UTF-8 (non-spec api)
+  *
+  * @return  Promise
+  */
+	textConverted() {
+		var _this3 = this;
+
+		return consumeBody.call(this).then(function (buffer) {
+			return convertBody(buffer, _this3.headers);
+		});
+	}
+
+};
+
+// In browsers, all properties are enumerable.
+Object.defineProperties(Body.prototype, {
+	body: { enumerable: true },
+	bodyUsed: { enumerable: true },
+	arrayBuffer: { enumerable: true },
+	blob: { enumerable: true },
+	json: { enumerable: true },
+	text: { enumerable: true }
+});
+
+Body.mixIn = function (proto) {
+	for (const name of Object.getOwnPropertyNames(Body.prototype)) {
+		// istanbul ignore else: future proof
+		if (!(name in proto)) {
+			const desc = Object.getOwnPropertyDescriptor(Body.prototype, name);
+			Object.defineProperty(proto, name, desc);
+		}
+	}
+};
+
+/**
+ * Consume and convert an entire Body to a Buffer.
+ *
+ * Ref: https://fetch.spec.whatwg.org/#concept-body-consume-body
+ *
+ * @return  Promise
+ */
+function consumeBody() {
+	var _this4 = this;
+
+	if (this[INTERNALS].disturbed) {
+		return Body.Promise.reject(new TypeError(`body used already for: ${this.url}`));
+	}
+
+	this[INTERNALS].disturbed = true;
+
+	if (this[INTERNALS].error) {
+		return Body.Promise.reject(this[INTERNALS].error);
+	}
+
+	// body is null
+	if (this.body === null) {
+		return Body.Promise.resolve(Buffer.alloc(0));
+	}
+
+	// body is string
+	if (typeof this.body === 'string') {
+		return Body.Promise.resolve(Buffer.from(this.body));
+	}
+
+	// body is blob
+	if (this.body instanceof Blob) {
+		return Body.Promise.resolve(this.body[BUFFER]);
+	}
+
+	// body is buffer
+	if (Buffer.isBuffer(this.body)) {
+		return Body.Promise.resolve(this.body);
+	}
+
+	// body is buffer
+	if (Object.prototype.toString.call(this.body) === '[object ArrayBuffer]') {
+		return Body.Promise.resolve(this.body);
+	}
+
+	// istanbul ignore if: should never happen
+	if (!(this.body instanceof Stream)) {
+		return Body.Promise.resolve(Buffer.alloc(0));
+	}
+
+	// body is stream
+	// get ready to actually consume the body
+	let accum = [];
+	let accumBytes = 0;
+	let abort = false;
+
+	return new Body.Promise(function (resolve, reject) {
+		let resTimeout;
+
+		// allow timeout on slow response body
+		if (_this4.timeout) {
+			resTimeout = setTimeout(function () {
+				abort = true;
+				reject(new FetchError(`Response timeout while trying to fetch ${_this4.url} (over ${_this4.timeout}ms)`, 'body-timeout'));
+			}, _this4.timeout);
+		}
+
+		// handle stream error, such as incorrect content-encoding
+		_this4.body.on('error', function (err) {
+			reject(new FetchError(`Invalid response body while trying to fetch ${_this4.url}: ${err.message}`, 'system', err));
+		});
+
+		_this4.body.on('data', function (chunk) {
+			if (abort || chunk === null) {
+				return;
+			}
+
+			if (_this4.size && accumBytes + chunk.length > _this4.size) {
+				abort = true;
+				reject(new FetchError(`content size at ${_this4.url} over limit: ${_this4.size}`, 'max-size'));
+				return;
+			}
+
+			accumBytes += chunk.length;
+			accum.push(chunk);
+		});
+
+		_this4.body.on('end', function () {
+			if (abort) {
+				return;
+			}
+
+			clearTimeout(resTimeout);
+			resolve(Buffer.concat(accum));
+		});
+	});
+}
+
+/**
+ * Detect buffer encoding and convert to target encoding
+ * ref: http://www.w3.org/TR/2011/WD-html5-20110113/parsing.html#determining-the-character-encoding
+ *
+ * @param   Buffer  buffer    Incoming buffer
+ * @param   String  encoding  Target encoding
+ * @return  String
+ */
+function convertBody(buffer, headers) {
+	if (typeof convert !== 'function') {
+		throw new Error('The package `encoding` must be installed to use the textConverted() function');
+	}
+
+	const ct = headers.get('content-type');
+	let charset = 'utf-8';
+	let res, str;
+
+	// header
+	if (ct) {
+		res = /charset=([^;]*)/i.exec(ct);
+	}
+
+	// no charset in content type, peek at response body for at most 1024 bytes
+	str = buffer.slice(0, 1024).toString();
+
+	// html5
+	if (!res && str) {
+		res = /<meta.+?charset=(['"])(.+?)\1/i.exec(str);
+	}
+
+	// html4
+	if (!res && str) {
+		res = /<meta[\s]+?http-equiv=(['"])content-type\1[\s]+?content=(['"])(.+?)\2/i.exec(str);
+
+		if (res) {
+			res = /charset=(.*)/i.exec(res.pop());
+		}
+	}
+
+	// xml
+	if (!res && str) {
+		res = /<\?xml.+?encoding=(['"])(.+?)\1/i.exec(str);
+	}
+
+	// found charset
+	if (res) {
+		charset = res.pop();
+
+		// prevent decode issues when sites use incorrect encoding
+		// ref: https://hsivonen.fi/encoding-menu/
+		if (charset === 'gb2312' || charset === 'gbk') {
+			charset = 'gb18030';
+		}
+	}
+
+	// turn raw buffers into a single utf-8 buffer
+	return convert(buffer, 'UTF-8', charset).toString();
+}
+
+/**
+ * Detect a URLSearchParams object
+ * ref: https://github.com/bitinn/node-fetch/issues/296#issuecomment-307598143
+ *
+ * @param   Object  obj     Object to detect by type or brand
+ * @return  String
+ */
+function isURLSearchParams(obj) {
+	// Duck-typing as a necessary condition.
+	if (typeof obj !== 'object' || typeof obj.append !== 'function' || typeof obj.delete !== 'function' || typeof obj.get !== 'function' || typeof obj.getAll !== 'function' || typeof obj.has !== 'function' || typeof obj.set !== 'function') {
+		return false;
+	}
+
+	// Brand-checking and more duck-typing as optional condition.
+	return obj.constructor.name === 'URLSearchParams' || Object.prototype.toString.call(obj) === '[object URLSearchParams]' || typeof obj.sort === 'function';
+}
+
+/**
+ * Clone body given Res/Req instance
+ *
+ * @param   Mixed  instance  Response or Request instance
+ * @return  Mixed
+ */
+function clone(instance) {
+	let p1, p2;
+	let body = instance.body;
+
+	// don't allow cloning a used body
+	if (instance.bodyUsed) {
+		throw new Error('cannot clone body after it is used');
+	}
+
+	// check that body is a stream and not form-data object
+	// note: we can't clone the form-data object without having it as a dependency
+	if (body instanceof Stream && typeof body.getBoundary !== 'function') {
+		// tee instance body
+		p1 = new PassThrough();
+		p2 = new PassThrough();
+		body.pipe(p1);
+		body.pipe(p2);
+		// set instance body to teed body and return the other teed body
+		instance[INTERNALS].body = p1;
+		body = p2;
+	}
+
+	return body;
+}
+
+/**
+ * Performs the operation "extract a `Content-Type` value from |object|" as
+ * specified in the specification:
+ * https://fetch.spec.whatwg.org/#concept-bodyinit-extract
+ *
+ * This function assumes that instance.body is present.
+ *
+ * @param   Mixed  instance  Response or Request instance
+ */
+function extractContentType(instance) {
+	const body = instance.body;
+
+	// istanbul ignore if: Currently, because of a guard in Request, body
+	// can never be null. Included here for completeness.
+
+	if (body === null) {
+		// body is null
+		return null;
+	} else if (typeof body === 'string') {
+		// body is string
+		return 'text/plain;charset=UTF-8';
+	} else if (isURLSearchParams(body)) {
+		// body is a URLSearchParams
+		return 'application/x-www-form-urlencoded;charset=UTF-8';
+	} else if (body instanceof Blob) {
+		// body is blob
+		return body.type || null;
+	} else if (Buffer.isBuffer(body)) {
+		// body is buffer
+		return null;
+	} else if (Object.prototype.toString.call(body) === '[object ArrayBuffer]') {
+		// body is array buffer
+		return null;
+	} else if (typeof body.getBoundary === 'function') {
+		// detect form data input from form-data module
+		return `multipart/form-data;boundary=${body.getBoundary()}`;
+	} else {
+		// body is stream
+		// can't really do much about this
+		return null;
+	}
+}
+
+/**
+ * The Fetch Standard treats this as if "total bytes" is a property on the body.
+ * For us, we have to explicitly get it with a function.
+ *
+ * ref: https://fetch.spec.whatwg.org/#concept-body-total-bytes
+ *
+ * @param   Body    instance   Instance of Body
+ * @return  Number?            Number of bytes, or null if not possible
+ */
+function getTotalBytes(instance) {
+	const body = instance.body;
+
+	// istanbul ignore if: included for completion
+
+	if (body === null) {
+		// body is null
+		return 0;
+	} else if (typeof body === 'string') {
+		// body is string
+		return Buffer.byteLength(body);
+	} else if (isURLSearchParams(body)) {
+		// body is URLSearchParams
+		return Buffer.byteLength(String(body));
+	} else if (body instanceof Blob) {
+		// body is blob
+		return body.size;
+	} else if (Buffer.isBuffer(body)) {
+		// body is buffer
+		return body.length;
+	} else if (Object.prototype.toString.call(body) === '[object ArrayBuffer]') {
+		// body is array buffer
+		return body.byteLength;
+	} else if (body && typeof body.getLengthSync === 'function') {
+		// detect form data input from form-data module
+		if (body._lengthRetrievers && body._lengthRetrievers.length == 0 || // 1.x
+		body.hasKnownLength && body.hasKnownLength()) {
+			// 2.x
+			return body.getLengthSync();
+		}
+		return null;
+	} else {
+		// body is stream
+		// can't really do much about this
+		return null;
+	}
+}
+
+/**
+ * Write a Body to a Node.js WritableStream (e.g. http.Request) object.
+ *
+ * @param   Body    instance   Instance of Body
+ * @return  Void
+ */
+function writeToStream(dest, instance) {
+	const body = instance.body;
+
+
+	if (body === null) {
+		// body is null
+		dest.end();
+	} else if (typeof body === 'string') {
+		// body is string
+		dest.write(body);
+		dest.end();
+	} else if (isURLSearchParams(body)) {
+		// body is URLSearchParams
+		dest.write(Buffer.from(String(body)));
+		dest.end();
+	} else if (body instanceof Blob) {
+		// body is blob
+		dest.write(body[BUFFER]);
+		dest.end();
+	} else if (Buffer.isBuffer(body)) {
+		// body is buffer
+		dest.write(body);
+		dest.end();
+	} else if (Object.prototype.toString.call(body) === '[object ArrayBuffer]') {
+		// body is array buffer
+		dest.write(Buffer.from(body));
+		dest.end();
+	} else {
+		// body is stream
+		body.pipe(dest);
+	}
+}
+
+// expose Promise
+Body.Promise = global.Promise;
+
+/**
+ * headers.js
+ *
+ * Headers class offers convenient helpers
+ */
+
+const invalidTokenRegex = /[^\^_`a-zA-Z\-0-9!#$%&'*+.|~]/;
+const invalidHeaderCharRegex = /[^\t\x20-\x7e\x80-\xff]/;
+
+function validateName(name) {
+	name = `${name}`;
+	if (invalidTokenRegex.test(name)) {
+		throw new TypeError(`${name} is not a legal HTTP header name`);
+	}
+}
+
+function validateValue(value) {
+	value = `${value}`;
+	if (invalidHeaderCharRegex.test(value)) {
+		throw new TypeError(`${value} is not a legal HTTP header value`);
+	}
+}
+
+/**
+ * Find the key in the map object given a header name.
+ *
+ * Returns undefined if not found.
+ *
+ * @param   String  name  Header name
+ * @return  String|Undefined
+ */
+function find(map, name) {
+	name = name.toLowerCase();
+	for (const key in map) {
+		if (key.toLowerCase() === name) {
+			return key;
+		}
+	}
+	return undefined;
+}
+
+const MAP = Symbol('map');
+class Headers {
+	/**
+  * Headers class
+  *
+  * @param   Object  headers  Response headers
+  * @return  Void
+  */
+	constructor() {
+		let init = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : undefined;
+
+		this[MAP] = Object.create(null);
+
+		if (init instanceof Headers) {
+			const rawHeaders = init.raw();
+			const headerNames = Object.keys(rawHeaders);
+
+			for (const headerName of headerNames) {
+				for (const value of rawHeaders[headerName]) {
+					this.append(headerName, value);
+				}
+			}
+
+			return;
+		}
+
+		// We don't worry about converting prop to ByteString here as append()
+		// will handle it.
+		if (init == null) {
+			// no op
+		} else if (typeof init === 'object') {
+			const method = init[Symbol.iterator];
+			if (method != null) {
+				if (typeof method !== 'function') {
+					throw new TypeError('Header pairs must be iterable');
+				}
+
+				// sequence<sequence<ByteString>>
+				// Note: per spec we have to first exhaust the lists then process them
+				const pairs = [];
+				for (const pair of init) {
+					if (typeof pair !== 'object' || typeof pair[Symbol.iterator] !== 'function') {
+						throw new TypeError('Each header pair must be iterable');
+					}
+					pairs.push(Array.from(pair));
+				}
+
+				for (const pair of pairs) {
+					if (pair.length !== 2) {
+						throw new TypeError('Each header pair must be a name/value tuple');
+					}
+					this.append(pair[0], pair[1]);
+				}
+			} else {
+				// record<ByteString, ByteString>
+				for (const key of Object.keys(init)) {
+					const value = init[key];
+					this.append(key, value);
+				}
+			}
+		} else {
+			throw new TypeError('Provided initializer must be an object');
+		}
+	}
+
+	/**
+  * Return combined header value given name
+  *
+  * @param   String  name  Header name
+  * @return  Mixed
+  */
+	get(name) {
+		name = `${name}`;
+		validateName(name);
+		const key = find(this[MAP], name);
+		if (key === undefined) {
+			return null;
+		}
+
+		return this[MAP][key].join(', ');
+	}
+
+	/**
+  * Iterate over all headers
+  *
+  * @param   Function  callback  Executed for each item with parameters (value, name, thisArg)
+  * @param   Boolean   thisArg   `this` context for callback function
+  * @return  Void
+  */
+	forEach(callback) {
+		let thisArg = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : undefined;
+
+		let pairs = getHeaders(this);
+		let i = 0;
+		while (i < pairs.length) {
+			var _pairs$i = pairs[i];
+			const name = _pairs$i[0],
+			      value = _pairs$i[1];
+
+			callback.call(thisArg, value, name, this);
+			pairs = getHeaders(this);
+			i++;
+		}
+	}
+
+	/**
+  * Overwrite header values given name
+  *
+  * @param   String  name   Header name
+  * @param   String  value  Header value
+  * @return  Void
+  */
+	set(name, value) {
+		name = `${name}`;
+		value = `${value}`;
+		validateName(name);
+		validateValue(value);
+		const key = find(this[MAP], name);
+		this[MAP][key !== undefined ? key : name] = [value];
+	}
+
+	/**
+  * Append a value onto existing header
+  *
+  * @param   String  name   Header name
+  * @param   String  value  Header value
+  * @return  Void
+  */
+	append(name, value) {
+		name = `${name}`;
+		value = `${value}`;
+		validateName(name);
+		validateValue(value);
+		const key = find(this[MAP], name);
+		if (key !== undefined) {
+			this[MAP][key].push(value);
+		} else {
+			this[MAP][name] = [value];
+		}
+	}
+
+	/**
+  * Check for header name existence
+  *
+  * @param   String   name  Header name
+  * @return  Boolean
+  */
+	has(name) {
+		name = `${name}`;
+		validateName(name);
+		return find(this[MAP], name) !== undefined;
+	}
+
+	/**
+  * Delete all header values given name
+  *
+  * @param   String  name  Header name
+  * @return  Void
+  */
+	delete(name) {
+		name = `${name}`;
+		validateName(name);
+		const key = find(this[MAP], name);
+		if (key !== undefined) {
+			delete this[MAP][key];
+		}
+	}
+
+	/**
+  * Return raw headers (non-spec api)
+  *
+  * @return  Object
+  */
+	raw() {
+		return this[MAP];
+	}
+
+	/**
+  * Get an iterator on keys.
+  *
+  * @return  Iterator
+  */
+	keys() {
+		return createHeadersIterator(this, 'key');
+	}
+
+	/**
+  * Get an iterator on values.
+  *
+  * @return  Iterator
+  */
+	values() {
+		return createHeadersIterator(this, 'value');
+	}
+
+	/**
+  * Get an iterator on entries.
+  *
+  * This is the default iterator of the Headers object.
+  *
+  * @return  Iterator
+  */
+	[Symbol.iterator]() {
+		return createHeadersIterator(this, 'key+value');
+	}
+}
+Headers.prototype.entries = Headers.prototype[Symbol.iterator];
+
+Object.defineProperty(Headers.prototype, Symbol.toStringTag, {
+	value: 'Headers',
+	writable: false,
+	enumerable: false,
+	configurable: true
+});
+
+Object.defineProperties(Headers.prototype, {
+	get: { enumerable: true },
+	forEach: { enumerable: true },
+	set: { enumerable: true },
+	append: { enumerable: true },
+	has: { enumerable: true },
+	delete: { enumerable: true },
+	keys: { enumerable: true },
+	values: { enumerable: true },
+	entries: { enumerable: true }
+});
+
+function getHeaders(headers) {
+	let kind = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'key+value';
+
+	const keys = Object.keys(headers[MAP]).sort();
+	return keys.map(kind === 'key' ? function (k) {
+		return k.toLowerCase();
+	} : kind === 'value' ? function (k) {
+		return headers[MAP][k].join(', ');
+	} : function (k) {
+		return [k.toLowerCase(), headers[MAP][k].join(', ')];
+	});
+}
+
+const INTERNAL = Symbol('internal');
+
+function createHeadersIterator(target, kind) {
+	const iterator = Object.create(HeadersIteratorPrototype);
+	iterator[INTERNAL] = {
+		target,
+		kind,
+		index: 0
+	};
+	return iterator;
+}
+
+const HeadersIteratorPrototype = Object.setPrototypeOf({
+	next() {
+		// istanbul ignore if
+		if (!this || Object.getPrototypeOf(this) !== HeadersIteratorPrototype) {
+			throw new TypeError('Value of `this` is not a HeadersIterator');
+		}
+
+		var _INTERNAL = this[INTERNAL];
+		const target = _INTERNAL.target,
+		      kind = _INTERNAL.kind,
+		      index = _INTERNAL.index;
+
+		const values = getHeaders(target, kind);
+		const len = values.length;
+		if (index >= len) {
+			return {
+				value: undefined,
+				done: true
+			};
+		}
+
+		this[INTERNAL].index = index + 1;
+
+		return {
+			value: values[index],
+			done: false
+		};
+	}
+}, Object.getPrototypeOf(Object.getPrototypeOf([][Symbol.iterator]())));
+
+Object.defineProperty(HeadersIteratorPrototype, Symbol.toStringTag, {
+	value: 'HeadersIterator',
+	writable: false,
+	enumerable: false,
+	configurable: true
+});
+
+/**
+ * Create a Headers object from an object of headers, ignoring those that do
+ * not conform to HTTP grammar productions.
+ *
+ * @param   Object  obj  Object of headers
+ * @return  Headers
+ */
+function createHeadersLenient(obj) {
+	const headers = new Headers();
+	for (const name of Object.keys(obj)) {
+		if (invalidTokenRegex.test(name)) {
+			continue;
+		}
+		if (Array.isArray(obj[name])) {
+			for (const val of obj[name]) {
+				if (invalidHeaderCharRegex.test(val)) {
+					continue;
+				}
+				if (headers[MAP][name] === undefined) {
+					headers[MAP][name] = [val];
+				} else {
+					headers[MAP][name].push(val);
+				}
+			}
+		} else if (!invalidHeaderCharRegex.test(obj[name])) {
+			headers[MAP][name] = [obj[name]];
+		}
+	}
+	return headers;
+}
+
+/**
+ * response.js
+ *
+ * Response class provides content decoding
+ */
+
+var _require$1 = __webpack_require__(86);
+
+const STATUS_CODES = _require$1.STATUS_CODES;
+
+
+const INTERNALS$1 = Symbol('Response internals');
+
+/**
+ * Response class
+ *
+ * @param   Stream  body  Readable stream
+ * @param   Object  opts  Response options
+ * @return  Void
+ */
+class Response {
+	constructor() {
+		let body = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+		let opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+		Body.call(this, body, opts);
+
+		const status = opts.status || 200;
+
+		this[INTERNALS$1] = {
+			url: opts.url,
+			status,
+			statusText: opts.statusText || STATUS_CODES[status],
+			headers: new Headers(opts.headers)
+		};
+	}
+
+	get url() {
+		return this[INTERNALS$1].url;
+	}
+
+	get status() {
+		return this[INTERNALS$1].status;
+	}
+
+	/**
+  * Convenience property representing if the request ended normally
+  */
+	get ok() {
+		return this[INTERNALS$1].status >= 200 && this[INTERNALS$1].status < 300;
+	}
+
+	get statusText() {
+		return this[INTERNALS$1].statusText;
+	}
+
+	get headers() {
+		return this[INTERNALS$1].headers;
+	}
+
+	/**
+  * Clone this response
+  *
+  * @return  Response
+  */
+	clone() {
+		return new Response(clone(this), {
+			url: this.url,
+			status: this.status,
+			statusText: this.statusText,
+			headers: this.headers,
+			ok: this.ok
+		});
+	}
+}
+
+Body.mixIn(Response.prototype);
+
+Object.defineProperties(Response.prototype, {
+	url: { enumerable: true },
+	status: { enumerable: true },
+	ok: { enumerable: true },
+	statusText: { enumerable: true },
+	headers: { enumerable: true },
+	clone: { enumerable: true }
+});
+
+Object.defineProperty(Response.prototype, Symbol.toStringTag, {
+	value: 'Response',
+	writable: false,
+	enumerable: false,
+	configurable: true
+});
+
+/**
+ * request.js
+ *
+ * Request class contains server only options
+ *
+ * All spec algorithm step numbers are based on https://fetch.spec.whatwg.org/commit-snapshots/ae716822cb3a61843226cd090eefc6589446c1d2/.
+ */
+
+var _require$2 = __webpack_require__(87);
+
+const format_url = _require$2.format;
+const parse_url = _require$2.parse;
+
+
+const INTERNALS$2 = Symbol('Request internals');
+
+/**
+ * Check if a value is an instance of Request.
+ *
+ * @param   Mixed   input
+ * @return  Boolean
+ */
+function isRequest(input) {
+	return typeof input === 'object' && typeof input[INTERNALS$2] === 'object';
+}
+
+/**
+ * Request class
+ *
+ * @param   Mixed   input  Url or Request instance
+ * @param   Object  init   Custom options
+ * @return  Void
+ */
+class Request {
+	constructor(input) {
+		let init = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+		let parsedURL;
+
+		// normalize input
+		if (!isRequest(input)) {
+			if (input && input.href) {
+				// in order to support Node.js' Url objects; though WHATWG's URL objects
+				// will fall into this branch also (since their `toString()` will return
+				// `href` property anyway)
+				parsedURL = parse_url(input.href);
+			} else {
+				// coerce input to a string before attempting to parse
+				parsedURL = parse_url(`${input}`);
+			}
+			input = {};
+		} else {
+			parsedURL = parse_url(input.url);
+		}
+
+		let method = init.method || input.method || 'GET';
+		method = method.toUpperCase();
+
+		if ((init.body != null || isRequest(input) && input.body !== null) && (method === 'GET' || method === 'HEAD')) {
+			throw new TypeError('Request with GET/HEAD method cannot have body');
+		}
+
+		let inputBody = init.body != null ? init.body : isRequest(input) && input.body !== null ? clone(input) : null;
+
+		Body.call(this, inputBody, {
+			timeout: init.timeout || input.timeout || 0,
+			size: init.size || input.size || 0
+		});
+
+		const headers = new Headers(init.headers || input.headers || {});
+
+		if (init.body != null) {
+			const contentType = extractContentType(this);
+			if (contentType !== null && !headers.has('Content-Type')) {
+				headers.append('Content-Type', contentType);
+			}
+		}
+
+		this[INTERNALS$2] = {
+			method,
+			redirect: init.redirect || input.redirect || 'follow',
+			headers,
+			parsedURL
+		};
+
+		// node-fetch-only options
+		this.follow = init.follow !== undefined ? init.follow : input.follow !== undefined ? input.follow : 20;
+		this.compress = init.compress !== undefined ? init.compress : input.compress !== undefined ? input.compress : true;
+		this.counter = init.counter || input.counter || 0;
+		this.agent = init.agent || input.agent;
+	}
+
+	get method() {
+		return this[INTERNALS$2].method;
+	}
+
+	get url() {
+		return format_url(this[INTERNALS$2].parsedURL);
+	}
+
+	get headers() {
+		return this[INTERNALS$2].headers;
+	}
+
+	get redirect() {
+		return this[INTERNALS$2].redirect;
+	}
+
+	/**
+  * Clone this request
+  *
+  * @return  Request
+  */
+	clone() {
+		return new Request(this);
+	}
+}
+
+Body.mixIn(Request.prototype);
+
+Object.defineProperty(Request.prototype, Symbol.toStringTag, {
+	value: 'Request',
+	writable: false,
+	enumerable: false,
+	configurable: true
+});
+
+Object.defineProperties(Request.prototype, {
+	method: { enumerable: true },
+	url: { enumerable: true },
+	headers: { enumerable: true },
+	redirect: { enumerable: true },
+	clone: { enumerable: true }
+});
+
+/**
+ * Convert a Request to Node.js http request options.
+ *
+ * @param   Request  A Request instance
+ * @return  Object   The options object to be passed to http.request
+ */
+function getNodeRequestOptions(request) {
+	const parsedURL = request[INTERNALS$2].parsedURL;
+	const headers = new Headers(request[INTERNALS$2].headers);
+
+	// fetch step 1.3
+	if (!headers.has('Accept')) {
+		headers.set('Accept', '*/*');
+	}
+
+	// Basic fetch
+	if (!parsedURL.protocol || !parsedURL.hostname) {
+		throw new TypeError('Only absolute URLs are supported');
+	}
+
+	if (!/^https?:$/.test(parsedURL.protocol)) {
+		throw new TypeError('Only HTTP(S) protocols are supported');
+	}
+
+	// HTTP-network-or-cache fetch steps 2.4-2.7
+	let contentLengthValue = null;
+	if (request.body == null && /^(POST|PUT)$/i.test(request.method)) {
+		contentLengthValue = '0';
+	}
+	if (request.body != null) {
+		const totalBytes = getTotalBytes(request);
+		if (typeof totalBytes === 'number') {
+			contentLengthValue = String(totalBytes);
+		}
+	}
+	if (contentLengthValue) {
+		headers.set('Content-Length', contentLengthValue);
+	}
+
+	// HTTP-network-or-cache fetch step 2.11
+	if (!headers.has('User-Agent')) {
+		headers.set('User-Agent', 'node-fetch/1.0 (+https://github.com/bitinn/node-fetch)');
+	}
+
+	// HTTP-network-or-cache fetch step 2.15
+	if (request.compress) {
+		headers.set('Accept-Encoding', 'gzip,deflate');
+	}
+	if (!headers.has('Connection') && !request.agent) {
+		headers.set('Connection', 'close');
+	}
+
+	// HTTP-network fetch step 4.2
+	// chunked encoding is handled by Node.js
+
+	return Object.assign({}, parsedURL, {
+		method: request.method,
+		headers: headers.raw(),
+		agent: request.agent
+	});
+}
+
+/**
+ * index.js
+ *
+ * a request API compatible with window.fetch
+ *
+ * All spec algorithm step numbers are based on https://fetch.spec.whatwg.org/commit-snapshots/ae716822cb3a61843226cd090eefc6589446c1d2/.
+ */
+
+const http = __webpack_require__(86);
+const https = __webpack_require__(127);
+
+var _require$3 = __webpack_require__(48);
+
+const PassThrough$1 = _require$3.PassThrough;
+
+var _require2 = __webpack_require__(87);
+
+const resolve_url = _require2.resolve;
+
+const zlib = __webpack_require__(330);
+
+/**
+ * Fetch function
+ *
+ * @param   Mixed    url   Absolute url or Request instance
+ * @param   Object   opts  Fetch options
+ * @return  Promise
+ */
+function fetch(url, opts) {
+
+	// allow custom promise
+	if (!fetch.Promise) {
+		throw new Error('native promise missing, set fetch.Promise to your favorite alternative');
+	}
+
+	Body.Promise = fetch.Promise;
+
+	// wrap http.request into fetch
+	return new fetch.Promise(function (resolve, reject) {
+		// build request object
+		const request = new Request(url, opts);
+		const options = getNodeRequestOptions(request);
+
+		const send = (options.protocol === 'https:' ? https : http).request;
+
+		// http.request only support string as host header, this hack make custom host header possible
+		if (options.headers.host) {
+			options.headers.host = options.headers.host[0];
+		}
+
+		// send request
+		const req = send(options);
+		let reqTimeout;
+
+		if (request.timeout) {
+			req.once('socket', function (socket) {
+				reqTimeout = setTimeout(function () {
+					req.abort();
+					reject(new FetchError(`network timeout at: ${request.url}`, 'request-timeout'));
+				}, request.timeout);
+			});
+		}
+
+		req.on('error', function (err) {
+			clearTimeout(reqTimeout);
+			reject(new FetchError(`request to ${request.url} failed, reason: ${err.message}`, 'system', err));
+		});
+
+		req.on('response', function (res) {
+			clearTimeout(reqTimeout);
+
+			const headers = createHeadersLenient(res.headers);
+
+			// HTTP fetch step 5
+			if (fetch.isRedirect(res.statusCode)) {
+				// HTTP fetch step 5.2
+				const location = headers.get('Location');
+
+				// HTTP fetch step 5.3
+				const locationURL = location === null ? null : resolve_url(request.url, location);
+
+				// HTTP fetch step 5.5
+				switch (request.redirect) {
+					case 'error':
+						reject(new FetchError(`redirect mode is set to error: ${request.url}`, 'no-redirect'));
+						return;
+					case 'manual':
+						// node-fetch-specific step: make manual redirect a bit easier to use by setting the Location header value to the resolved URL.
+						if (locationURL !== null) {
+							headers.set('Location', locationURL);
+						}
+						break;
+					case 'follow':
+						// HTTP-redirect fetch step 2
+						if (locationURL === null) {
+							break;
+						}
+
+						// HTTP-redirect fetch step 5
+						if (request.counter >= request.follow) {
+							reject(new FetchError(`maximum redirect reached at: ${request.url}`, 'max-redirect'));
+							return;
+						}
+
+						// HTTP-redirect fetch step 6 (counter increment)
+						// Create a new Request object.
+						const requestOpts = {
+							headers: new Headers(request.headers),
+							follow: request.follow,
+							counter: request.counter + 1,
+							agent: request.agent,
+							compress: request.compress,
+							method: request.method,
+							body: request.body
+						};
+
+						// HTTP-redirect fetch step 9
+						if (res.statusCode !== 303 && request.body && getTotalBytes(request) === null) {
+							reject(new FetchError('Cannot follow redirect with body being a readable stream', 'unsupported-redirect'));
+						}
+
+						// HTTP-redirect fetch step 11
+						if (res.statusCode === 303 || (res.statusCode === 301 || res.statusCode === 302) && request.method === 'POST') {
+							requestOpts.method = 'GET';
+							requestOpts.body = undefined;
+							requestOpts.headers.delete('content-length');
+						}
+
+						// HTTP-redirect fetch step 15
+						resolve(fetch(new Request(locationURL, requestOpts)));
+						return;
+				}
+			}
+
+			// prepare response
+			let body = res.pipe(new PassThrough$1());
+			const response_options = {
+				url: request.url,
+				status: res.statusCode,
+				statusText: res.statusMessage,
+				headers: headers,
+				size: request.size,
+				timeout: request.timeout
+			};
+
+			// HTTP-network fetch step 12.1.1.3
+			const codings = headers.get('Content-Encoding');
+
+			// HTTP-network fetch step 12.1.1.4: handle content codings
+
+			// in following scenarios we ignore compression support
+			// 1. compression support is disabled
+			// 2. HEAD request
+			// 3. no Content-Encoding header
+			// 4. no content response (204)
+			// 5. content not modified response (304)
+			if (!request.compress || request.method === 'HEAD' || codings === null || res.statusCode === 204 || res.statusCode === 304) {
+				resolve(new Response(body, response_options));
+				return;
+			}
+
+			// For Node v6+
+			// Be less strict when decoding compressed responses, since sometimes
+			// servers send slightly invalid responses that are still accepted
+			// by common browsers.
+			// Always using Z_SYNC_FLUSH is what cURL does.
+			const zlibOptions = {
+				flush: zlib.Z_SYNC_FLUSH,
+				finishFlush: zlib.Z_SYNC_FLUSH
+			};
+
+			// for gzip
+			if (codings == 'gzip' || codings == 'x-gzip') {
+				body = body.pipe(zlib.createGunzip(zlibOptions));
+				resolve(new Response(body, response_options));
+				return;
+			}
+
+			// for deflate
+			if (codings == 'deflate' || codings == 'x-deflate') {
+				// handle the infamous raw deflate response from old servers
+				// a hack for old IIS and Apache servers
+				const raw = res.pipe(new PassThrough$1());
+				raw.once('data', function (chunk) {
+					// see http://stackoverflow.com/questions/37519828
+					if ((chunk[0] & 0x0F) === 0x08) {
+						body = body.pipe(zlib.createInflate());
+					} else {
+						body = body.pipe(zlib.createInflateRaw());
+					}
+					resolve(new Response(body, response_options));
+				});
+				return;
+			}
+
+			// otherwise, use response as-is
+			resolve(new Response(body, response_options));
+		});
+
+		writeToStream(req, request);
+	});
+}
+
+/**
+ * Redirect code matching
+ *
+ * @param   Number   code  Status code
+ * @return  Boolean
+ */
+fetch.isRedirect = function (code) {
+	return code === 301 || code === 302 || code === 303 || code === 307 || code === 308;
+};
+
+// Needed for TypeScript.
+fetch.default = fetch;
+
+// expose Promise
+fetch.Promise = global.Promise;
+
+/* harmony default export */ __webpack_exports__["default"] = (fetch);
+
 
 
 /***/ }),
-/* 303 */
-/***/ (function(module, exports) {
-
-module.exports = window.FormData
-
-
-/***/ }),
-/* 304 */
+/* 327 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -12472,10 +24355,10 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
   // https://github.com/umdjs/umd/blob/master/returnExports.js
   if (typeof module === 'object' && module.exports) {
     // Node
-    module.exports = factory(__webpack_require__(116), __webpack_require__(114), __webpack_require__(115));
+    module.exports = factory(__webpack_require__(125), __webpack_require__(123), __webpack_require__(124));
   } else if (true) {
     // AMD. Register as an anonymous module.
-    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(116), __webpack_require__(114), __webpack_require__(115)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
+    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(125), __webpack_require__(123), __webpack_require__(124)], __WEBPACK_AMD_DEFINE_FACTORY__ = (factory),
 				__WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ?
 				(__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__),
 				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
@@ -14760,507 +26643,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 
 /***/ }),
-/* 305 */
-/***/ (function(module, exports) {
-
-module.exports = function(module) {
-	if(!module.webpackPolyfill) {
-		module.deprecate = function() {};
-		module.paths = [];
-		// module.parent = undefined by default
-		if(!module.children) module.children = [];
-		Object.defineProperty(module, "loaded", {
-			enumerable: true,
-			get: function() {
-				return module.l;
-			}
-		});
-		Object.defineProperty(module, "id", {
-			enumerable: true,
-			get: function() {
-				return module.i;
-			}
-		});
-		module.webpackPolyfill = 1;
-	}
-	return module;
-};
-
-
-/***/ }),
-/* 306 */
-/***/ (function(module, exports) {
-
-(function(self) {
-  'use strict';
-
-  if (self.fetch) {
-    return
-  }
-
-  var support = {
-    searchParams: 'URLSearchParams' in self,
-    iterable: 'Symbol' in self && 'iterator' in Symbol,
-    blob: 'FileReader' in self && 'Blob' in self && (function() {
-      try {
-        new Blob()
-        return true
-      } catch(e) {
-        return false
-      }
-    })(),
-    formData: 'FormData' in self,
-    arrayBuffer: 'ArrayBuffer' in self
-  }
-
-  if (support.arrayBuffer) {
-    var viewClasses = [
-      '[object Int8Array]',
-      '[object Uint8Array]',
-      '[object Uint8ClampedArray]',
-      '[object Int16Array]',
-      '[object Uint16Array]',
-      '[object Int32Array]',
-      '[object Uint32Array]',
-      '[object Float32Array]',
-      '[object Float64Array]'
-    ]
-
-    var isDataView = function(obj) {
-      return obj && DataView.prototype.isPrototypeOf(obj)
-    }
-
-    var isArrayBufferView = ArrayBuffer.isView || function(obj) {
-      return obj && viewClasses.indexOf(Object.prototype.toString.call(obj)) > -1
-    }
-  }
-
-  function normalizeName(name) {
-    if (typeof name !== 'string') {
-      name = String(name)
-    }
-    if (/[^a-z0-9\-#$%&'*+.\^_`|~]/i.test(name)) {
-      throw new TypeError('Invalid character in header field name')
-    }
-    return name.toLowerCase()
-  }
-
-  function normalizeValue(value) {
-    if (typeof value !== 'string') {
-      value = String(value)
-    }
-    return value
-  }
-
-  // Build a destructive iterator for the value list
-  function iteratorFor(items) {
-    var iterator = {
-      next: function() {
-        var value = items.shift()
-        return {done: value === undefined, value: value}
-      }
-    }
-
-    if (support.iterable) {
-      iterator[Symbol.iterator] = function() {
-        return iterator
-      }
-    }
-
-    return iterator
-  }
-
-  function Headers(headers) {
-    this.map = {}
-
-    if (headers instanceof Headers) {
-      headers.forEach(function(value, name) {
-        this.append(name, value)
-      }, this)
-    } else if (Array.isArray(headers)) {
-      headers.forEach(function(header) {
-        this.append(header[0], header[1])
-      }, this)
-    } else if (headers) {
-      Object.getOwnPropertyNames(headers).forEach(function(name) {
-        this.append(name, headers[name])
-      }, this)
-    }
-  }
-
-  Headers.prototype.append = function(name, value) {
-    name = normalizeName(name)
-    value = normalizeValue(value)
-    var oldValue = this.map[name]
-    this.map[name] = oldValue ? oldValue+','+value : value
-  }
-
-  Headers.prototype['delete'] = function(name) {
-    delete this.map[normalizeName(name)]
-  }
-
-  Headers.prototype.get = function(name) {
-    name = normalizeName(name)
-    return this.has(name) ? this.map[name] : null
-  }
-
-  Headers.prototype.has = function(name) {
-    return this.map.hasOwnProperty(normalizeName(name))
-  }
-
-  Headers.prototype.set = function(name, value) {
-    this.map[normalizeName(name)] = normalizeValue(value)
-  }
-
-  Headers.prototype.forEach = function(callback, thisArg) {
-    for (var name in this.map) {
-      if (this.map.hasOwnProperty(name)) {
-        callback.call(thisArg, this.map[name], name, this)
-      }
-    }
-  }
-
-  Headers.prototype.keys = function() {
-    var items = []
-    this.forEach(function(value, name) { items.push(name) })
-    return iteratorFor(items)
-  }
-
-  Headers.prototype.values = function() {
-    var items = []
-    this.forEach(function(value) { items.push(value) })
-    return iteratorFor(items)
-  }
-
-  Headers.prototype.entries = function() {
-    var items = []
-    this.forEach(function(value, name) { items.push([name, value]) })
-    return iteratorFor(items)
-  }
-
-  if (support.iterable) {
-    Headers.prototype[Symbol.iterator] = Headers.prototype.entries
-  }
-
-  function consumed(body) {
-    if (body.bodyUsed) {
-      return Promise.reject(new TypeError('Already read'))
-    }
-    body.bodyUsed = true
-  }
-
-  function fileReaderReady(reader) {
-    return new Promise(function(resolve, reject) {
-      reader.onload = function() {
-        resolve(reader.result)
-      }
-      reader.onerror = function() {
-        reject(reader.error)
-      }
-    })
-  }
-
-  function readBlobAsArrayBuffer(blob) {
-    var reader = new FileReader()
-    var promise = fileReaderReady(reader)
-    reader.readAsArrayBuffer(blob)
-    return promise
-  }
-
-  function readBlobAsText(blob) {
-    var reader = new FileReader()
-    var promise = fileReaderReady(reader)
-    reader.readAsText(blob)
-    return promise
-  }
-
-  function readArrayBufferAsText(buf) {
-    var view = new Uint8Array(buf)
-    var chars = new Array(view.length)
-
-    for (var i = 0; i < view.length; i++) {
-      chars[i] = String.fromCharCode(view[i])
-    }
-    return chars.join('')
-  }
-
-  function bufferClone(buf) {
-    if (buf.slice) {
-      return buf.slice(0)
-    } else {
-      var view = new Uint8Array(buf.byteLength)
-      view.set(new Uint8Array(buf))
-      return view.buffer
-    }
-  }
-
-  function Body() {
-    this.bodyUsed = false
-
-    this._initBody = function(body) {
-      this._bodyInit = body
-      if (!body) {
-        this._bodyText = ''
-      } else if (typeof body === 'string') {
-        this._bodyText = body
-      } else if (support.blob && Blob.prototype.isPrototypeOf(body)) {
-        this._bodyBlob = body
-      } else if (support.formData && FormData.prototype.isPrototypeOf(body)) {
-        this._bodyFormData = body
-      } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
-        this._bodyText = body.toString()
-      } else if (support.arrayBuffer && support.blob && isDataView(body)) {
-        this._bodyArrayBuffer = bufferClone(body.buffer)
-        // IE 10-11 can't handle a DataView body.
-        this._bodyInit = new Blob([this._bodyArrayBuffer])
-      } else if (support.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf(body) || isArrayBufferView(body))) {
-        this._bodyArrayBuffer = bufferClone(body)
-      } else {
-        throw new Error('unsupported BodyInit type')
-      }
-
-      if (!this.headers.get('content-type')) {
-        if (typeof body === 'string') {
-          this.headers.set('content-type', 'text/plain;charset=UTF-8')
-        } else if (this._bodyBlob && this._bodyBlob.type) {
-          this.headers.set('content-type', this._bodyBlob.type)
-        } else if (support.searchParams && URLSearchParams.prototype.isPrototypeOf(body)) {
-          this.headers.set('content-type', 'application/x-www-form-urlencoded;charset=UTF-8')
-        }
-      }
-    }
-
-    if (support.blob) {
-      this.blob = function() {
-        var rejected = consumed(this)
-        if (rejected) {
-          return rejected
-        }
-
-        if (this._bodyBlob) {
-          return Promise.resolve(this._bodyBlob)
-        } else if (this._bodyArrayBuffer) {
-          return Promise.resolve(new Blob([this._bodyArrayBuffer]))
-        } else if (this._bodyFormData) {
-          throw new Error('could not read FormData body as blob')
-        } else {
-          return Promise.resolve(new Blob([this._bodyText]))
-        }
-      }
-
-      this.arrayBuffer = function() {
-        if (this._bodyArrayBuffer) {
-          return consumed(this) || Promise.resolve(this._bodyArrayBuffer)
-        } else {
-          return this.blob().then(readBlobAsArrayBuffer)
-        }
-      }
-    }
-
-    this.text = function() {
-      var rejected = consumed(this)
-      if (rejected) {
-        return rejected
-      }
-
-      if (this._bodyBlob) {
-        return readBlobAsText(this._bodyBlob)
-      } else if (this._bodyArrayBuffer) {
-        return Promise.resolve(readArrayBufferAsText(this._bodyArrayBuffer))
-      } else if (this._bodyFormData) {
-        throw new Error('could not read FormData body as text')
-      } else {
-        return Promise.resolve(this._bodyText)
-      }
-    }
-
-    if (support.formData) {
-      this.formData = function() {
-        return this.text().then(decode)
-      }
-    }
-
-    this.json = function() {
-      return this.text().then(JSON.parse)
-    }
-
-    return this
-  }
-
-  // HTTP methods whose capitalization should be normalized
-  var methods = ['DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT']
-
-  function normalizeMethod(method) {
-    var upcased = method.toUpperCase()
-    return (methods.indexOf(upcased) > -1) ? upcased : method
-  }
-
-  function Request(input, options) {
-    options = options || {}
-    var body = options.body
-
-    if (input instanceof Request) {
-      if (input.bodyUsed) {
-        throw new TypeError('Already read')
-      }
-      this.url = input.url
-      this.credentials = input.credentials
-      if (!options.headers) {
-        this.headers = new Headers(input.headers)
-      }
-      this.method = input.method
-      this.mode = input.mode
-      if (!body && input._bodyInit != null) {
-        body = input._bodyInit
-        input.bodyUsed = true
-      }
-    } else {
-      this.url = String(input)
-    }
-
-    this.credentials = options.credentials || this.credentials || 'omit'
-    if (options.headers || !this.headers) {
-      this.headers = new Headers(options.headers)
-    }
-    this.method = normalizeMethod(options.method || this.method || 'GET')
-    this.mode = options.mode || this.mode || null
-    this.referrer = null
-
-    if ((this.method === 'GET' || this.method === 'HEAD') && body) {
-      throw new TypeError('Body not allowed for GET or HEAD requests')
-    }
-    this._initBody(body)
-  }
-
-  Request.prototype.clone = function() {
-    return new Request(this, { body: this._bodyInit })
-  }
-
-  function decode(body) {
-    var form = new FormData()
-    body.trim().split('&').forEach(function(bytes) {
-      if (bytes) {
-        var split = bytes.split('=')
-        var name = split.shift().replace(/\+/g, ' ')
-        var value = split.join('=').replace(/\+/g, ' ')
-        form.append(decodeURIComponent(name), decodeURIComponent(value))
-      }
-    })
-    return form
-  }
-
-  function parseHeaders(rawHeaders) {
-    var headers = new Headers()
-    // Replace instances of \r\n and \n followed by at least one space or horizontal tab with a space
-    // https://tools.ietf.org/html/rfc7230#section-3.2
-    var preProcessedHeaders = rawHeaders.replace(/\r?\n[\t ]+/g, ' ')
-    preProcessedHeaders.split(/\r?\n/).forEach(function(line) {
-      var parts = line.split(':')
-      var key = parts.shift().trim()
-      if (key) {
-        var value = parts.join(':').trim()
-        headers.append(key, value)
-      }
-    })
-    return headers
-  }
-
-  Body.call(Request.prototype)
-
-  function Response(bodyInit, options) {
-    if (!options) {
-      options = {}
-    }
-
-    this.type = 'default'
-    this.status = options.status === undefined ? 200 : options.status
-    this.ok = this.status >= 200 && this.status < 300
-    this.statusText = 'statusText' in options ? options.statusText : 'OK'
-    this.headers = new Headers(options.headers)
-    this.url = options.url || ''
-    this._initBody(bodyInit)
-  }
-
-  Body.call(Response.prototype)
-
-  Response.prototype.clone = function() {
-    return new Response(this._bodyInit, {
-      status: this.status,
-      statusText: this.statusText,
-      headers: new Headers(this.headers),
-      url: this.url
-    })
-  }
-
-  Response.error = function() {
-    var response = new Response(null, {status: 0, statusText: ''})
-    response.type = 'error'
-    return response
-  }
-
-  var redirectStatuses = [301, 302, 303, 307, 308]
-
-  Response.redirect = function(url, status) {
-    if (redirectStatuses.indexOf(status) === -1) {
-      throw new RangeError('Invalid status code')
-    }
-
-    return new Response(null, {status: status, headers: {location: url}})
-  }
-
-  self.Headers = Headers
-  self.Request = Request
-  self.Response = Response
-
-  self.fetch = function(input, init) {
-    return new Promise(function(resolve, reject) {
-      var request = new Request(input, init)
-      var xhr = new XMLHttpRequest()
-
-      xhr.onload = function() {
-        var options = {
-          status: xhr.status,
-          statusText: xhr.statusText,
-          headers: parseHeaders(xhr.getAllResponseHeaders() || '')
-        }
-        options.url = 'responseURL' in xhr ? xhr.responseURL : options.headers.get('X-Request-URL')
-        var body = 'response' in xhr ? xhr.response : xhr.responseText
-        resolve(new Response(body, options))
-      }
-
-      xhr.onerror = function() {
-        reject(new TypeError('Network request failed'))
-      }
-
-      xhr.ontimeout = function() {
-        reject(new TypeError('Network request failed'))
-      }
-
-      xhr.open(request.method, request.url, true)
-
-      if (request.credentials === 'include') {
-        xhr.withCredentials = true
-      } else if (request.credentials === 'omit') {
-        xhr.withCredentials = false
-      }
-
-      if ('responseType' in xhr && support.blob) {
-        xhr.responseType = 'blob'
-      }
-
-      request.headers.forEach(function(value, name) {
-        xhr.setRequestHeader(name, value)
-      })
-
-      xhr.send(typeof request._bodyInit === 'undefined' ? null : request._bodyInit)
-    })
-  }
-  self.fetch.polyfill = true
-})(typeof self !== 'undefined' ? self : this);
-
-
-/***/ }),
-/* 307 */
+/* 328 */
 /***/ (function(module, exports) {
 
 module.exports = {
@@ -15280,25 +26663,35 @@ module.exports = {
 		"api"
 	],
 	"scripts": {
-		"test": "mocha --require babel-register --require babel-polyfill",
-		"build-browser-tests": "webpack --config webpack.test-config.js",
-		"build-lambda-tests": "webpack --config webpack.lambda-test-config.js && pushd test/lambda && rm -f ../lambda.zip && zip -r ../lambda.zip . && popd"
+		"test": "mocha --require babel-register --require babel-polyfill --require isomorphic-form-data",
+		"build-browser-tests": "webpack --config webpack.browser-test-config.js",
+		"build-lambda-tests": "webpack --config webpack.lambda-test-config.js && pushd test/lambda && rm -f ../lambda.zip && zip -r ../lambda.zip . && popd",
+		"build": "webpack --config webpack.node-config.js && webpack --config webpack.browser-config.js"
 	},
 	"license": "BSD-3-Clause",
-	"main": "build/index.js",
+	"main": "build/index-node.js",
+	"browser": "build/index-web.js",
 	"dependencies": {
-		"isomorphic-base64": "^1.0.2",
-		"isomorphic-fetch": "^2.2.1",
+		"base-64": "^0.1.0",
+		"cross-fetch": "^2.1.0",
+		"form-data": "^2.3.2",
 		"isomorphic-form-data": "^1.0.0",
-		"urijs": "^1.18.12"
+		"urijs": "^1.18.12",
+		"babel-preset-env": "^1.5.2"
 	},
+	"files": [
+		"build/index-node.js",
+		"build/index-web.js",
+		"index.js",
+		"README.md",
+		"LICENSE"
+	],
 	"devDependencies": {
 		"ajv": "^6.4.0",
 		"babel-core": "^6.26.0",
 		"babel-jest": "^22.4.3",
 		"babel-loader": "^7.0.0",
 		"babel-polyfill": "^6.23.0",
-		"babel-preset-env": "^1.5.2",
 		"babel-register": "^6.26.0",
 		"documentation": "^4.0.0-rc.1",
 		"dotenv": "^5.0.1",
@@ -15314,11 +26707,23 @@ module.exports = {
 };
 
 /***/ }),
-/* 308 */
+/* 329 */
+/***/ (function(module, exports) {
+
+module.exports = require("fs");
+
+/***/ }),
+/* 330 */
+/***/ (function(module, exports) {
+
+module.exports = require("zlib");
+
+/***/ }),
+/* 331 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(118);
-module.exports = __webpack_require__(117);
+__webpack_require__(130);
+module.exports = __webpack_require__(129);
 
 
 /***/ })
